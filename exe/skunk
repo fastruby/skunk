@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Always look in the lib directory of this gem
+# first when searching the load path
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+
+require 'skunk/cli/application'
+
+exit Skunk::Cli::Application.new(ARGV).execute
