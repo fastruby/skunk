@@ -1,8 +1,6 @@
 # Skunk
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/skunk`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A RubyCritic extension to calculate StinkScore for a file or project.
 
 ## Installation
 
@@ -22,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Simply run:
+
+```
+skunk
+```
+
+Then get a list of stinky files:
+
+```
+```
 
 ## Development
 
@@ -32,4 +39,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/skunk.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fastruby/skunk.
