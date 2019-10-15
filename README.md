@@ -2,6 +2,18 @@
 
 A RubyCritic extension to calculate StinkScore for a file or project.
 
+## What is the StinkScore?
+
+The StinkScore is a value that assess the quality of a module. It takes into
+account:
+
+- Code Quality
+- Code Smells
+- Churn
+- Code Coverage
+
+The formula is not perfect and it is certainly controversial.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -29,7 +41,69 @@ skunk
 Then get a list of stinky files:
 
 ```
+$ skunk
+warning: parser/current is loading parser/ruby26, which recognizes
+warning: 2.6.5-compliant syntax, but you are running 2.6.2.
+warning: please see https://github.com/whitequark/parser#compatibility-with-ruby-mri.
+running flay smells
+
+running flog smells
+.............
+running reek smells
+.............
+running complexity
+.............
+running attributes
+.............
+running churn
+.............
+running simple_cov
+.............
+New critique at file:////Users/etagwerker/Projects/fastruby/skunk/tmp/rubycritic/overview.html
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
+| file                                                | stink_score                | churn_times_cost           | churn                      | cost                       | coverage                   |
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
+| lib/skunk/cli/commands/default.rb                   | 166.44                     | 1.6643999999999999         | 3                          | 0.5548                     | 0                          |
+| lib/skunk/cli/application.rb                        | 139.2                      | 1.392                      | 3                          | 0.46399999999999997        | 0                          |
+| lib/skunk/cli/command_factory.rb                    | 97.6                       | 0.976                      | 2                          | 0.488                      | 0                          |
+| test/test_helper.rb                                 | 75.2                       | 0.752                      | 2                          | 0.376                      | 0                          |
+| lib/skunk/rubycritic/analysed_module.rb             | 48.12                      | 1.7184                     | 2                          | 0.8592                     | 72.72727272727273          |
+| test/lib/skunk/cli/commands/status_reporter_test.rb | 45.6                       | 0.456                      | 1                          | 0.456                      | 0                          |
+| lib/skunk/cli/commands/base.rb                      | 29.52                      | 0.2952                     | 3                          | 0.0984                     | 0                          |
+| lib/skunk/cli/commands/status_reporter.rb           | 8.0                        | 7.9956                     | 3                          | 2.6652                     | 100.0                      |
+| test/lib/skunk/rubycritic/analysed_module_test.rb   | 2.63                       | 2.6312                     | 2                          | 1.3156                     | 100.0                      |
+| lib/skunk.rb                                        | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/cli/options.rb                            | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/version.rb                                | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/cli/commands/help.rb                      | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
+
+StinkScore Total: 612.31
+Modules Analysed: 13
+StinkScore Average: 0.47100769230769230769230769231e2
+Worst StinkScore: 166.44 (lib/skunk/cli/commands/default.rb)
 ```
+
+The command will run `rubycritic`, so that will generate a RubyCritic overview
+HTML report as well.
+
+Skunk's report will be in the console. Use it wisely. :)
+
+## Known Issues
+
+The StinkScore should be calculated per method. This would provide a more accurate
+representation of the average StinkScore in a module.
+
+I think that the StinkScore of a module should be the average of the StinkScores of
+all of its methods.
+
+Right now the StinkScore is calculated using the totals for a module:
+
+- Total Code Coverage Percentage per Module
+- Total Churn per Module
+- Total Cost per Module
+
+For more details, feel free to review and improve this method: [RubyCritic::AnalysedModule#stink_score]
 
 ## Development
 
