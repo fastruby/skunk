@@ -6,3 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+.byebug_history
+
+.ruby-version
