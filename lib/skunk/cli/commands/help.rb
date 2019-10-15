@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'skunk/cli/commands/base'
+require "skunk/cli/commands/base"
 
 module Skunk
   module Cli

@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-require 'skunk'
-require 'skunk/cli/options'
-require 'skunk/cli/command_factory'
+require "skunk"
+require "skunk/cli/options"
+require "skunk/cli/command_factory"
 
-require 'rubycritic/cli/application'
+require "rubycritic/cli/application"
 
 module Skunk
   module Cli
+    # Knows how to execute command line commands
     class Application < RubyCritic::Cli::Application
       def execute
         parsed_options = @options.parse.to_h

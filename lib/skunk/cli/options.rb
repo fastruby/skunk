@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rubycritic/cli/options'
+require "rubycritic/cli/options"
 
 module Skunk
   module Cli
