@@ -3,6 +3,8 @@
 module Skunk
   module Command
     class StatusReporter < RubyCritic::Command::StatusReporter
+      attr_accessor :analysed_modules
+
       def update_status_message
         case @status
         when SUCCESS

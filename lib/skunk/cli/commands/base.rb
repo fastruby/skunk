@@ -9,7 +9,7 @@ module Skunk
       class Base < RubyCritic::Command::Base
         def initialize(options)
           @options = options
-          @status_reporter = Skunk::Cli::Command::StatusReporter.new(@options)
+          @status_reporter = Skunk::Command::StatusReporter.new(@options)
         end
       end
     end
