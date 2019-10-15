@@ -1,4 +1,6 @@
-lib = File.expand_path("../lib", __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "skunk/version"
 
@@ -8,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ernesto Tagwerker"]
   spec.email         = ["ernesto+github@ombulabs.com"]
 
-  spec.summary       = %q{A library to assess code quality vs. code coverage}
-  spec.description   = %q{Knows how to calculate the StinkScore for a Ruby file}
+  spec.summary       = "A library to assess code quality vs. code coverage"
+  spec.description   = "Knows how to calculate the StinkScore for a Ruby file"
   spec.homepage      = "https://github.com/fastruby/skunk"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -27,7 +29,7 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.bindir        = "exe"
@@ -35,12 +37,15 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rubycritic-simplecov"
+  spec.add_dependency "terminal-table"
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "minitest", "~> 5.8.4"
+  spec.add_development_dependency "minitest-around"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "reek"
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "simplecov", "~> 0.17.1"
+  spec.add_development_dependency "simplecov-console"
 end

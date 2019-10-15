@@ -3,12 +3,14 @@ PATH
   specs:
     skunk (0.1.0)
       rubycritic-simplecov
+      terminal-table
 
 GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ansi (1.5.0)
     ast (2.4.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -40,6 +42,8 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     minitest (5.8.5)
+    minitest-around (0.5.0)
+      minitest (~> 5.0)
     parallel (1.18.0)
     parser (2.6.5.0)
       ast (~> 2.4.0)
@@ -80,7 +84,13 @@ GEM
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
+    simplecov-console (0.5.0)
+      ansi
+      simplecov
+      terminal-table
     simplecov-html (0.10.2)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
     tty-which (0.4.1)
     unicode-display_width (1.6.0)
@@ -97,11 +107,13 @@ DEPENDENCIES
   bundler (~> 2.0)
   byebug
   minitest (~> 5.8.4)
+  minitest-around
   rake (~> 10.0)
   reek
   rubocop
   simplecov (~> 0.17.1)
+  simplecov-console
   skunk!
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
