@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "skunk"
+require "skunk/rubycritic/analysed_module"
 require "skunk/cli/options"
 require "skunk/cli/command_factory"
 
