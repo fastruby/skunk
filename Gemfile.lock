@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     skunk (0.1.0)
-      rubycritic-simplecov
-      terminal-table
+      rubycritic-simplecov (~> 4.1.1)
+      terminal-table (~> 1.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -105,14 +105,14 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
-  byebug
+  byebug (~> 11)
   minitest (~> 5.8.4)
-  minitest-around
+  minitest-around (~> 0.5.0)
   rake (~> 10.0)
-  reek
-  rubocop
+  reek (~> 5.4.0)
+  rubocop (< 1.0)
   simplecov (~> 0.17.1)
-  simplecov-console
+  simplecov-console (= 0.5.0)
   skunk!
 
 BUNDLED WITH

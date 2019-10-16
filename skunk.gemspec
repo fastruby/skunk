@@ -36,16 +36,16 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rubycritic-simplecov"
-  spec.add_dependency "terminal-table"
+  spec.add_dependency "rubycritic-simplecov", "~> 4.1.1"
+  spec.add_dependency "terminal-table", "~> 1.8.0"
 
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "byebug", "~> 11"
   spec.add_development_dependency "minitest", "~> 5.8.4"
-  spec.add_development_dependency "minitest-around"
+  spec.add_development_dependency "minitest-around", "~> 0.5.0"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "reek"
-  spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "reek", "~> 5.4.0"
+  spec.add_development_dependency "rubocop", "< 1.0"
   spec.add_development_dependency "simplecov", "~> 0.17.1"
-  spec.add_development_dependency "simplecov-console"
+  spec.add_development_dependency "simplecov-console", "0.5.0"
 end
