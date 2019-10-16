@@ -16,7 +16,7 @@ module Skunk
       def update_status_message
         opts = table_options.merge(headings: HEADINGS, rows: table)
 
-        ttable = Terminal::Table.new(opts) 
+        ttable = Terminal::Table.new(opts)
 
         @status_message = "#{ttable}\n\n"
 
@@ -29,7 +29,11 @@ module Skunk
       private
 
       def analysed_modules_count
-        @analysed_modules_count ||= analysed_modules.count
+        @analysed_modules_count ||= non_test_modules.count
+      end
+
+      def non_test_modules
+        @non_test_modules ||= analysed_modules.reject { |x| x.pathname.to_s.start_with?("test", "spec")}
       end
 
       def worst
@@ -37,15 +41,15 @@ module Skunk
       end
 
       def sorted_modules
-        @sorted_modules ||= analysed_modules.sort_by(&:stink_score).reverse!
+        @sorted_modules ||= non_test_modules.sort_by(&:stink_score).reverse!
       end
 
       def total_stink_score
-        @total_stink_score ||= analysed_modules.map(&:stink_score).inject(0.0, :+)
+        @total_stink_score ||= non_test_modules.map(&:stink_score).inject(0.0, :+)
       end
 
       def total_churn_times_cost
-        analysed_modules.map(&:churn_times_cost).sum
+        non_test_modules.map(&:churn_times_cost).sum
       end
 
       def stink_score

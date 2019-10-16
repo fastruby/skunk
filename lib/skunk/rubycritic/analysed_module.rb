@@ -43,9 +43,5 @@ module RubyCritic
       safe_churn = churn > 0 ? churn : 1
       @churn_times_cost ||= safe_churn * cost
     end
-
-    def method_name
-
-    end
   end
 end
