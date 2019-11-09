@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "erb"
 require "rubycritic/commands/status_reporter"
 require "terminal-table"
 
@@ -11,6 +12,15 @@ module Skunk
 
       HEADINGS = %w[file stink_score churn_times_cost churn cost coverage].freeze
 
+      TEMPLATE = ERB.new(<<-TEMPL
+<%= ttable %>\n
+StinkScore Total: <%= total_stink_score %>
+Modules Analysed: <%= analysed_modules_count %>
+StinkScore Average: <%= stink_score %>
+<% if worst %>Worst StinkScore: <%= worst.stink_score %> (<%= worst.pathname %>)<% end %>
+TEMPL
+                        )
+
       # Returns a status message with a table of all analysed_modules and
       # a stink score average
       def update_status_message
@@ -18,12 +28,7 @@ module Skunk
 
         ttable = Terminal::Table.new(opts)
 
-        @status_message = "#{ttable}\n\n"
-
-        @status_message += "StinkScore Total: #{total_stink_score}\n"
-        @status_message += "Modules Analysed: #{analysed_modules_count}\n"
-        @status_message += "StinkScore Average: #{stink_score}\n"
-        @status_message += "Worst StinkScore: #{worst.stink_score} (#{worst.pathname})\n" if worst
+        @status_message = TEMPLATE.result(binding)
       end
 
       private
@@ -33,7 +38,9 @@ module Skunk
       end
 
       def non_test_modules
-        @non_test_modules ||= analysed_modules.reject { |x| x.pathname.to_s.start_with?("test", "spec")}
+        @non_test_modules ||= analysed_modules.reject do |a_module|
+          a_module.pathname.to_s.start_with?("test", "spec")
+        end
       end
 
       def worst
@@ -53,7 +60,7 @@ module Skunk
       end
 
       def stink_score
-        return 0 if analysed_modules_count == 0
+        return 0 if analysed_modules_count.zero?
 
         total_stink_score.to_d / analysed_modules_count
       end
