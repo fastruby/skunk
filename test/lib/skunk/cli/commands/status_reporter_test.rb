@@ -10,11 +10,12 @@ describe Skunk::Command::StatusReporter do
 
   before do
     # capture_output_streams do
-    RubyCritic::Config.source_control_system = RubyCritic::SourceControlSystem::Git.new
+    RubyCritic::Config.source_control_system = MockGit.new
     runner = RubyCritic::AnalysersRunner.new(paths)
     analysed_modules = runner.run
     @reporter = Skunk::Command::StatusReporter.new({})
     @reporter.analysed_modules = analysed_modules
+    analysed_modules.first.churn = 1
     @reporter.score = analysed_modules.score
     # end
   end
@@ -25,5 +26,11 @@ describe Skunk::Command::StatusReporter do
     it "reports the StinkScore" do
       @reporter.update_status_message.must_equal output
     end
+  end
+end
+
+class MockGit < RubyCritic::SourceControlSystem::Git
+  def revisions_count(_)
+    1
   end
 end
