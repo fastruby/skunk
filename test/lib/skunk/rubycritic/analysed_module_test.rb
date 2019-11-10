@@ -28,7 +28,9 @@ describe RubyCritic::AnalysedModule do
       let(:coverage) { 0 }
 
       it "should be 99.32" do
-        @analysed_module.stink_score.must_equal 85.92
+        @analysed_module.stub(:churn, 1) do
+          _(@analysed_module.stink_score).must_equal 85.92
+        end
       end
     end
 
@@ -36,7 +38,9 @@ describe RubyCritic::AnalysedModule do
       let(:coverage) { 95 }
 
       it "should be penalized slightly" do
-        @analysed_module.stink_score.must_equal 4.3
+        @analysed_module.stub(:churn, 1) do
+          _(@analysed_module.stink_score).must_equal 4.3
+        end
       end
     end
 
@@ -44,7 +48,9 @@ describe RubyCritic::AnalysedModule do
       let(:coverage) { 100 }
 
       it "should not be penalized" do
-        @analysed_module.stink_score.must_equal 0.86
+        @analysed_module.stub(:churn, 1) do
+          _(@analysed_module.stink_score).must_equal 0.86
+        end
       end
     end
   end
