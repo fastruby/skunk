@@ -8,23 +8,31 @@ require "skunk/cli/commands/status_reporter"
 describe Skunk::Command::StatusReporter do
   let(:paths) { "lib/skunk/rubycritic" }
 
-  before do
-    # capture_output_streams do
-    RubyCritic::Config.source_control_system = MockGit.new
-    runner = RubyCritic::AnalysersRunner.new(paths)
-    analysed_modules = runner.run
-    @reporter = Skunk::Command::StatusReporter.new({})
-    @reporter.analysed_modules = analysed_modules
-    analysed_modules.first.churn = 1
-    @reporter.score = analysed_modules.score
-    # end
-  end
-
   describe "#update_status_message" do
     let(:output) { File.read("test/samples/console_output.txt") }
+    let(:reporter) { Skunk::Command::StatusReporter.new({}) }
+
+    around do |example|
+      RubyCritic::Config.source_control_system = MockGit.new
+      runner = RubyCritic::AnalysersRunner.new(paths)
+      analysed_modules = runner.run
+      analysed_modules.each do |analysed_module|
+        def analysed_module.coverage
+          100.0
+        end
+
+        def analysed_module.churn
+          1
+        end
+      end
+
+      reporter.analysed_modules = analysed_modules
+      reporter.score = analysed_modules.score
+      example.call
+    end
 
     it "reports the StinkScore" do
-      @reporter.update_status_message.must_equal output
+      reporter.update_status_message.must_equal output
     end
   end
 end
