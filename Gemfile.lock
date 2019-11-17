@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     skunk (0.2.0)
-      rubycritic-simplecov (~> 4.1.1)
+      rubycritic (~> 4.2.1)
       terminal-table (~> 1.8.0)
 
 GEM
@@ -68,7 +68,7 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.1)
       sexp_processor (~> 4.9)
-    rubycritic-simplecov (4.1.1)
+    rubycritic (4.2.2)
       flay (~> 2.8)
       flog (~> 4.4)
       launchy (= 2.4.3)
