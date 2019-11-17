@@ -6,7 +6,7 @@ module Skunk
   module Cli
     # Knows how to calculate the command that was request by the CLI user
     class CommandFactory < RubyCritic::CommandFactory
-      COMMAND_CLASS_MODES = %i[version help default].freeze
+      COMMAND_CLASS_MODES = %i[version help default compare].freeze
 
       # Returns the command class based on the command that was executed
       #
