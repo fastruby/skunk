@@ -5,6 +5,7 @@ detectors:
     exclude:
     - capture_output_streams
     - Skunk::Command::Compare#analyse_modified_files
+    - Skunk::Command::Compare#build_details_path
   InstanceVariableAssumption:
     exclude:
     - Skunk::Cli::Application
