@@ -6,5 +6,5 @@
 
 StinkScore Total: 0.86
 Modules Analysed: 1
-StinkScore Average: 0.86e0
+StinkScore Average: 0.86
 Worst StinkScore: 0.86 (samples/rubycritic/analysed_module.rb)

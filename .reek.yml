@@ -4,22 +4,22 @@ detectors:
   UtilityFunction:
     exclude:
     - capture_output_streams
+    - Skunk::Command::Compare#analyse_modified_files
+    - Skunk::Command::Compare#build_details_path
   InstanceVariableAssumption:
     exclude:
     - Skunk::Cli::Application
     - Skunk::Cli::Command::Default
-  IrresponsibleModule:
-    exclude:
-    - Skunk::Cli::Application
-    - Skunk::Cli::Command::Default
-    - Skunk::Cli::Command::Help
-    - Skunk::Command::StatusReporter
-    - Skunk::Cli::Options
-    - RubyCritic::AnalysedModule
+    - RubyCritic::AnalysedModulesCollection
   TooManyStatements:
     exclude:
     - initialize
     - Skunk::Cli::Application#execute
+  IrresponsibleModule:
+    exclude:
+    - Skunk::Cli::Command::Help
+    - Skunk::Cli::Options
+    - RubyCritic::AnalysedModulesCollection
   Attribute:
     exclude:
     - Skunk::Command::StatusReporter#analysed_modules

@@ -37,6 +37,7 @@ describe Skunk::Command::StatusReporter do
   end
 end
 
+# A Mock Git class that returns always 1 for revisions_count
 class MockGit < RubyCritic::SourceControlSystem::Git
   def revisions_count(_)
     1

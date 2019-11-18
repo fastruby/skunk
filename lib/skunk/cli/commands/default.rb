@@ -20,16 +20,13 @@ module Skunk
         end
 
         def execute
+          RubyCritic::Config.formats = []
+
           report(critique)
           status_reporter
         end
 
-        def critique
-          RubyCritic::AnalysersRunner.new(paths).run
-        end
-
         def report(analysed_modules)
-          RubyCritic::Reporter.generate_report(analysed_modules)
           status_reporter.analysed_modules = analysed_modules
           status_reporter.score = analysed_modules.score
         end
