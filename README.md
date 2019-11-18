@@ -1,12 +1,12 @@
 # Skunk
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability)
 
 A RubyCritic extension to calculate StinkScore for a file or project.
 
 ## What is the StinkScore?
 
-The StinkScore is a value that assess the quality of a module. It takes into
+The StinkScore is a value that assesses the quality of a module. It takes into
 account:
 
 - Code Quality
@@ -14,7 +14,16 @@ account:
 - Churn
 - Code Coverage
 
-The formula is not perfect and it is certainly controversial.
+The main goal of the StinkScore is to serve as a compass in your next
+refactoring adventure. It will help you answer these questions:
+
+- What can I do to pay off technical debt?
+- What are the most complicated files with the least code coverage?
+- What are good candidates for your next test-writing efforts?
+- What are good candidates for your nest refactoring efforts?
+
+The formula is not perfect and it is certainly controversial, so any feedback is
+welcome as a new issue!
 
 ## Installation
 
@@ -34,7 +43,13 @@ Or install it yourself as:
 
 ## Usage
 
-Simply run:
+### Getting a sorted list of stinkiest files
+
+To get the best results, make sure that you have `coverage/.resultset.json` in
+your application directory. That way `skunk` knows what's the status of your
+test suite + code coverage.
+
+Then simply run:
 
 ```
 skunk
@@ -86,10 +101,14 @@ StinkScore Average: 0.47100769230769230769230769231e2
 Worst StinkScore: 166.44 (lib/skunk/cli/commands/default.rb)
 ```
 
-The command will run `rubycritic`, so that will generate a RubyCritic overview
-HTML report as well.
+The command will run `rubycritic` and it will try to load code coverage data
+from your `.resultset.json` file.
 
 Skunk's report will be in the console. Use it wisely. :)
+
+### Comparing one branch vs. another
+
+
 
 ## Known Issues
 
