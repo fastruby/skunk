@@ -6,7 +6,7 @@ require "rubycritic/analysers_runner"
 require "skunk/rubycritic/analysed_module"
 
 describe RubyCritic::AnalysedModule do
-  let(:paths) { "lib/skunk/rubycritic" }
+  let(:paths) { "samples/rubycritic" }
 
   before do
     capture_output_streams do
