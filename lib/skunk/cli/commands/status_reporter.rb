@@ -16,7 +16,7 @@ module Skunk
 <%= ttable %>\n
 StinkScore Total: <%= total_stink_score %>
 Modules Analysed: <%= analysed_modules_count %>
-StinkScore Average: <%= stink_score %>
+StinkScore Average: <%= stink_score_average %>
 <% if worst %>Worst StinkScore: <%= worst.stink_score %> (<%= worst.pathname %>)<% end %>
 TEMPL
                         )
@@ -59,10 +59,10 @@ TEMPL
         non_test_modules.map(&:churn_times_cost).sum
       end
 
-      def stink_score
+      def stink_score_average
         return 0 if analysed_modules_count.zero?
 
-        total_stink_score.to_d / analysed_modules_count
+        (total_stink_score.to_d / analysed_modules_count).to_f
       end
 
       def table_options
