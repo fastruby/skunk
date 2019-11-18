@@ -14,7 +14,6 @@ module Skunk
       def execute
         parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(parsed_options).execute
-        require "byebug"; byebug
         print(reporter.status_message)
         reporter.status
       rescue OptionParser::InvalidOption => error
