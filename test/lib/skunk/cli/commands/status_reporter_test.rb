@@ -6,7 +6,7 @@ require "rubycritic/analysers_runner"
 require "skunk/cli/commands/status_reporter"
 
 describe Skunk::Command::StatusReporter do
-  let(:paths) { "lib/skunk/rubycritic" }
+  let(:paths) { "samples/rubycritic" }
 
   describe "#update_status_message" do
     let(:output) { File.read("test/samples/console_output.txt") }
