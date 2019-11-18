@@ -108,7 +108,52 @@ Skunk's report will be in the console. Use it wisely. :)
 
 ### Comparing one branch vs. another
 
+Simply run:
 
+```
+skunk -b <target-branch-name>
+```
+
+Then get a StinkScore average comparison:
+
+```
+$ skunk -b master
+Switched to branch 'master'
+running flay smells
+..
+running flog smells
+..............
+running reek smells
+..............
+running complexity
+..............
+running attributes
+..............
+running churn
+..............
+running simple_cov
+..............
+Switched to branch 'feature/compare'
+running flay smells
+..
+running flog smells
+.................
+running reek smells
+.................
+running complexity
+.................
+running attributes
+.................
+running churn
+.................
+running simple_cov
+.................
+Base branch (master) average stink score: 290.53999999999996
+Feature branch (feature/compare) average stink score: 340.3005882352941
+Score: 340.3
+```
+
+This should give you an idea if you're moving in the right direction or not.
 
 ## Known Issues
 
@@ -134,4 +179,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fastruby/skunk.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fastruby/skunk/issues.
