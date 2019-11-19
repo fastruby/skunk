@@ -31,9 +31,9 @@ module RubyCritic
     #
     # @return [Float]
     def stink_score
-      return churn_times_cost.round(2) if coverage == PERFECT_COVERAGE
+      return cost.round(2) if coverage == PERFECT_COVERAGE
 
-      (churn_times_cost * (PERFECT_COVERAGE - coverage.to_i)).round(2)
+      (cost * (PERFECT_COVERAGE - coverage.to_i)).round(2)
     end
 
     # Returns the value of churn times cost.
