@@ -29,7 +29,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should be 99.32" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 85.92
+          _(@analysed_module.stink_score).must_equal 58.88
         end
       end
     end
@@ -39,7 +39,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should be penalized slightly" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 4.3
+          _(@analysed_module.stink_score).must_equal 2.94
         end
       end
     end
@@ -49,7 +49,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should not be penalized" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 0.86
+          _(@analysed_module.stink_score).must_equal 0.59
         end
       end
     end
