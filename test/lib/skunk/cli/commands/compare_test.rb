@@ -18,7 +18,7 @@ describe Skunk::Command::Compare do
         compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
         compare.analyse_branch(:base_branch)
 
-        _(RubyCritic::Config.base_branch_score).must_equal 515.52
+        _(RubyCritic::Config.base_branch_score).must_equal 58.88
       end
     end
   end
