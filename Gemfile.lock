@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    skunk (0.2.0)
+    skunk (0.3.0)
       rubycritic (~> 4.2.1)
       terminal-table (~> 1.8.0)
 
