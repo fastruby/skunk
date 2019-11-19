@@ -9,9 +9,8 @@ A RubyCritic extension to calculate StinkScore for a file or project.
 The StinkScore is a value that assesses the quality of a module. It takes into
 account:
 
-- Code Quality
+- Code Complexity
 - Code Smells
-- Churn
 - Code Coverage
 
 The main goal of the StinkScore is to serve as a compass in your next
