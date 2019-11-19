@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = Skunk::VERSION
   spec.authors       = ["Ernesto Tagwerker"]
   spec.email         = ["ernesto+github@ombulabs.com"]
-  spec.licenses      = ['MIT']
+  spec.licenses      = ["MIT"]
   spec.summary       = "A library to assess code quality vs. code coverage"
   spec.description   = "Knows how to calculate the StinkScore for a Ruby file"
   spec.homepage      = "https://github.com/fastruby/skunk"
