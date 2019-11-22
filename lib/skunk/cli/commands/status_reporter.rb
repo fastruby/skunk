@@ -13,7 +13,7 @@ module Skunk
       HEADINGS = %w[file stink_score churn_times_cost churn cost coverage].freeze
 
       TEMPLATE = ERB.new(<<-TEMPL
-<%= ttable %>\n
+<%= _ttable %>\n
 StinkScore Total: <%= total_stink_score %>
 Modules Analysed: <%= analysed_modules_count %>
 StinkScore Average: <%= stink_score_average %>
@@ -26,7 +26,7 @@ TEMPL
       def update_status_message
         opts = table_options.merge(headings: HEADINGS, rows: table)
 
-        ttable = Terminal::Table.new(opts)
+        _ttable = Terminal::Table.new(opts)
 
         @status_message = TEMPLATE.result(binding)
       end
