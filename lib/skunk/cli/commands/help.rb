@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "skunk/cli/commands/base"
+require "rubycritic/commands/help"
 
 module Skunk
   module Cli
