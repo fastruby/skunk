@@ -5,7 +5,6 @@ require "rubycritic/commands/version"
 # nodoc #
 module Skunk
   module Command
-
     # Shows skunk version
     class Version < RubyCritic::Command::Version
       def initialize(options)
