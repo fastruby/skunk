@@ -7,10 +7,6 @@ module Skunk
   module Command
     # Shows skunk version
     class Version < RubyCritic::Command::Version
-      def initialize(options)
-        super
-      end
-
       def execute
         print Skunk::VERSION
         status_reporter
