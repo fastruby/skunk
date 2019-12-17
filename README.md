@@ -19,7 +19,7 @@ refactoring adventure. It will help you answer these questions:
 - What can I do to pay off technical debt?
 - What are the most complicated files with the least code coverage?
 - What are good candidates for your next test-writing efforts?
-- What are good candidates for your nest refactoring efforts?
+- What are good candidates for your next refactoring efforts?
 
 The formula is not perfect and it is certainly controversial, so any feedback is
 welcome as a new issue!
