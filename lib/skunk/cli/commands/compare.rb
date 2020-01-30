@@ -37,12 +37,9 @@ module Skunk
       end
 
       def build_details_path
+        compare_root_directory = ::RubyCritic::Config.compare_root_directory
         FileUtils.mkdir_p(compare_root_directory) unless File.exists?(compare_root_directory)
         "#{compare_root_directory}/build_details.txt"
-      end
-
-      def compare_root_directory
-        ::RubyCritic::Config.compare_root_directory
       end
     end
   end
