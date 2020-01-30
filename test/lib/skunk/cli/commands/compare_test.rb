@@ -25,9 +25,10 @@ describe Skunk::Command::Compare do
     end
 
     it "creates the compare_root_directory if it doesn't exist" do
-      ::RubyCritic::Config.configuration.stub(:compare_root_directory, compare_root_directory) do
+      ::RubyCritic::Config.configuration.stub(:compare_root_directory,
+                                              compare_root_directory) do
         Skunk::Command::Compare.new(paths: "samples/rubycritic").build_details
-        _(File.exists?(compare_root_directory)).must_equal true
+        _(File.exist?(compare_root_directory)).must_equal true
       end
     end
   end
