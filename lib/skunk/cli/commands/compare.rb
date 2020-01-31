@@ -2,6 +2,7 @@
 
 require "rubycritic/commands/compare"
 require "skunk/rubycritic/analysed_modules_collection"
+require "skunk/cli/commands/output"
 
 # nodoc #
 module Skunk
@@ -29,17 +30,16 @@ module Skunk
       # create a txt file with the branch score details
       def build_details
         details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
-                  "average stink score: #{::RubyCritic::Config.base_branch_score} \n"\
-                  "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-                  "average stink score: #{::RubyCritic::Config.feature_branch_score} \n"
+          "average stink score: #{::RubyCritic::Config.base_branch_score} \n"\
+          "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
+          "average stink score: #{::RubyCritic::Config.feature_branch_score} \n"
+        Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details
       end
 
       def build_details_path
-        compare_root_directory = ::RubyCritic::Config.compare_root_directory
-        FileUtils.mkdir_p(compare_root_directory) unless File.exist?(compare_root_directory)
-        "#{compare_root_directory}/build_details.txt"
+        "#{::RubyCritic::Config.compare_root_directory}/build_details.txt"
       end
     end
   end
