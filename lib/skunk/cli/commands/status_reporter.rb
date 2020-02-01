@@ -66,9 +66,11 @@ TEMPL
       end
 
       def table_options
+        max = sorted_modules.max_by { |a_mod| a_mod.pathname.to_s.length }
+        width = max.pathname.to_s.length + 77
         {
           style: {
-            width: 200
+            width: width
           }
         }
       end
