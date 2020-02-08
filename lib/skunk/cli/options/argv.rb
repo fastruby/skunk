@@ -13,13 +13,6 @@ module Skunk
           parser.new do |opts|
             opts.banner = "Usage: skunk [options] [paths]\n"
 
-            opts.on(
-              "-p", "--path [PATH]",
-              "Set path where report will be saved (tmp/skunk by default)"
-            ) do |path|
-              @root = path
-            end
-
             opts.on("-b", "--branch BRANCH", "Set branch to compare") do |branch|
               self.base_branch = String(branch)
               set_current_branch
