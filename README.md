@@ -1,13 +1,13 @@
 # Skunk
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability) [![Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://rubydoc.info/gems/skunk)
 
 A RubyCritic extension to calculate StinkScore for a file or project.
 
 ## What is the StinkScore?
 
-The StinkScore is a value that assesses the quality of a module. It takes into
-account:
+The StinkScore is a value that assesses the technical debt of a module. It takes
+into account:
 
 - Code Complexity
 - Code Smells
@@ -42,6 +42,18 @@ Or install it yourself as:
 
 ## Usage
 
+### Help details
+
+There are not that many options but here they are:
+
+```
+skunk -h
+Usage: skunk [options] [paths]
+    -b, --branch BRANCH              Set branch to compare
+    -v, --version                    Show gem's version
+    -h, --help                       Show this message
+```
+
 ### Getting a sorted list of stinkiest files
 
 To get the best results, make sure that you have `coverage/.resultset.json` in
@@ -58,9 +70,6 @@ Then get a list of stinky files:
 
 ```
 $ skunk
-warning: parser/current is loading parser/ruby26, which recognizes
-warning: 2.6.5-compliant syntax, but you are running 2.6.2.
-warning: please see https://github.com/whitequark/parser#compatibility-with-ruby-mri.
 running flay smells
 
 running flog smells
