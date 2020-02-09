@@ -11,6 +11,8 @@ module Skunk
       attr_accessor :analysed_modules
 
       HEADINGS = %w[file stink_score churn_times_cost churn cost coverage].freeze
+      HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
+      HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 15 # padding
 
       TEMPLATE = ERB.new(<<-TEMPL
 <%= _ttable %>\n
@@ -66,9 +68,11 @@ TEMPL
       end
 
       def table_options
+        max = sorted_modules.max_by { |a_mod| a_mod.pathname.to_s.length }
+        width = max.pathname.to_s.length + HEADINGS_WITHOUT_FILE_WIDTH
         {
           style: {
-            width: 200
+            width: width
           }
         }
       end
