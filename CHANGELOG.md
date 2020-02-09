@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...HEAD)
 
+## [0.4.2] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.1...v0.4.2)
+* [BUGFIX] Fixes table width issues by rounding values (by [@etagwerker][])
+
 ## [0.4.1] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...v0.4.1)
 * [BUGFIX] Fixes table width issues (by [@etagwerker][])
 
