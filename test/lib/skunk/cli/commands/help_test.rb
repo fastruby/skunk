@@ -9,7 +9,6 @@ describe Skunk::Cli::Command::Help do
   describe "#execute" do
     MSG = <<~HELP
       Usage: skunk [options] [paths]
-          -p, --path [PATH]                Set path where report will be saved (tmp/skunk by default)
           -b, --branch BRANCH              Set branch to compare
           -v, --version                    Show gem's version
           -h, --help                       Show this message
