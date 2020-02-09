@@ -12,7 +12,7 @@ module Skunk
 
       HEADINGS = %w[file stink_score churn_times_cost churn cost coverage].freeze
       HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
-      HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 15 # padding
+      HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 17 # padding
 
       TEMPLATE = ERB.new(<<-TEMPL
 <%= _ttable %>\n
