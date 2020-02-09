@@ -6,7 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...HEAD)
 
-## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.3.2...v0.4.0)
+## [0.4.1] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...v0.4.1)
+* [BUGFIX] Fixes table width issues (by [@etagwerker][])
+
+## [0.4.0] [(commits)](https://github.com/fastruby/skunk/compare/v0.3.2...v0.4.0)
 * [FEATURE] Add `--version` support to the command line. (by [@bronzdoc][])
 * [FEATURE] Stop accepting `-p <path>` in the command line. It's redundant and it's not working anyway. (by [@etagwerker][])
 * [BUGFIX] Change "StinkScore" formula to skip `churn_times_cost` (by [@etagwerker][])
