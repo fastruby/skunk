@@ -14,4 +14,11 @@ jobs:
       - name: Run Skunk on Project
         run: |
           gem install skunk
-          skunk lib/
+          CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+          if [[ "$CURRENT_BRANCH" -ne "master" ]]; then
+            echo "Executing within branch: $CURRENT_BRANCH"
+            skunk lib/
+          else
+            echo "Executing within master branch"
+            skunk lib/ -b master
+          fi
