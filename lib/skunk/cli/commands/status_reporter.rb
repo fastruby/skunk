@@ -84,8 +84,8 @@ TEMPL
             a_mod.stink_score,
             a_mod.churn_times_cost,
             a_mod.churn,
-            a_mod.cost,
-            a_mod.coverage
+            a_mod.cost.round(2),
+            a_mod.coverage.round(2)
           ]
         end
       end

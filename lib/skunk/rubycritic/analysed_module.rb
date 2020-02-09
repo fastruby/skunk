@@ -41,7 +41,7 @@ module RubyCritic
     # @return [Integer]
     def churn_times_cost
       safe_churn = churn.positive? ? churn : 1
-      @churn_times_cost ||= safe_churn * cost
+      @churn_times_cost ||= (safe_churn * cost).round(2)
     end
   end
 end
