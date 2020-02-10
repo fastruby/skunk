@@ -64,7 +64,7 @@ TEMPL
       def stink_score_average
         return 0 if analysed_modules_count.zero?
 
-        (total_stink_score.to_d / analysed_modules_count).to_f
+        (total_stink_score.to_d / analysed_modules_count).to_f.round(2)
       end
 
       def table_options
