@@ -10,7 +10,7 @@ if ENV["COVERAGE"] == "true"
   ]
 
   SimpleCov.start do
-    track_files "/lib/"
+    track_files "lib/**/*.rb"
   end
 end
 
