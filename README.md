@@ -85,23 +85,23 @@ running churn
 running simple_cov
 .............
 New critique at file:////Users/etagwerker/Projects/fastruby/skunk/tmp/rubycritic/overview.html
-+-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
-| file                                                | stink_score                | churn_times_cost           | churn                      | cost                       | coverage                   |
-+-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
-| lib/skunk/cli/commands/default.rb                   | 166.44                     | 1.6643999999999999         | 3                          | 0.5548                     | 0                          |
-| lib/skunk/cli/application.rb                        | 139.2                      | 1.392                      | 3                          | 0.46399999999999997        | 0                          |
-| lib/skunk/cli/command_factory.rb                    | 97.6                       | 0.976                      | 2                          | 0.488                      | 0                          |
-| test/test_helper.rb                                 | 75.2                       | 0.752                      | 2                          | 0.376                      | 0                          |
-| lib/skunk/rubycritic/analysed_module.rb             | 48.12                      | 1.7184                     | 2                          | 0.8592                     | 72.72727272727273          |
-| test/lib/skunk/cli/commands/status_reporter_test.rb | 45.6                       | 0.456                      | 1                          | 0.456                      | 0                          |
-| lib/skunk/cli/commands/base.rb                      | 29.52                      | 0.2952                     | 3                          | 0.0984                     | 0                          |
-| lib/skunk/cli/commands/status_reporter.rb           | 8.0                        | 7.9956                     | 3                          | 2.6652                     | 100.0                      |
-| test/lib/skunk/rubycritic/analysed_module_test.rb   | 2.63                       | 2.6312                     | 2                          | 1.3156                     | 100.0                      |
-| lib/skunk.rb                                        | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
-| lib/skunk/cli/options.rb                            | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
-| lib/skunk/version.rb                                | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
-| lib/skunk/cli/commands/help.rb                      | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
-+-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
+| file                                                | stink_score                | churn                      | cost                       | coverage                   |
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
+| lib/skunk/cli/commands/default.rb                   | 166.44                     | 3                          | 0.5548                     | 0                          |
+| lib/skunk/cli/application.rb                        | 139.2                      | 3                          | 0.46399999999999997        | 0                          |
+| lib/skunk/cli/command_factory.rb                    | 97.6                       | 2                          | 0.488                      | 0                          |
+| test/test_helper.rb                                 | 75.2                       | 2                          | 0.376                      | 0                          |
+| lib/skunk/rubycritic/analysed_module.rb             | 48.12                      | 2                          | 0.8592                     | 72.72727272727273          |
+| test/lib/skunk/cli/commands/status_reporter_test.rb | 45.6                       | 1                          | 0.456                      | 0                          |
+| lib/skunk/cli/commands/base.rb                      | 29.52                      | 3                          | 0.0984                     | 0                          |
+| lib/skunk/cli/commands/status_reporter.rb           | 8.0                        | 3                          | 2.6652                     | 100.0                      |
+| test/lib/skunk/rubycritic/analysed_module_test.rb   | 2.63                       | 2                          | 1.3156                     | 100.0                      |
+| lib/skunk.rb                                        | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/cli/options.rb                            | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/version.rb                                | 0.0                        | 2                          | 0.0                        | 0                          |
+| lib/skunk/cli/commands/help.rb                      | 0.0                        | 2                          | 0.0                        | 0                          |
++-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
 
 StinkScore Total: 612.31
 Modules Analysed: 13
