@@ -1,5 +1,8 @@
 # Skunk
 
+![skunk](https://github.com/fastruby/skunk/raw/master/logo.png")
+
+
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability) [![Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://rubydoc.info/gems/skunk)
 
 A RubyCritic extension to calculate StinkScore for a file or project.
