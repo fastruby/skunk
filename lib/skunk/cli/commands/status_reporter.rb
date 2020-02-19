@@ -54,11 +54,11 @@ TEMPL
       end
 
       def total_stink_score
-        @total_stink_score ||= non_test_modules.map(&:stink_score).inject(0.0, :+)
+        @total_stink_score ||= non_test_modules.sum(&:stink_score)
       end
 
       def total_churn_times_cost
-        non_test_modules.map(&:churn_times_cost).sum
+        non_test_modules.sum(&:churn_times_cost)
       end
 
       def stink_score_average

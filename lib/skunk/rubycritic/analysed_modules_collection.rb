@@ -8,7 +8,7 @@ module RubyCritic
     def stink_score_average
       num_modules = @modules.size
       if num_modules.positive?
-        map(&:stink_score).reduce(:+) / num_modules.to_f
+        sum(&:stink_score) / num_modules.to_f
       else
         0.0
       end
