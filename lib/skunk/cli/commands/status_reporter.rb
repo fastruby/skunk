@@ -10,23 +10,23 @@ module Skunk
     class StatusReporter < RubyCritic::Command::StatusReporter
       attr_accessor :analysed_modules
 
-      HEADINGS = %w[file stink_score churn_times_cost churn cost coverage].freeze
+      HEADINGS = %w[file skunk_score churn_times_cost churn cost coverage].freeze
       HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
       HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 17 # padding
 
       TEMPLATE = ERB.new(<<-TEMPL
 <%= _ttable %>\n
-StinkScore Total: <%= total_stink_score %>
+SkunkScore Total: <%= total_skunk_score %>
 Modules Analysed: <%= analysed_modules_count %>
-StinkScore Average: <%= stink_score_average %>
-<% if worst %>Worst StinkScore: <%= worst.stink_score %> (<%= worst.pathname %>)<% end %>
+SkunkScore Average: <%= skunk_score_average %>
+<% if worst %>Worst SkunkScore: <%= worst.skunk_score %> (<%= worst.pathname %>)<% end %>
 
 Generated with Skunk v<%= Skunk::VERSION %>
 TEMPL
                         )
 
       # Returns a status message with a table of all analysed_modules and
-      # a stink score average
+      # a skunk score average
       def update_status_message
         opts = table_options.merge(headings: HEADINGS, rows: table)
 
@@ -52,21 +52,21 @@ TEMPL
       end
 
       def sorted_modules
-        @sorted_modules ||= non_test_modules.sort_by(&:stink_score).reverse!
+        @sorted_modules ||= non_test_modules.sort_by(&:skunk_score).reverse!
       end
 
-      def total_stink_score
-        @total_stink_score ||= non_test_modules.sum(&:stink_score)
+      def total_skunk_score
+        @total_skunk_score ||= non_test_modules.sum(&:skunk_score)
       end
 
       def total_churn_times_cost
         non_test_modules.sum(&:churn_times_cost)
       end
 
-      def stink_score_average
+      def skunk_score_average
         return 0 if analysed_modules_count.zero?
 
-        (total_stink_score.to_d / analysed_modules_count).to_f.round(2)
+        (total_skunk_score.to_d / analysed_modules_count).to_f.round(2)
       end
 
       def table_options
@@ -83,7 +83,7 @@ TEMPL
         sorted_modules.map do |a_mod|
           [
             a_mod.pathname,
-            a_mod.stink_score,
+            a_mod.skunk_score,
             a_mod.churn_times_cost,
             a_mod.churn,
             a_mod.cost.round(2),

@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ernesto+github@ombulabs.com"]
   spec.licenses      = ["MIT"]
   spec.summary       = "A library to assess code quality vs. code coverage"
-  spec.description   = "Knows how to calculate the StinkScore for a Ruby file"
+  spec.description   = "Knows how to calculate the SkunkScore for a set of Ruby modules"
   spec.homepage      = "https://github.com/fastruby/skunk"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

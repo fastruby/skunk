@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...HEAD)
+## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.2...HEAD)
+
+* [FEATURE] Rename the tech debt metric: StinkScore => SkunkScore. It's a little friendlier.
 
 ## [0.4.2] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.1...v0.4.2)
 * [BUGFIX] Fixes table width issues by rounding values (by [@etagwerker][])
