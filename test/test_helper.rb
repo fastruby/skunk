@@ -19,6 +19,7 @@ end
 require "minitest/autorun"
 require "minitest/pride"
 require "minitest/around/spec"
+require "skunk/rubycritic/analysed_module"
 
 def context(*args, &block)
   describe(*args, &block)

@@ -20,6 +20,8 @@ StinkScore Total: <%= total_stink_score %>
 Modules Analysed: <%= analysed_modules_count %>
 StinkScore Average: <%= stink_score_average %>
 <% if worst %>Worst StinkScore: <%= worst.stink_score %> (<%= worst.pathname %>)<% end %>
+
+Generated with Skunk v<%= Skunk::VERSION %>
 TEMPL
                         )
 

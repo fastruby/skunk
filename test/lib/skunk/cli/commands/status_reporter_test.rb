@@ -32,7 +32,8 @@ describe Skunk::Command::StatusReporter do
     end
 
     it "reports the StinkScore" do
-      _(reporter.update_status_message).must_equal output
+      _(reporter.update_status_message).must_include output
+      _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
     end
   end
 end
