@@ -2,7 +2,7 @@
 
 require "skunk/version"
 
-# Knows how to calculate the `StinkScore` for each file analyzed by `RubyCritic`
+# Knows how to calculate the `SkunkScore` for each file analyzed by `RubyCritic`
 # and `SimpleCov`
 module Skunk
 end

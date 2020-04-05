@@ -5,18 +5,18 @@
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability) [![Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://rubydoc.info/gems/skunk) [![codecov](https://codecov.io/gh/fastruby/skunk/branch/master/graph/badge.svg)](https://codecov.io/gh/fastruby/skunk)
 
-A RubyCritic extension to calculate StinkScore for a file or project.
+A RubyCritic extension to calculate SkunkScore for a file or project.
 
-## What is the StinkScore?
+## What is the SkunkScore?
 
-The StinkScore is a value that assesses the technical debt of a module. It takes
+The SkunkScore is a value that assesses the technical debt of a module. It takes
 into account:
 
 - Code Complexity
 - Code Smells
 - Code Coverage
 
-The main goal of the StinkScore is to serve as a compass in your next
+The main goal of the SkunkScore is to serve as a compass in your next
 refactoring adventure. It will help you answer these questions:
 
 - What can I do to pay off technical debt?
@@ -89,7 +89,7 @@ running simple_cov
 .............
 New critique at file:////Users/etagwerker/Projects/fastruby/skunk/tmp/rubycritic/overview.html
 +-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
-| file                                                | stink_score                | churn_times_cost           | churn                      | cost                       | coverage                   |
+| file                                                | skunk_score                | churn_times_cost           | churn                      | cost                       | coverage                   |
 +-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
 | lib/skunk/cli/commands/default.rb                   | 166.44                     | 1.6643999999999999         | 3                          | 0.5548                     | 0                          |
 | lib/skunk/cli/application.rb                        | 139.2                      | 1.392                      | 3                          | 0.46399999999999997        | 0                          |
@@ -106,10 +106,10 @@ New critique at file:////Users/etagwerker/Projects/fastruby/skunk/tmp/rubycritic
 | lib/skunk/cli/commands/help.rb                      | 0.0                        | 0.0                        | 2                          | 0.0                        | 0                          |
 +-----------------------------------------------------+----------------------------+----------------------------+----------------------------+----------------------------+----------------------------+
 
-StinkScore Total: 612.31
+SkunkScore Total: 612.31
 Modules Analysed: 13
-StinkScore Average: 0.47100769230769230769230769231e2
-Worst StinkScore: 166.44 (lib/skunk/cli/commands/default.rb)
+SkunkScore Average: 0.47100769230769230769230769231e2
+Worst SkunkScore: 166.44 (lib/skunk/cli/commands/default.rb)
 ```
 
 The command will run `rubycritic` and it will try to load code coverage data
@@ -125,7 +125,7 @@ Simply run:
 skunk -b <target-branch-name>
 ```
 
-Then get a StinkScore average comparison:
+Then get a SkunkScore average comparison:
 
 ```
 $ skunk -b master
@@ -159,8 +159,8 @@ running churn
 .................
 running simple_cov
 .................
-Base branch (master) average stink score: 290.53999999999996
-Feature branch (feature/compare) average stink score: 340.3005882352941
+Base branch (master) average skunk score: 290.53999999999996
+Feature branch (feature/compare) average skunk score: 340.3005882352941
 Score: 340.3
 ```
 
@@ -168,19 +168,19 @@ This should give you an idea if you're moving in the right direction or not.
 
 ## Known Issues
 
-The StinkScore should be calculated per method. This would provide a more accurate
-representation of the average StinkScore in a module.
+The SkunkScore should be calculated per method. This would provide a more accurate
+representation of the average SkunkScore in a module.
 
-I think that the StinkScore of a module should be the average of the StinkScores of
+I think that the SkunkScore of a module should be the average of the SkunkScores of
 all of its methods.
 
-Right now the StinkScore is calculated using the totals for a module:
+Right now the SkunkScore is calculated using the totals for a module:
 
 - Total Code Coverage Percentage per Module
 - Total Churn per Module
 - Total Cost per Module
 
-For more details, feel free to review and improve this method: [RubyCritic::AnalysedModule#stink_score]
+For more details, feel free to review and improve this method: [RubyCritic::AnalysedModule#skunk_score]
 
 ## Development
 

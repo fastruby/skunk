@@ -7,13 +7,13 @@ require "skunk/cli/commands/output"
 # nodoc #
 module Skunk
   module Command
-    # Knows how to compare two branches and their stink score average
+    # Knows how to compare two branches and their skunk score average
     class Compare < RubyCritic::Command::Compare
       # switch branch and analyse files but don't generate a report
       def analyse_branch(branch)
         ::RubyCritic::SourceControlSystem::Git.switch_branch(::RubyCritic::Config.send(branch))
         critic = critique(branch)
-        ::RubyCritic::Config.send(:"#{branch}_score=", critic.stink_score_average)
+        ::RubyCritic::Config.send(:"#{branch}_score=", critic.skunk_score_average)
         ::RubyCritic::Config.root = branch_directory(branch)
       end
 
@@ -30,9 +30,9 @@ module Skunk
       # create a txt file with the branch score details
       def build_details
         details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
-          "average stink score: #{::RubyCritic::Config.base_branch_score.to_f.round(2)} \n"\
+          "average skunk score: #{::RubyCritic::Config.base_branch_score.to_f.round(2)} \n"\
           "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-          "average stink score: #{::RubyCritic::Config.feature_branch_score.to_f.round(2)} \n"
+          "average skunk score: #{::RubyCritic::Config.feature_branch_score.to_f.round(2)} \n"
         Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details

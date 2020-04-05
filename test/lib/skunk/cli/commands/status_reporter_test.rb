@@ -31,7 +31,7 @@ describe Skunk::Command::StatusReporter do
       example.call
     end
 
-    it "reports the StinkScore" do
+    it "reports the SkunkScore" do
       _(reporter.update_status_message).must_include output
       _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
     end

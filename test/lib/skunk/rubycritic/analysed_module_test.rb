@@ -17,7 +17,7 @@ describe RubyCritic::AnalysedModule do
     end
   end
 
-  describe "#stink_score" do
+  describe "#skunk_score" do
     around do |example|
       @analysed_module.stub(:coverage, coverage) do
         example.call
@@ -29,7 +29,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should be 99.32" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 58.88
+          _(@analysed_module.skunk_score).must_equal 58.88
         end
       end
     end
@@ -39,7 +39,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should be penalized slightly" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 2.94
+          _(@analysed_module.skunk_score).must_equal 2.94
         end
       end
     end
@@ -49,7 +49,7 @@ describe RubyCritic::AnalysedModule do
 
       it "should not be penalized" do
         @analysed_module.stub(:churn, 1) do
-          _(@analysed_module.stink_score).must_equal 0.59
+          _(@analysed_module.skunk_score).must_equal 0.59
         end
       end
     end

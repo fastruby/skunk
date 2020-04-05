@@ -15,7 +15,7 @@ describe Skunk::Command::Compare do
       FileUtils.rm_rf("test/support/")
     end
 
-    it "sets the stink_score_average as the branch score" do
+    it "sets the skunk_score_average as the branch score" do
       ::RubyCritic::SourceControlSystem::Git.stub :switch_branch, nil do
         compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
         compare.analyse_branch(:base_branch)
