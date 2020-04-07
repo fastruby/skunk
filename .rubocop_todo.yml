@@ -16,7 +16,7 @@ Layout/ClosingHeredocIndentation:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: squiggly, active_support, powerpack, unindent
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Exclude:
     - 'lib/skunk/cli/commands/status_reporter.rb'
 
