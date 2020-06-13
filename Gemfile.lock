@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     skunk (0.4.2)
-      rubycritic (~> 4.0)
+      rubycritic (~> 4.3.0)
       terminal-table (~> 1.8.0)
 
 GEM
@@ -53,7 +53,7 @@ GEM
       ast (~> 2.4.0)
     path_expander (1.1.0)
     psych (3.1.0)
-    public_suffix (4.0.4)
+    public_suffix (4.0.5)
     rainbow (3.0.0)
     rake (13.0.1)
     reek (5.4.1)
@@ -72,7 +72,7 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.2)
       sexp_processor (~> 4.9)
-    rubycritic (4.4.1)
+    rubycritic (4.3.3)
       flay (~> 2.8)
       flog (~> 4.4)
       launchy (= 2.4.3)
@@ -83,7 +83,7 @@ GEM
       simplecov (>= 0.17.0)
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
-    sexp_processor (4.14.1)
+    sexp_processor (4.15.0)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
