@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     skunk (0.4.2)
-      rubycritic (~> 4.3.0)
+      rubycritic (~> 4.0)
       terminal-table (~> 1.8.0)
 
 GEM
@@ -11,15 +11,15 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ansi (1.5.0)
-    ast (2.4.1)
+    ast (2.4.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    byebug (11.1.3)
+    byebug (11.1.1)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
-    codecov (0.1.17)
+    codecov (0.1.16)
       json
       simplecov
       url
@@ -53,7 +53,7 @@ GEM
       ast (~> 2.4.0)
     path_expander (1.1.0)
     psych (3.1.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.4)
     rainbow (3.0.0)
     rake (13.0.1)
     reek (5.4.1)
@@ -72,7 +72,7 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.2)
       sexp_processor (~> 4.9)
-    rubycritic (4.3.3)
+    rubycritic (4.4.1)
       flay (~> 2.8)
       flog (~> 4.4)
       launchy (= 2.4.3)
@@ -83,7 +83,7 @@ GEM
       simplecov (>= 0.17.0)
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
-    sexp_processor (4.15.0)
+    sexp_processor (4.14.1)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
