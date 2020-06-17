@@ -192,7 +192,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/fastruby/skunk/issues.
 
-## FastRuby.io
+## Sponsorship
 
 ![fastruby](https://github.com/fastruby/skunk/raw/master/fastruby-logo.png)
 
