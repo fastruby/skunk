@@ -196,4 +196,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fastru
 
 ![fastruby](https://github.com/fastruby/skunk/raw/master/fastruby-logo.png)
 
-`skunk` is maintained and funded by FastRuby.io, inc. The names and logos for FastRuby.io are trademarks of FastRuby.io, inc.
+`skunk` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
