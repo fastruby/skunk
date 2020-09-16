@@ -20,6 +20,10 @@ module Skunk
         self
       end
 
+      def output_to
+        @argv_options.output_filename.nil? ? $stdout : File.open(@argv_options.output_filename, "w")
+      end
+
       # :reek:NilCheck
       def to_h
         file_hash = file_options.to_h

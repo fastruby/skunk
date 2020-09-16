@@ -27,5 +27,19 @@ describe Skunk::Cli::Application do
         _(result).must_equal success_code
       end
     end
+
+    context "when passing --out option with a file" do
+      require "fileutils"
+      let(:argv) { ["--out tmp/generated_report.txt"] }
+      let(:success_code) { 0 }
+
+      it "writes output to the file" do
+        FileUtils.rm("tmp/generated_report.txt", force: true)
+        result = application.execute
+        _(result).must_equal success_code
+        file_contents = File.read("tmp/generated_report.txt")
+        _(file_contents).must_equal File.read("test/samples/console_output.txt")
+      end
+    end
   end
 end

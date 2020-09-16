@@ -36,6 +36,10 @@ module Skunk
         warn "warning: Couldn't find coverage info at #{COVERAGE_FILE}."
         warn "warning: Having no coverage metrics will make your SkunkScore worse."
       end
+
+      def print(message)
+        @options.output_to.puts message
+      end
     end
   end
 end
