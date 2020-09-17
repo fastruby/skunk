@@ -26,7 +26,7 @@ module Skunk
             end
 
             opts.on("-o", "--out FILE", "Output report to file") do |filename|
-              self.output_filename = String(filename)
+              @output_filename = String(filename)
             end
 
             opts.on_tail("-v", "--version", "Show gem's version") do
