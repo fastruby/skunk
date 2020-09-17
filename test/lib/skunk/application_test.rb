@@ -36,6 +36,7 @@ describe Skunk::Cli::Application do
 
       it "writes output to the file" do
         FileUtils.rm("tmp/generated_report.txt", force: true)
+        FileUtils.mkdir_p("tmp")
 
         result = application.execute
 
