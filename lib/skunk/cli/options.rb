@@ -20,8 +20,10 @@ module Skunk
         self
       end
 
+      # :reek:NilCheck
       def output_stream
-        @argv_options.output_filename.nil? ? $stdout : File.open(@argv_options.output_filename, "w")
+        output_filename = @argv_options.output_filename
+        output_filename.nil? ? $stdout : File.open(output_filename, "w")
       end
 
       # :reek:NilCheck

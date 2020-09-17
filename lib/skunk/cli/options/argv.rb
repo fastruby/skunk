@@ -9,7 +9,7 @@ module Skunk
       # Extends RubyCritic::Cli::Options::Argv to parse a subset of the
       # parameters accepted by RubyCritic
       class Argv < RubyCritic::Cli::Options::Argv
-        attr_accessor :output_filename
+        attr_reader :output_filename
 
         def initialize(argv)
           super
