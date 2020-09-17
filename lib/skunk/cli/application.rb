@@ -38,7 +38,7 @@ module Skunk
       end
 
       def print(message)
-        @options.output_to.puts message
+        @options.output_stream.puts message
       end
     end
   end

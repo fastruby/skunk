@@ -20,7 +20,7 @@ module Skunk
         self
       end
 
-      def output_to
+      def output_stream
         @argv_options.output_filename.nil? ? $stdout : File.open(@argv_options.output_filename, "w")
       end
 

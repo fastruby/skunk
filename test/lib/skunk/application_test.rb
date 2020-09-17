@@ -30,15 +30,17 @@ describe Skunk::Cli::Application do
 
     context "when passing --out option with a file" do
       require "fileutils"
-      let(:argv) { ["--out tmp/generated_report.txt"] }
+
+      let(:argv) { ["--out=tmp/generated_report.txt"] }
       let(:success_code) { 0 }
 
       it "writes output to the file" do
         FileUtils.rm("tmp/generated_report.txt", force: true)
+
         result = application.execute
+
         _(result).must_equal success_code
-        file_contents = File.read("tmp/generated_report.txt")
-        _(file_contents).must_equal File.read("test/samples/console_output.txt")
+        _(File.exist?("tmp/generated_report.txt")).must_equal true
       end
     end
   end
