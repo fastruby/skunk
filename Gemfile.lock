@@ -107,7 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug (~> 11)
-  codecov (~> 0.1.16)
+  codecov (< 0.2)
   minitest (~> 5.8.4)
   minitest-around (~> 0.5.0)
   rake (~> 13.0)
