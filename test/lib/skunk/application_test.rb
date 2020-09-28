@@ -31,7 +31,7 @@ describe Skunk::Cli::Application do
     context "when passing --out option with a file" do
       require "fileutils"
 
-      let(:argv) { ["--out=tmp/generated_report.txt"] }
+      let(:argv) { ["--out=tmp/generated_report.txt", "samples/rubycritic"] }
       let(:success_code) { 0 }
 
       it "writes output to the file" do
