@@ -21,12 +21,6 @@ module Skunk
       end
 
       # :reek:NilCheck
-      def output_stream
-        output_filename = @argv_options.output_filename
-        output_filename.nil? ? $stdout : File.open(output_filename, "w")
-      end
-
-      # :reek:NilCheck
       def to_h
         file_hash = file_options.to_h
         argv_hash = argv_options.to_h
