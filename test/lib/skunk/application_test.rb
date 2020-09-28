@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "skunk/cli/application"
+require "rubycritic/core/analysed_module"
 
 describe Skunk::Cli::Application do
   describe "#execute" do
@@ -38,10 +39,14 @@ describe Skunk::Cli::Application do
         FileUtils.rm("tmp/generated_report.txt", force: true)
         FileUtils.mkdir_p("tmp")
 
-        result = application.execute
+        RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
+          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100) do
+            result = application.execute
+            _(result).must_equal success_code
+          end
+        end
 
-        _(result).must_equal success_code
-        _(File.exist?("tmp/generated_report.txt")).must_equal true
+        _(File.read("tmp/generated_report.txt")).must_equal File.read("test/samples/console_output.txt")
       end
     end
   end

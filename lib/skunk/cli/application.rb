@@ -24,6 +24,8 @@ module Skunk
         parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(parsed_options).execute
         print(reporter.status_message)
+        @options.output_stream.flush
+        @options.output_stream.fsync
         reporter.status
       rescue OptionParser::InvalidOption => error
         warn "Error: #{error}"
