@@ -9,6 +9,7 @@ module Skunk
       # Extends RubyCritic::Cli::Options::Argv to parse a subset of the
       # parameters accepted by RubyCritic
       class Argv < RubyCritic::Cli::Options::Argv
+        # :reek:Attribute
         attr_accessor :output_filename
 
         def parse # rubocop:disable Metrics/MethodLength
@@ -36,7 +37,7 @@ module Skunk
         end
 
         def to_h
-          super.merge({ output_filename: output_filename })
+          super.merge(output_filename: output_filename)
         end
       end
     end

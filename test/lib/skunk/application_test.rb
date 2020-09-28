@@ -46,7 +46,8 @@ describe Skunk::Cli::Application do
           end
         end
 
-        _(File.read("tmp/generated_report.txt")).must_equal File.read("test/samples/console_output.txt")
+        _(File.read("tmp/generated_report.txt"))
+          .must_equal File.read("test/samples/console_output.txt")
       end
     end
   end

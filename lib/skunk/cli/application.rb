@@ -11,6 +11,7 @@ require "skunk/cli/command_factory"
 module Skunk
   module Cli
     # Knows how to execute command line commands
+    # :reek:InstanceVariableAssumption
     class Application < RubyCritic::Cli::Application
       COVERAGE_FILE = "coverage/.resultset.json"
 
@@ -24,6 +25,7 @@ module Skunk
         parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(parsed_options).execute
 
+        # :reek:NilCheck
         @parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(@parsed_options).execute
 
@@ -41,12 +43,13 @@ module Skunk
         warn "warning: Having no coverage metrics will make your SkunkScore worse."
       end
 
+      # :reek:NilCheck
       def print(message)
         filename = @parsed_options[:output_filename]
         if filename.nil?
           $stdout.puts(message)
         else
-          File.open(filename, "w") { |f| f.puts(message) }
+          File.open(filename, "w") { |file| file.puts(message) }
         end
       end
     end
