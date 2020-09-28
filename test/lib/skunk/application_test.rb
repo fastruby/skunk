@@ -40,7 +40,7 @@ describe Skunk::Cli::Application do
         FileUtils.mkdir_p("tmp")
 
         RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
-          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100) do
+          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
             result = application.execute
             _(result).must_equal success_code
           end
