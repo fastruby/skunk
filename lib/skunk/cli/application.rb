@@ -23,6 +23,10 @@ module Skunk
 
         parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(parsed_options).execute
+
+        @parsed_options = @options.parse.to_h
+        reporter = Skunk::Cli::CommandFactory.create(@parsed_options).execute
+
         print(reporter.status_message)
         reporter.status
       rescue OptionParser::InvalidOption => error
@@ -38,7 +42,12 @@ module Skunk
       end
 
       def print(message)
-        @options.output_stream.puts message
+        filename = @parsed_options[:output_filename]
+        if filename.nil?
+          $stdout.puts(message)
+        else
+          File.open(filename, "w") { |f| f.puts(message) }
+        end
       end
     end
   end
