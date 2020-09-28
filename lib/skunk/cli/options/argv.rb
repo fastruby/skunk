@@ -11,10 +11,6 @@ module Skunk
       class Argv < RubyCritic::Cli::Options::Argv
         attr_reader :output_filename
 
-        def initialize(argv)
-          super
-        end
-
         def parse # rubocop:disable Metrics/MethodLength
           parser.new do |opts|
             opts.banner = "Usage: skunk [options] [paths]\n"
@@ -26,7 +22,7 @@ module Skunk
             end
 
             opts.on("-o", "--out FILE", "Output report to file") do |filename|
-              @output_filename = String(filename)
+              @output_filename = filename
             end
 
             opts.on_tail("-v", "--version", "Show gem's version") do
