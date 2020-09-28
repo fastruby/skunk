@@ -22,9 +22,6 @@ module Skunk
       def execute
         warn_coverage_info unless File.exist?(COVERAGE_FILE)
 
-        parsed_options = @options.parse.to_h
-        reporter = Skunk::Cli::CommandFactory.create(parsed_options).execute
-
         # :reek:NilCheck
         @parsed_options = @options.parse.to_h
         reporter = Skunk::Cli::CommandFactory.create(@parsed_options).execute
