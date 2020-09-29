@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.2...HEAD)
 
 * [FEATURE] Rename the tech debt metric: StinkScore => SkunkScore. It's a little friendlier.
+* [FEATURE] Add `--out=file.txt` support to the command line (by [@manuca]())
 
 ## [0.4.2] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.1...v0.4.2)
 * [BUGFIX] Fixes table width issues by rounding values (by [@etagwerker][])
