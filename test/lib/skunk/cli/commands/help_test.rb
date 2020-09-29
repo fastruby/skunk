@@ -10,6 +10,7 @@ describe Skunk::Cli::Command::Help do
     MSG = <<~HELP
       Usage: skunk [options] [paths]
           -b, --branch BRANCH              Set branch to compare
+          -o, --out FILE                   Output report to file
           -v, --version                    Show gem's version
           -h, --help                       Show this message
     HELP

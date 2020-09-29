@@ -53,6 +53,7 @@ There are not that many options but here they are:
 skunk -h
 Usage: skunk [options] [paths]
     -b, --branch BRANCH              Set branch to compare
+    -o, --out FILE                   Output report to file
     -v, --version                    Show gem's version
     -h, --help                       Show this message
 ```

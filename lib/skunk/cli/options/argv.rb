@@ -9,6 +9,9 @@ module Skunk
       # Extends RubyCritic::Cli::Options::Argv to parse a subset of the
       # parameters accepted by RubyCritic
       class Argv < RubyCritic::Cli::Options::Argv
+        # :reek:Attribute
+        attr_accessor :output_filename
+
         def parse # rubocop:disable Metrics/MethodLength
           parser.new do |opts|
             opts.banner = "Usage: skunk [options] [paths]\n"
@@ -19,6 +22,10 @@ module Skunk
               self.mode = :compare_branches
             end
 
+            opts.on("-o", "--out FILE", "Output report to file") do |filename|
+              self.output_filename = filename
+            end
+
             opts.on_tail("-v", "--version", "Show gem's version") do
               self.mode = :version
             end
@@ -27,6 +34,10 @@ module Skunk
               self.mode = :help
             end
           end.parse!(@argv)
+        end
+
+        def to_h
+          super.merge(output_filename: output_filename)
         end
       end
     end
