@@ -50,5 +50,27 @@ describe Skunk::Cli::Application do
           .must_equal File.read("test/samples/console_output.txt")
       end
     end
+
+    context "when passing an environment variable SHARE=true" do
+      let(:success_code) { 0 }
+
+      it "share report to default server" do
+        ENV["SHARE"] = "true"
+        mock = Minitest::Mock.new
+
+        mock.expect :start, nil
+        Net::HTTP.stub_any_instance(:start, mock) do
+          RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
+            RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
+              result = application.execute
+              _(result).must_equal success_code
+            end
+          end
+        end
+        mock.verify
+        ENV["SHARE"] = nil
+      end
+    end
+
   end
 end
