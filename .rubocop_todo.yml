@@ -31,6 +31,10 @@ Layout/HeredocIndentation:
   Exclude:
     - 'lib/skunk/cli/commands/status_reporter.rb'
 
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/skunk/cli/options/argv.rb'
+
 # Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine

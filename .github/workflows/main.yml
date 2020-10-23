@@ -1,9 +1,39 @@
 # .github/workflows/ci.yml
 
 name: CI
-on: [push, pull_request]
+on: [push]
 jobs:
-  test:
+  test-ruby-2-4-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.4.x
+      - name: Build and run tests
+        env:
+          BUNDLE_GEMFILE: "Gemfile-Ruby-2-4"
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
+  test-ruby-2-5-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.5.x
+      - name: Build and run tests
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
+  test-ruby-2-6-x:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,6 +42,20 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
+      - name: Build and run tests
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
+  test-ruby-2-7-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
       - name: Build and run tests
         run: |
           gem install bundler

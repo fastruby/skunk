@@ -14,6 +14,8 @@ if ENV["COVERAGE"] == "true"
   SimpleCov.start do
     track_files "lib/**/*.rb"
   end
+
+  puts "Using SimpleCov v#{SimpleCov::VERSION}"
 end
 
 require "minitest/autorun"
