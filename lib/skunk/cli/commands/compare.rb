@@ -30,16 +30,40 @@ module Skunk
       # create a txt file with the branch score details
       def build_details
         details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
-          "average skunk score: #{::RubyCritic::Config.base_branch_score.to_f.round(2)} \n"\
+          "average skunk score: #{base_branch_score} \n"\
           "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-          "average skunk score: #{::RubyCritic::Config.feature_branch_score.to_f.round(2)} \n"
+          "average skunk score: #{feature_branch_score} \n"
+        details += score_evolution_message
+
         Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details
       end
 
+      def score_evolution_message
+        score_evolution_appreciation = (feature_branch_score > base_branch_score) ? "worse" : "better"
+        "Skunk score average is #{score_evolution} #{score_evolution_appreciation} \n"
+      end
+
       def build_details_path
         "#{::RubyCritic::Config.compare_root_directory}/build_details.txt"
+      end
+
+      private
+
+      def base_branch_score
+        ::RubyCritic::Config.base_branch_score.to_f.round(2)
+      end
+
+      def feature_branch_score
+        ::RubyCritic::Config.feature_branch_score.to_f.round(2)
+      end
+
+      def score_evolution
+        return "Infinitely" if base_branch_score.zero?
+
+        score_evolution = (100 * (base_branch_score - feature_branch_score) / base_branch_score).round(0)
+        "#{score_evolution.abs}%"
       end
     end
   end

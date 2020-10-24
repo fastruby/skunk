@@ -31,5 +31,41 @@ describe Skunk::Command::Compare do
         _(File.exist?(compare_root_directory)).must_equal true
       end
     end
+
+    it "computes skunk score_evolution_message with negative impact" do
+      compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
+      compare.stub :base_branch_score, 10.1 do
+        compare.stub :feature_branch_score, 12.1 do
+          compare.score_evolution_message.must_equal "Skunk score average is 20% worse \n"
+        end
+      end
+    end
+
+    it "computes skunk score_evolution_message with positive impact" do
+      compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
+      compare.stub :base_branch_score, 12.1 do
+        compare.stub :feature_branch_score, 8 do
+          compare.score_evolution_message.must_equal "Skunk score average is 34% better \n"
+        end
+      end
+    end
+
+    it "computes skunk score_evolution_message when base_branch_score is 0" do
+      compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
+      compare.stub :base_branch_score, 0 do
+        compare.stub :feature_branch_score, 2 do
+          compare.score_evolution_message.must_equal "Skunk score average is Infinitely worse \n"
+        end
+      end
+    end
+
+    it "computes skunk score_evolution_message when feature_branch_score is 0" do
+      compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
+      compare.stub :base_branch_score, 10 do
+        compare.stub :feature_branch_score, 0 do
+          compare.score_evolution_message.must_equal "Skunk score average is 100% better \n"
+        end
+      end
+    end
   end
 end
