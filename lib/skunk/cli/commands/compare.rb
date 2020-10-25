@@ -3,6 +3,7 @@
 require "rubycritic/commands/compare"
 require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/cli/commands/output"
+require "skunk/cli/commands/compare_score"
 
 # nodoc #
 module Skunk
@@ -32,17 +33,12 @@ module Skunk
         details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
           "average skunk score: #{base_branch_score} \n"\
           "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-          "average skunk score: #{feature_branch_score} \n"
-        details += score_evolution_message
+          "average skunk score: #{feature_branch_score} \n"\
+          "#{CompareScore.new(base_branch_score, feature_branch_score).score_evolution_message}"
 
         Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details
-      end
-
-      def score_evolution_message
-        score_evolution_appreciation = (feature_branch_score > base_branch_score) ? "worse" : "better"
-        "Skunk score average is #{score_evolution} #{score_evolution_appreciation} \n"
       end
 
       def build_details_path
@@ -57,13 +53,6 @@ module Skunk
 
       def feature_branch_score
         ::RubyCritic::Config.feature_branch_score.to_f.round(2)
-      end
-
-      def score_evolution
-        return "Infinitely" if base_branch_score.zero?
-
-        score_evolution = (100 * (base_branch_score - feature_branch_score) / base_branch_score).round(0)
-        "#{score_evolution.abs}%"
       end
     end
   end
