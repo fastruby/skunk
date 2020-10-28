@@ -20,7 +20,7 @@ jobs:
         run: |
           gem install skunk
           CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-          if [[ "$CURRENT_BRANCH" != "master" ]]; then
+          if [[ "$CURRENT_BRANCH" != "main" ]]; then
             echo "Executing within branch: $CURRENT_BRANCH"
             skunk lib/ -b master
           else
