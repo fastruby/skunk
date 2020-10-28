@@ -1,7 +1,7 @@
 # .github/workflows/ci.yml
 
 name: CI
-on: [push]
+on: [push, pull_request]
 jobs:
   test-ruby-2-4-x:
     runs-on: ubuntu-latest
