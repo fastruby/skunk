@@ -3,6 +3,7 @@
 require "rubycritic/commands/compare"
 require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/cli/commands/output"
+require "skunk/cli/commands/compare_score"
 
 # nodoc #
 module Skunk
@@ -29,10 +30,13 @@ module Skunk
 
       # create a txt file with the branch score details
       def build_details
-        details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
-          "average skunk score: #{::RubyCritic::Config.base_branch_score.to_f.round(2)} \n"\
-          "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-          "average skunk score: #{::RubyCritic::Config.feature_branch_score.to_f.round(2)} \n"
+        details = CompareScore.new(
+          ::RubyCritic::Config.base_branch,
+          ::RubyCritic::Config.feature_branch,
+          ::RubyCritic::Config.base_branch_score.to_f.round(2),
+          ::RubyCritic::Config.feature_branch_score.to_f.round(2)
+        ).message
+
         Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details
