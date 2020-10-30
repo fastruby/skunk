@@ -30,11 +30,12 @@ module Skunk
 
       # create a txt file with the branch score details
       def build_details
-        details = "Base branch (#{::RubyCritic::Config.base_branch}) "\
-          "average skunk score: #{base_branch_score} \n"\
-          "Feature branch (#{::RubyCritic::Config.feature_branch}) "\
-          "average skunk score: #{feature_branch_score} \n"\
-          "#{CompareScore.new(base_branch_score, feature_branch_score).score_evolution_message}"
+        details = CompareScore.new(
+          ::RubyCritic::Config.base_branch,
+          ::RubyCritic::Config.feature_branch,
+          ::RubyCritic::Config.base_branch_score.to_f.round(2),
+          ::RubyCritic::Config.feature_branch_score.to_f.round(2)
+        ).message
 
         Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
@@ -43,16 +44,6 @@ module Skunk
 
       def build_details_path
         "#{::RubyCritic::Config.compare_root_directory}/build_details.txt"
-      end
-
-      private
-
-      def base_branch_score
-        ::RubyCritic::Config.base_branch_score.to_f.round(2)
-      end
-
-      def feature_branch_score
-        ::RubyCritic::Config.feature_branch_score.to_f.round(2)
       end
     end
   end
