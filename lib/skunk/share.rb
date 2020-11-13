@@ -1,6 +1,6 @@
-require 'net/http'
-require 'net/https'
-require 'json'
+require "net/http"
+require "net/https"
+require "json"
 
 module Skunk
   class Share
@@ -10,7 +10,7 @@ module Skunk
     end
 
     def share
-      base = (ENV['SHARE_URL'] || DEFAULT_URL)
+      base = (ENV["SHARE_URL"] || DEFAULT_URL)
       url = URI(File.join(base, "reports"))
 
       req = Net::HTTP::Post.new(url)
