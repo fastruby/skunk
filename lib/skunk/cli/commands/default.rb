@@ -23,6 +23,13 @@ module Skunk
           RubyCritic::Config.formats = []
 
           report(critique)
+
+          if ENV['SHARE'] || ENV['SHARE_URL']
+            require 'skunk/share'
+            share = Share.new @status_reporter
+            share.share
+          end
+
           status_reporter
         end
 
