@@ -54,4 +54,21 @@ describe RubyCritic::AnalysedModule do
       end
     end
   end
+
+  describe "#to_hash" do
+    let(:result) do
+      {
+        file: "samples/rubycritic/analysed_module.rb",
+        skunk_score: 58.88,
+        churn_times_cost: 2.36,
+        churn: 4,
+        cost: 0.59,
+        coverage: 0.0
+      }
+    end
+
+    it "returns a hash with all the attributes and values" do
+      _(@analysed_module.to_hash).must_equal result
+    end
+  end
 end
