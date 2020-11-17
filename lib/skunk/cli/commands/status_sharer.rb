@@ -67,18 +67,19 @@ module Skunk
       end
 
       def payload
-        {
+        JSON.generate(
           "entries" => json_results,
           "summary" => json_summary,
           "options" => {
             "compare" => "false"
           }
-        }
+        )
       end
 
       # :reek:TooManyStatements
       def post_payload
         req = Net::HTTP::Post.new(url)
+        req.body = payload
 
         http = Net::HTTP.new(url.hostname, url.port)
         if url.scheme == "https"
