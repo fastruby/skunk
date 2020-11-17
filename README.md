@@ -2,7 +2,6 @@
 
 ![skunk](https://github.com/fastruby/skunk/raw/master/logo.png)
 
-
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) [![Build Status](https://travis-ci.org/fastruby/skunk.svg?branch=master)](https://travis-ci.org/fastruby/skunk) [![Maintainability](https://api.codeclimate.com/v1/badges/3e33d701ced16eee2420/maintainability)](https://codeclimate.com/github/fastruby/skunk/maintainability) [![Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://rubydoc.info/gems/skunk) [![codecov](https://codecov.io/gh/fastruby/skunk/branch/master/graph/badge.svg)](https://codecov.io/gh/fastruby/skunk)
 
 A RubyCritic extension to calculate SkunkScore for a file or project.
@@ -58,7 +57,7 @@ Usage: skunk [options] [paths]
     -h, --help                       Show this message
 ```
 
-### Getting a sorted list of stinkiest files
+### Getting a sorted list of smelly files
 
 To get the best results, make sure that you have `coverage/.resultset.json` in
 your application directory. That way `skunk` knows what's the status of your
@@ -70,7 +69,7 @@ Then simply run:
 skunk
 ```
 
-Then get a list of stinky files:
+Then get a list of smelly files:
 
 ```
 $ skunk
@@ -114,7 +113,7 @@ Worst SkunkScore: 166.44 (lib/skunk/cli/commands/default.rb)
 ```
 
 The command will run `rubycritic` and it will try to load code coverage data
-from your `.resultset.json` file.
+from your `coverage/.resultset.json` file.
 
 Skunk's report will be in the console. Use it wisely. :)
 
@@ -166,6 +165,41 @@ Score: 340.3
 ```
 
 This should give you an idea if you're moving in the right direction or not.
+
+### Sharing results
+
+If you want to quickly share the results of your report, you can use an
+environment variable:
+
+```
+SHARE=true skunk app/
+...
+SkunkScore Total: 126.99
+Modules Analysed: 17
+SkunkScore Average: 7.47
+Worst SkunkScore: 41.92 (lib/skunk/cli/commands/status_sharer.rb)
+
+Generated with Skunk v0.5.0
+Shared at: https://skunk.fastruby.io/k
+```
+
+Results will be posted by default to https://skunk.fastruby.io which is a free
+and open source Ruby on Rails application sponsored by
+[OmbuLabs](https://www.ombulabs.com) ([source code](https://github.com/fastruby/skunk.fyi)).
+
+If you prefer to post results to your own server, you can do so:
+
+```
+SHARE_URL=https://path.to.your.skunk-fyi-server.example.com skunk app/
+...
+SkunkScore Total: 126.99
+Modules Analysed: 17
+SkunkScore Average: 7.47
+Worst SkunkScore: 41.92 (lib/skunk/cli/commands/status_sharer.rb)
+
+Generated with Skunk v0.5.0
+Shared at: https://path.to.your.skunk-fyi-server.example.com/k
+```
 
 ## Known Issues
 

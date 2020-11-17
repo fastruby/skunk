@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -6,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.2...HEAD)
 
+* [FEATURE] Share your results using an environment variable (by [@rahulpuroht]() and [@etagwerker]())
 * [FEATURE] Rename the tech debt metric: StinkScore => SkunkScore. It's a little friendlier.
 * [FEATURE] Add `--out=file.txt` support to the command line (by [@manuca]())
 
