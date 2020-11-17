@@ -22,6 +22,8 @@ require "minitest/autorun"
 require "minitest/pride"
 require "minitest/around/spec"
 require "minitest/stub_any_instance"
+require "webmock/minitest"
+require "vcr"
 
 require "skunk/rubycritic/analysed_module"
 
@@ -46,4 +48,10 @@ def capture_output_streams
 ensure
   $stdout = STDOUT
   $stderr = STDERR
+end
+
+VCR.configure do |config|
+  config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = false
+  config.cassette_library_dir = "test/samples/vcr"
 end

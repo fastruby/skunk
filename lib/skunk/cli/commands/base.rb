@@ -14,6 +14,8 @@ module Skunk
           @options = options
           @status_reporter = Skunk::Command::StatusReporter.new(@options)
         end
+
+        def share(_); end
       end
     end
   end

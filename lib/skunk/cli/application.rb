@@ -7,6 +7,7 @@ require "skunk"
 require "skunk/rubycritic/analysed_module"
 require "skunk/cli/options"
 require "skunk/cli/command_factory"
+require "skunk/cli/commands/status_sharer"
 
 module Skunk
   module Cli
@@ -19,17 +20,22 @@ module Skunk
         @options = Skunk::Cli::Options.new(argv)
       end
 
+      # :reek:UncommunicativeVariableName
       def execute
         warn_coverage_info unless File.exist?(COVERAGE_FILE)
 
         # :reek:NilCheck
         @parsed_options = @options.parse.to_h
-        reporter = Skunk::Cli::CommandFactory.create(@parsed_options).execute
+        command = Skunk::Cli::CommandFactory.create(@parsed_options)
+        reporter = command.execute
 
         print(reporter.status_message)
+        share_status_message = command.share(reporter)
+        print(share_status_message)
+
         reporter.status
-      rescue OptionParser::InvalidOption => error
-        warn "Error: #{error}"
+      rescue OptionParser::InvalidOption => e
+        warn "Error: #{e}"
         STATUS_ERROR
       end
 
@@ -46,7 +52,7 @@ module Skunk
         if filename.nil?
           $stdout.puts(message)
         else
-          File.open(filename, "w") { |file| file.puts(message) }
+          File.open(filename, "a") { |file| file << message }
         end
       end
     end

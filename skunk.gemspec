@@ -48,7 +48,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-stub_any_instance", "~> 1.0.2"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "reek", "~> 6.0.0"
-  spec.add_development_dependency "rubocop", "< 1.0"
+  spec.add_development_dependency "rubocop", "~> 1.0"
   spec.add_development_dependency "simplecov", "~> 0.18"
   spec.add_development_dependency "simplecov-console", "0.5.0"
+  spec.add_development_dependency "vcr", "~> 6.0.0"
+  spec.add_development_dependency "webmock", "~> 3.10.0"
 end

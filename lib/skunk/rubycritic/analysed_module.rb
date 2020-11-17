@@ -43,5 +43,25 @@ module RubyCritic
       safe_churn = churn.positive? ? churn : 1
       @churn_times_cost ||= (safe_churn * cost).round(2)
     end
+
+    # Returns a hash with these attributes:
+    #   - file
+    #   - skunk_score
+    #   - churn_times_cost
+    #   - churn
+    #   - cost
+    #   - coverage
+    #
+    # @return [Hash]
+    def to_hash
+      {
+        file: pathname.to_s,
+        skunk_score: skunk_score,
+        churn_times_cost: churn_times_cost,
+        churn: churn,
+        cost: cost.round(2),
+        coverage: coverage.round(2)
+      }
+    end
   end
 end
