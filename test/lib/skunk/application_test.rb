@@ -56,7 +56,7 @@ describe Skunk::Cli::Application do
       let(:argv) { ["--out=tmp/shared_report.txt", "samples/rubycritic"] }
       let(:success_code) { 0 }
       let(:shared_message) do
-        "Shared at: https://skunk.fastruby.io/j\n"
+        "Shared at: https://skunk.fastruby.io/j"
       end
 
       around do |example|
