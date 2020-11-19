@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Tue, 17 Nov 2020 03:34:54 GMT
+      - Wed, 18 Nov 2020 20:48:58 GMT
       Connection:
       - keep-alive
       X-Frame-Options:
@@ -41,69 +41,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"db8d54e18bf855dd76322682fa1becab"
+      - W/"510d9374d13d569167428b81cfd4cf0e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 20a7b897-1935-46b7-8d1a-e69bbd6e6a49
+      - b66077d1-4f4c-47a6-8e12-1a6c65898933
       X-Runtime:
-      - '0.055280'
-      Transfer-Encoding:
-      - chunked
-      Via:
-      - 1.1 vegur
-    body:
-      encoding: UTF-8
-      string: '{"id":"i"}'
-  recorded_at: Tue, 17 Nov 2020 03:34:54 GMT
-- request:
-    method: post
-    uri: https://skunk.fastruby.io/reports
-    body:
-      encoding: UTF-8
-      string: '{"entries":[{"file":"samples/rubycritic/analysed_module.rb","skunk_score":0.59,"churn_times_cost":0.59,"churn":1,"cost":0.59,"coverage":100.0}],"summary":{"total_skunk_score":0.59,"analysed_modules_count":1,"skunk_score_average":0.59,"skunk_version":"0.4.2","worst_skunk_score":{"file":"samples/rubycritic/analysed_module.rb","skunk_score":0.59}},"options":{"compare":"false"}}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - skunk.fastruby.io
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Cowboy
-      Date:
-      - Tue, 17 Nov 2020 03:34:54 GMT
-      Connection:
-      - keep-alive
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"2767208473ab57fb1340a05684331ee1"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 87aa4f3b-8b9c-4226-be58-391a96d14be7
-      X-Runtime:
-      - '0.017791'
+      - '0.141992'
       Transfer-Encoding:
       - chunked
       Via:
@@ -111,5 +55,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":"j"}'
-  recorded_at: Tue, 17 Nov 2020 03:34:54 GMT
+  recorded_at: Wed, 18 Nov 2020 20:48:58 GMT
 recorded_with: VCR 6.0.0

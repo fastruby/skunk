@@ -3,6 +3,7 @@
 require "test_helper"
 require "skunk/cli/application"
 require "rubycritic/core/analysed_module"
+require "minitest/stub_const"
 
 describe Skunk::Cli::Application do
   describe "#execute" do
@@ -55,7 +56,7 @@ describe Skunk::Cli::Application do
       let(:argv) { ["--out=tmp/shared_report.txt", "samples/rubycritic"] }
       let(:success_code) { 0 }
       let(:shared_message) do
-        "Shared at: https://skunk.fastruby.io/j\n"
+        "Shared at: https://skunk.fastruby.io/j"
       end
 
       around do |example|
@@ -65,18 +66,21 @@ describe Skunk::Cli::Application do
       end
 
       it "share report to default server" do
-        ENV["SHARE"] = "true"
+        FileUtils.rm("tmp/shared_report.txt", force: true)
+        FileUtils.mkdir_p("tmp")
 
-        RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
-          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
-            result = application.execute
-            _(result).must_equal success_code
-            output = File.read("tmp/shared_report.txt")
-            _(output).must_include(shared_message)
+        env = ENV.to_hash.merge("SHARE" => "true")
+
+        Object.stub_const(:ENV, env) do
+          RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
+            RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
+              result = application.execute
+              _(result).must_equal success_code
+              output = File.read("tmp/shared_report.txt")
+              _(output).must_include(shared_message)
+            end
           end
         end
-
-        ENV["SHARE"] = nil
       end
     end
   end
