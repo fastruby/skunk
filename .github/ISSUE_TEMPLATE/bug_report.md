@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: "[BUG] "
 labels: 'bug'
-assignees: ''
+assignees: 'black-bunny-brigade'
 
 ---
 
@@ -16,9 +16,9 @@ assignees: ''
 - [ ] I'm reporting the issue to the correct repository (for multi-repository projects)
 
 
-**Branch/Commit:**
+**Version, Branch, or Commit:**
 
-Inform what branch/commit of Skunk you are using.
+Inform what version, branch, commit of Skunk you are using.
 
 **Expected behavior:**
 
@@ -42,20 +42,9 @@ Provide any relevant information about your setup (Customize the list accordingl
 1. Version of the software the issue is being opened for.
 2. Operating System
 3. Operating System version
-4. Browser
-5. Browser version
-6. Device
-7. Firmware version
-8. SDK version
-9. Toolchain version
+4. Ruby version
 
 _Delete any information that is not relevant._
-
-If you are unable to reproduce the bug, add the **Non-Reproducible** tag and describe the steps you followed leading to the bug to the best of your recollection.
-
-**Screenshots and Videos**
-
-If the issue has an effect in the frontend, include any relevant screenshots and videos here.
 
 **Logs**
 
