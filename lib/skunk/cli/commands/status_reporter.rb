@@ -43,7 +43,8 @@ TEMPL
 
       def non_test_modules
         @non_test_modules ||= analysed_modules.reject do |a_module|
-          a_module.pathname.to_s.start_with?("test", "spec")
+          module_path = a_module.pathname.dirname.to_s
+          module_path.start_with?("test", "spec") || module_path.end_with?("test", "spec")
         end
       end
 
