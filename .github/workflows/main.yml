@@ -72,3 +72,18 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
+  test-ruby-3-0-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
+      - name: Build and run tests
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
