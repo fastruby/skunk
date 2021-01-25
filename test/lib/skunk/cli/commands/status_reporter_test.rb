@@ -35,6 +35,14 @@ describe Skunk::Command::StatusReporter do
       _(reporter.update_status_message).must_include output
       _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
     end
+
+    context "When there's nested spec files" do
+      let(:paths) { "samples" }
+      it "reports the SkunkScore" do
+        _(reporter.update_status_message).must_include output
+        _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
+      end
+    end
   end
 end
 
