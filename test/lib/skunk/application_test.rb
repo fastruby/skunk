@@ -52,6 +52,16 @@ describe Skunk::Cli::Application do
       end
     end
 
+    context "when comparing two branches" do
+      let(:argv) { ["-b develop"] }
+      let(:success_code) { 0 }
+
+      it "returns a success code (0)" do
+        result = application.execute
+        _(result).must_equal success_code
+      end
+    end
+
     context "when passing an environment variable SHARE=true" do
       let(:argv) { ["--out=tmp/shared_report.txt", "samples/rubycritic"] }
       let(:success_code) { 0 }
