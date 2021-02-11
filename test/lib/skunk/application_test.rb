@@ -53,10 +53,10 @@ describe Skunk::Cli::Application do
     end
 
     context "when comparing two branches" do
-      let(:argv) { ["-b develop"] }
+      let(:argv) { ["-b main", "samples/rubycritic"] }
       let(:success_code) { 0 }
 
-      it "returns a success code (0)" do
+      it "returns a comparison" do
         result = application.execute
         _(result).must_equal success_code
       end

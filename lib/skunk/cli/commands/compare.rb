@@ -3,6 +3,7 @@
 require "rubycritic/commands/compare"
 require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/cli/commands/output"
+require "skunk/cli/commands/shareable"
 require "skunk/cli/commands/compare_score"
 
 # nodoc #
@@ -11,6 +12,19 @@ module Skunk
     module Command
       # Knows how to compare two branches and their skunk score average
       class Compare < RubyCritic::Command::Compare
+        include Skunk::Cli::Command::Shareable
+
+        def initialize(options)
+          super
+          @options = options
+          @status_reporter = Skunk::Command::StatusReporter.new(options)
+        end
+
+        def execute
+          compare_branches
+          status_reporter
+        end
+
         # switch branch and analyse files but don't generate a report
         def analyse_branch(branch)
           ::RubyCritic::SourceControlSystem::Git.switch_branch(::RubyCritic::Config.send(branch))
@@ -22,8 +36,8 @@ module Skunk
         # generate report only for modified files but don't report it
         def analyse_modified_files
           modified_files = ::RubyCritic::Config
-                          .feature_branch_collection
-                          .where(::RubyCritic::SourceControlSystem::Git.modified_files)
+                           .feature_branch_collection
+                           .where(::RubyCritic::SourceControlSystem::Git.modified_files)
           ::RubyCritic::AnalysedModulesCollection.new(modified_files.map(&:path),
                                                       modified_files)
           ::RubyCritic::Config.root = "#{::RubyCritic::Config.root}/compare"
