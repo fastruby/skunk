@@ -9,14 +9,10 @@ detectors:
     - Skunk::Command::StatusReporter#table
   InstanceVariableAssumption:
     exclude:
-    - Skunk::Cli::Command::Default
     - Skunk::Cli::Options::Argv
     - RubyCritic::AnalysedModulesCollection
   IrresponsibleModule:
     exclude:
-    - Skunk::Cli::Command::Help
-    - Skunk::Cli::Options::Argv
-    - Skunk::Cli::Options
     - RubyCritic::AnalysedModulesCollection
   NestedIterators:
     exclude:
@@ -28,6 +24,5 @@ detectors:
     - Skunk::Cli::Options::Argv#parse
   UtilityFunction:
     exclude:
-    - capture_output_streams
-    - Skunk::Command::Compare#analyse_modified_files
-    - Skunk::Command::Compare#build_details_path
+    - Skunk::Cli::Command::Compare#analyse_modified_files
+    - Skunk::Cli::Command::Compare#build_details_path

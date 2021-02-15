@@ -15,7 +15,6 @@ module Skunk
       DEFAULT_URL = "https://skunk.fastruby.io"
       def status_reporter=(status_reporter)
         self.analysed_modules = status_reporter.analysed_modules
-        self.score = analysed_modules.score
       end
 
       def share
