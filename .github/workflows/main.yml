@@ -10,6 +10,23 @@ on:
     - main
 
 jobs:
+  test-ruby-2-3-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.3
+          bundler-cache: true
+      - name: Build and run tests
+        env:
+          BUNDLE_GEMFILE: "Gemfile-Ruby-2-3"
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
   test-ruby-2-4-x:
     runs-on: ubuntu-latest
 
