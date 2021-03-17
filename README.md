@@ -229,6 +229,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fastru
 
 ## Sponsorship
 
-![FastRuby.io | Rails Upgrade Services](https://github.com/fastruby/skunk/raw/master/fastruby-logo.png)
+![FastRuby.io | Rails Upgrade Services](fastruby-logo.png)
 
 `skunk` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
