@@ -21,12 +21,17 @@ describe Skunk::Cli::Application do
     end
 
     context "when passing a valid option" do
-      let(:argv) { ["--help"] }
       let(:success_code) { 0 }
 
-      it "returns a success code (0)" do
-        result = application.execute
-        _(result).must_equal success_code
+      ["help", "version"].each do |argument|
+        context "and option is #{argument}" do
+          let(:argv) { ["--#{argument}"] }
+
+          it "returns a success code (0)" do
+            result = application.execute
+            _(result).must_equal success_code
+          end
+        end
       end
     end
 
