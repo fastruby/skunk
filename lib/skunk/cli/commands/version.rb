@@ -12,6 +12,10 @@ module Skunk
           print Skunk::VERSION
           status_reporter
         end
+
+        def sharing?
+          false
+        end
       end
     end
   end

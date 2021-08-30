@@ -15,6 +15,12 @@ module Skunk
           sharer.status_reporter = reporter
           sharer.share
         end
+
+        # @return [Boolean] If the environment is set to share to an external
+        # service
+        def sharing?
+          ENV["SHARE"] == "true"
+        end
       end
     end
   end

@@ -30,8 +30,10 @@ module Skunk
         reporter = command.execute
 
         print(reporter.status_message)
-        share_status_message = command.share(reporter)
-        print(share_status_message)
+        if command.sharing?
+          share_status_message = command.share(reporter)
+          print(share_status_message)
+        end
 
         reporter.status
       rescue OptionParser::InvalidOption => e
