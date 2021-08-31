@@ -61,7 +61,7 @@ describe RubyCritic::AnalysedModule do
         file: "samples/rubycritic/analysed_module.rb",
         skunk_score: 58.88,
         churn_times_cost: 2.94,
-        churn: 4,
+        churn: 5,
         cost: 0.59,
         coverage: 0.0
       }
