@@ -23,7 +23,7 @@ describe Skunk::Cli::Application do
     context "when passing a valid option" do
       let(:success_code) { 0 }
 
-      ["help", "version"].each do |argument|
+      %w[help version].each do |argument|
         context "and option is #{argument}" do
           let(:argv) { ["--#{argument}"] }
 
