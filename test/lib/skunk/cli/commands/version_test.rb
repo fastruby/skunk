@@ -7,14 +7,14 @@ require "skunk/cli/options"
 
 describe Skunk::Cli::Command::Version do
   describe "#execute" do
-    MSG = Skunk::VERSION
+    let(:msg) { Skunk::VERSION }
 
     it "outputs the right version message" do
       options = ["--version"]
       opts = Skunk::Cli::Options.new(options).parse
       subject = Skunk::Cli::Command::Version.new(opts.to_h)
 
-      assert_output(MSG) do
+      assert_output(msg) do
         subject.execute
       end
     end
