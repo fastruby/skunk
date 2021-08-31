@@ -4,12 +4,18 @@ require "rubycritic/commands/version"
 
 # nodoc #
 module Skunk
-  module Command
-    # Shows skunk version
-    class Version < RubyCritic::Command::Version
-      def execute
-        print Skunk::VERSION
-        status_reporter
+  module Cli
+    module Command
+      # Shows skunk version
+      class Version < RubyCritic::Command::Version
+        def execute
+          print Skunk::VERSION
+          status_reporter
+        end
+
+        def sharing?
+          false
+        end
       end
     end
   end

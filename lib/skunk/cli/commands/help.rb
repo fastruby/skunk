@@ -14,6 +14,10 @@ module Skunk
           status_reporter
         end
 
+        def sharing?
+          false
+        end
+
         private
 
         attr_reader :options, :status_reporter

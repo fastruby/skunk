@@ -26,3 +26,4 @@ detectors:
     exclude:
     - Skunk::Cli::Command::Compare#analyse_modified_files
     - Skunk::Cli::Command::Compare#build_details_path
+    - Skunk::Cli::Command::Shareable#sharing?

@@ -7,20 +7,22 @@ require "skunk/cli/options"
 
 describe Skunk::Cli::Command::Help do
   describe "#execute" do
-    MSG = <<~HELP
-      Usage: skunk [options] [paths]
-          -b, --branch BRANCH              Set branch to compare
-          -o, --out FILE                   Output report to file
-          -v, --version                    Show gem's version
-          -h, --help                       Show this message
-    HELP
+    let(:msg) do
+      <<~HELP
+        Usage: skunk [options] [paths]
+            -b, --branch BRANCH              Set branch to compare
+            -o, --out FILE                   Output report to file
+            -v, --version                    Show gem's version
+            -h, --help                       Show this message
+      HELP
+    end
 
     it "outputs the right help message" do
       options = ["--help"]
       opts = Skunk::Cli::Options.new(options).parse
       subject = Skunk::Cli::Command::Help.new(opts.to_h)
 
-      assert_output(MSG) do
+      assert_output(msg) do
         subject.execute
       end
     end
