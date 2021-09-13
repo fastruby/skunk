@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup Ruby
+        env:
+          BUNDLE_GEMFILE: "Gemfile-Ruby-2-3"
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.3
