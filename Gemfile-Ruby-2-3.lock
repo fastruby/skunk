@@ -10,15 +10,11 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ansi (1.5.0)
     ast (2.4.2)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    codecov (0.1.21)
-      json
-      simplecov
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     crack (0.4.5)
@@ -40,7 +36,6 @@ GEM
     hashdiff (1.0.1)
     ice_nine (0.11.2)
     jaro_winkler (1.5.4)
-    json (2.5.1)
     kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -87,10 +82,6 @@ GEM
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
-    simplecov-console (0.5.0)
-      ansi
-      simplecov
-      terminal-table
     simplecov-html (0.12.3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -112,16 +103,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  codecov (~> 0.1.16)
   minitest (~> 5.8.4)
   minitest-around (~> 0.5.0)
   minitest-stub-const (~> 0.6)
   minitest-stub_any_instance (~> 1.0.2)
   rake (~> 13.0)
-  reek (~> 6.0.0)
   rubocop (< 0.82)
   simplecov (< 0.19.0)
-  simplecov-console (= 0.5.0)
   skunk!
   vcr (~> 6.0.0)
   webmock (~> 3.10.0)
