@@ -28,7 +28,7 @@ jobs:
         run: |
           gem install bundler
           BUNDLE_GEMFILE=Gemfile-Ruby-2-3 bundle install --jobs 4 --retry 3
-          BUNDLE_GEMFILE=Gemfile-Ruby-2-3 bundle exec rake
+          BUNDLE_GEMFILE=Gemfile-Ruby-2-3 bundle exec rake test
   test-ruby-2-4-x:
     runs-on: ubuntu-latest
 
