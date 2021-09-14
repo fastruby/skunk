@@ -37,8 +37,8 @@ GEM
     ice_nine (0.11.2)
     jaro_winkler (1.5.4)
     kwalify (0.7.2)
-    launchy (2.5.0)
-      addressable (~> 2.7)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     minitest (5.8.5)
     minitest-around (0.5.0)
       minitest (~> 5.0)
@@ -104,6 +104,7 @@ PLATFORMS
 
 DEPENDENCIES
   docile (< 1.4)
+  launchy (< 2.5)
   minitest (~> 5.8.4)
   minitest-around (~> 0.5.0)
   minitest-stub-const (~> 0.6)
