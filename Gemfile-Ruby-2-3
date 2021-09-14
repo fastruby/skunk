@@ -11,6 +11,7 @@ gem "simplecov", "< 0.19.0"
 gem "rubocop", "< 0.82"
 gem "docile", "< 1.4"
 gem "launchy", "< 2.5"
+gem "parallel", "< 1.20"
 
 group :development, :test do
   gem "minitest", "~> 5.8.4"
