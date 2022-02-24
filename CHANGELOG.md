@@ -5,52 +5,58 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] [(commits)](https://github.com/fastruby/skunk/compare/v0.5.1...HEAD)
+## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.1...HEAD)
 
-## [0.5.1] [(commits)](https://github.com/fastruby/skunk/compare/v0.5.0...v0.5.1)
+* [BUGFIX: Fixed share issue with version command](https://github.com/fastruby/skunk/pull/83)
+* [FEATURE: Add PR Template](https://github.com/fastruby/skunk/pull/72)
+* [BUGFIX: Fix Sponsorship logo path in README](https://github.com/fastruby/skunk/pull/73)
+* [BUGFIX: Test with Ruby 3.1](https://github.com/fastruby/skunk/pull/85)
 
-* [BUGFIX] Fix bug related to compare plus share code (by [@etagwerker]())
+## v0.5.1 / 2021-02-17 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.0...v0.5.1)
 
-## [0.5.0] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.2...v0.5.0)
+* [BUGFIX: Fix bug related to compare plus share code](https://github.com/fastruby/skunk/pull/69)
 
-* [FEATURE] Share your results using an environment variable (by [@rahulpuroht]() and [@etagwerker]())
-* [FEATURE] Rename the tech debt metric: StinkScore => SkunkScore. It's a little friendlier.
-* [FEATURE] Add `--out=file.txt` support to the command line (by [@manuca]())
-* [BUGFIX] Skip both nested and top level spec and test folders
+## v0.5.0 / 2020-09-18 [(commits)](https://github.com/fastruby/skunk/compare/v0.4.2...v0.5.0)
 
-## [0.4.2] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.1...v0.4.2)
-* [BUGFIX] Fixes table width issues by rounding values (by [@etagwerker]())
+* [FEATURE: Share your results using an environment variable](https://github.com/fastruby/skunk/pull/56)
+* [FEATURE: Rename the tech debt metric: StinkScore => SkunkScore. It's a little friendlier.](https://github.com/fastruby/skunk/pull/36)
+* [FEATURE: Add `--out=file.txt` support to the command line](https://github.com/fastruby/skunk/pull/47)
+* [BUGFIX: Skip both nested and top level spec and test folders](https://github.com/fastruby/skunk/pull/65)
 
-## [0.4.1] [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...v0.4.1)
-* [BUGFIX] Fixes table width issues (by [@etagwerker]())
+## v0.4.2 / 2020-02-09 [(commits)](https://github.com/fastruby/skunk/compare/v0.4.1...v0.4.2)
 
-## [0.4.0] [(commits)](https://github.com/fastruby/skunk/compare/v0.3.2...v0.4.0)
-* [FEATURE] Add `--version` support to the command line. (by [@bronzdoc]())
-* [FEATURE] Stop accepting `-p <path>` in the command line. It's redundant and it's not working anyway. (by [@etagwerker]())
-* [BUGFIX] Change "StinkScore" formula to skip `churn_times_cost` (by [@etagwerker]())
-* [BUGFIX] Fixes #12 (by [@sebastian-palma]())
+* [BUGFIX: Fixes table width issues by rounding values](https://github.com/fastruby/skunk/commit/80e2e4743bcb79619f9bb5aed9808bac1ca78231)
 
-## [0.3.2] - 2019-11-23 [(commits)](https://github.com/fastruby/skunk/compare/v0.3.1...v0.3.2)
-### Changed
-* [BUGFIX] Change "StinkScore" formula to skip `churn_times_cost` (by [@etagwerker]())
+## v0.4.1 / 2020-02-09 [(commits)](https://github.com/fastruby/skunk/compare/v0.4.0...v0.4.1)
 
-## [0.3.1] - 2019-11-19 [(commits)](https://github.com/fastruby/skunk/compare/v0.3.0...v0.3.1)
-### Changed
-* [BUGFIX] Change "StinkScore" formula to skip `churn_times_cost` (by [@etagwerker]())
+* [BUGFIX: Fixes table width issues](https://github.com/fastruby/skunk/commit/372bc506f408e3647ce48b7bc149234c9da71168)
 
-## [0.3.0] - 2019-11-19 [(commits)](https://github.com/fastruby/skunk/compare/v0.2.0...v0.3.0)
-### Changed
-* [FEATURE] Added Travis CI badge to README (by [@themayurkumbhar]())
-* [FEATURE] Now you can compare "StinkScore" between branches (by [@etagwerker]())
-* [BUGFIX] Add contributor covenant doc (by [@etagwerker]())
-* [BUGFIX] Make sure tests work even you don't have a `coverage/.resultset.json` file (by [@etagwerker]())
-* [BUGFIX] Make tests easier to maintain (by [@etagwerker]())
+## v0.4.0 / 2020-02-08 [(commits)](https://github.com/fastruby/skunk/compare/v0.3.2...v0.4.0)
 
-## [0.2.0] - 2019-10-16 [(commits)](https://github.com/fastruby/skunk/compare/v0.1.0...v0.2.0)
-### Changed
-- [FEATURE] Now `skunk` will not report status for files that start with `test/` or `spec/` (by [@etagwerker]())
+* [FEATURE: Add `--version` support to the command line.](https://github.com/fastruby/skunk/pull/18)
+* [FEATURE: Stop accepting `-p <path>` in the command line. It's redundant and it's not working anyway.](https://github.com/fastruby/skunk/commit/40976c65a1176b47d3b67f75cd7b4ec92d7c4c88)
+* [BUGFIX: Create compare_root_directory when it does not exist](https://github.com/fastruby/skunk/pull/23) (#12)
 
-## [0.1.0] - 2019-10-16
-### Added
-- [FEATURE] Now `skunk` uses `rubycritic-simplecov` to generate a console report with a list
-of files and their "StinkScore" (by [@etagwerker]())
+## v0.3.2 / 2019-11-23 [(commits)](https://github.com/fastruby/skunk/compare/v0.3.1...v0.3.2)
+
+* [BUGFIX: Make variable binding friendly to avoid warning](https://github.com/fastruby/skunk/pull/20)
+
+## v0.3.1 / 2019-11-19 [(commits)](https://github.com/fastruby/skunk/compare/v0.3.0...v0.3.1)
+
+* [BUGFIX: Change "StinkScore" formula to skip `churn_times_cost`](https://github.com/fastruby/skunk/pull/14)
+
+## v0.3.0 / 2019-11-19 [(commits)](https://github.com/fastruby/skunk/compare/v0.2.0...v0.3.0)
+
+* [FEATURE: Added Travis CI badge to README](https://github.com/fastruby/skunk/pull/3)
+* [FEATURE: Now you can compare "StinkScore" between branches](https://github.com/fastruby/skunk/pull/11)
+* [BUGFIX Add contributor covenant doc](https://github.com/fastruby/skunk/commit/c765a6406f0d53043e8d1c51309d6372196e9f94)
+* [BUGFIX Make sure tests work even you don't have a `coverage/.resultset.json` file](https://github.com/fastruby/skunk/pull/7)
+* [BUGFIX: Make tests easier to maintain](https://github.com/fastruby/skunk/pull/10)
+
+## v0.2.0 / 2019-10-16 [(commits)](https://github.com/fastruby/skunk/compare/v0.1.0...v0.2.0)
+
+* [FEATURE: Now `skunk` will not report status for files that start with `test/` or `spec/`](https://github.com/fastruby/skunk/commit/6f1a3c60967abb114576e71084d80e12b0f0235f) (by 
+
+## v0.1.0 / 2019-10-16
+
+* [FEATURE: Now `skunk` uses `rubycritic-simplecov` to generate a console report with a list of files and their "StinkScore"](https://github.com/fastruby/skunk/commit/2ccc5b885b5e12135d963e779566d27d6eefa140)
