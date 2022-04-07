@@ -27,78 +27,18 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
-  test-ruby-2-5-x:
+  test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        ruby: [2.5, 2.6, 2.7, 3.0, 3.1]
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
+          ruby-version: ${{matrix.ruby}}
+      - run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
-  test-ruby-2-6-x:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-2-7-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-3-0-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-3-1-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
