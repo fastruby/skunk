@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * [FEATURE: Add PR Template](https://github.com/fastruby/skunk/pull/72)
 * [BUGFIX: Fix Sponsorship logo path in README](https://github.com/fastruby/skunk/pull/73)
 * [BUGFIX: Test with Ruby 3.1](https://github.com/fastruby/skunk/pull/85)
+* [BUGFIX: Fix changelog uri](https://github.com/fastruby/skunk/pull/90)
 
 ## v0.5.1 / 2021-02-17 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.0...v0.5.1)
 
