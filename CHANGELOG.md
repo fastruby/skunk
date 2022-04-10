@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.1...HEAD)
 
+* [FEATURE: Support more rubies](https://github.com/fastruby/skunk/pull/92)
 * [BUGFIX: Fixed share issue with version command](https://github.com/fastruby/skunk/pull/83)
 * [FEATURE: Add PR Template](https://github.com/fastruby/skunk/pull/72)
 * [BUGFIX: Fix Sponsorship logo path in README](https://github.com/fastruby/skunk/pull/73)
@@ -56,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v0.2.0 / 2019-10-16 [(commits)](https://github.com/fastruby/skunk/compare/v0.1.0...v0.2.0)
 
-* [FEATURE: Now `skunk` will not report status for files that start with `test/` or `spec/`](https://github.com/fastruby/skunk/commit/6f1a3c60967abb114576e71084d80e12b0f0235f) (by 
+* [FEATURE: Now `skunk` will not report status for files that start with `test/` or `spec/`](https://github.com/fastruby/skunk/commit/6f1a3c60967abb114576e71084d80e12b0f0235f) (by
 
 ## v0.1.0 / 2019-10-16
 
