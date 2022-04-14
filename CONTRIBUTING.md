@@ -42,7 +42,15 @@ bundle exec rake
 ```
 
 ## A word on the changelog
-You may also notice that we have a changelog in the form of [CHANGELOG.md](CHANGELOG.md). If your PR closes any open GitHub issue, make sure you include `Closes #XXXX` in your comment.
+You may also notice that we have a changelog in the form of [CHANGELOG.md](CHANGELOG.md). We use a format based on [Keep A Changelog](https://keepachangelog.com/en/1.0.0/).
+
+The important things to keep in mind are:
+
+- If your PR closes any open GitHub issue, make sure you include `Closes #XXXX` in your comment.
+- New additions get added under the main (unreleased) heading;
+- Attach a link to the PR with the following format:
+
+* [<FEATURE | BUGFIX | CHORE>: Description of changes](github.com/link/to/pr).
 
 ## Releasing a new version
 To release a new version, update the version number in `version.rb`.
