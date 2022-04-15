@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Knows how to calculate the SkunkScore for a set of Ruby modules"
   spec.homepage      = "https://github.com/fastruby/skunk"
 
-  spec.required_ruby_version = [">= 2.4.0", "<= 3.1.0"]
+  spec.required_ruby_version = [">= 2.4.0", "< 3.2"]
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
