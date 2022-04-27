@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.1...HEAD)
+## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.2...HEAD)
+
+* <INSERT YOUR FEATURE OR BUGFIX HERE>
+## v0.5.2 / 2022-04-27 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.1...v0.5.2)
 
 * [FEATURE: Support more rubies](https://github.com/fastruby/skunk/pull/92)
 * [BUGFIX: Fixed share issue with version command](https://github.com/fastruby/skunk/pull/83)
