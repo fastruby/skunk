@@ -75,7 +75,7 @@ TEMPL
         width = max.pathname.to_s.length + HEADINGS_WITHOUT_FILE_WIDTH
         {
           style: {
-            width: width
+            width: width # rubocop:disable Style/HashSyntax
           }
         }
       end

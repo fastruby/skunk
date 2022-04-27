@@ -38,6 +38,7 @@ module Skunk
         ENV["SHARE_URL"] || DEFAULT_URL
       end
 
+      # rubocop:disable Style/HashSyntax
       def json_summary
         result = {
           total_skunk_score: total_skunk_score,
@@ -55,6 +56,7 @@ module Skunk
 
         result
       end
+      # rubocop:enable Style/HashSyntax
 
       def json_results
         sorted_modules.map(&:to_hash)

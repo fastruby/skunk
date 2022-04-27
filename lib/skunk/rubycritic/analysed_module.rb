@@ -53,6 +53,7 @@ module RubyCritic
     #   - coverage
     #
     # @return [Hash]
+    # rubocop:disable Style/HashSyntax
     def to_hash
       {
         file: pathname.to_s,
@@ -63,5 +64,6 @@ module RubyCritic
         coverage: coverage.round(2)
       }
     end
+    # rubocop:enable Style/HashSyntax
   end
 end
