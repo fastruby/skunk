@@ -37,7 +37,7 @@ module Skunk
         end
 
         def to_h
-          super.merge(output_filename: output_filename) # rubocop:disable Style/HashSyntax
+          super.merge(output_filename: output_filename)
         end
       end
     end
