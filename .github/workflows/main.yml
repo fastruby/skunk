@@ -19,6 +19,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.4
+          build-cache: true
       - name: Build and run tests
         env:
           BUNDLE_GEMFILE: "Gemfile-Ruby-2-4"
@@ -40,6 +41,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
+          build-cache: true
       - name: Build and run tests
         run: |
           gem install bundler
