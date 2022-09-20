@@ -68,7 +68,9 @@ describe RubyCritic::AnalysedModule do
     end
 
     it "returns a hash with all the attributes and values" do
-      _(@analysed_module.to_hash).must_equal result
+      @analysed_module.stub(:churn, 5) do
+        _(@analysed_module.to_hash).must_equal result
+      end
     end
   end
 end
