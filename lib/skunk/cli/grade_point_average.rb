@@ -2,12 +2,13 @@
 
 module Skunk
   module Cli
+    # Knows how to calculate GPA score
     class GradePointAverage
       def initialize(skunk_score)
         @skunk_score = skunk_score
       end
 
-      def score
+      def score # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
         case @skunk_score
         when (0..64)
           "A+"

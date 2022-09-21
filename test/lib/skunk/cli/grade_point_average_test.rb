@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-=begin
-|Letter Grade | Percent Grade | Scale |
-|:------------|:-------------:|------:|
-| A+          | Below 65      | 4.0   |
-| A           | 65-66         | 4.0   |
-| A-          | 67-69         | 3.7   |
-| B+          | 70-72         | 3.3   |
-| B           | 73-76         | 3.0   |
-| B-          | 77-79         | 2.7   |
-| C+          | 80-82         | 2.3   |
-| C           | 83-86         | 2.0   |
-| C-          | 87-89         | 1.7   |
-| D+          | 90-92         | 1.3   |
-| D           | 93-96         | 1.0   |
-| E/F         | 97-100        | 0.0   |
-=end
+# |Letter Grade | Percent Grade | Scale |
+# |:------------|:-------------:|------:|
+# | A+          | Below 65      | 4.0   |
+# | A           | 65-66         | 4.0   |
+# | A-          | 67-69         | 3.7   |
+# | B+          | 70-72         | 3.3   |
+# | B           | 73-76         | 3.0   |
+# | B-          | 77-79         | 2.7   |
+# | C+          | 80-82         | 2.3   |
+# | C           | 83-86         | 2.0   |
+# | C-          | 87-89         | 1.7   |
+# | D+          | 90-92         | 1.3   |
+# | D           | 93-96         | 1.0   |
+# | E/F         | 97-100        | 0.0   |
 
 require "test_helper"
 
@@ -61,7 +59,7 @@ describe Skunk::Cli::GradePointAverage do
     context "with E score" do
       it { expect(subject.new(97).score).must_equal "E" }
       it { expect(subject.new(1000).score).must_equal "E" }
-      it { expect(subject.new(10000).score).must_equal "E" }
+      it { expect(subject.new(10_000).score).must_equal "E" }
     end
   end
 end
