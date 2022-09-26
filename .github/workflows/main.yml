@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Ruby
+      - name: Setup Ruby 2.4
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.4
@@ -27,75 +27,20 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake
-  test-ruby-2-5-x:
-    runs-on: ubuntu-latest
+  test-ruby:
+    runs-on: ${{ matrix.os }}-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu]
+        ruby-version: [2.5, 2.6, 2.7, 3.0, 3.1]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Ruby
+      - name: Setup Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-2-6-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-2-7-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-3-0-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-          bundler-cache: true
-      - name: Build and run tests
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rake
-  test-ruby-3-1-x:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
+          ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
       - name: Build and run tests
         run: |
