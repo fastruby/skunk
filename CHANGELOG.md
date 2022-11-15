@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.2...HEAD)
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
+* [BUGFIX: Fix documentation and refactor `skunk_score` method](https://github.com/fastruby/skunk/pull/102)
 * [FEATURE: Improve main workflow](https://github.com/fastruby/skunk/pull/99)
 * [BUGFIX: Fix analized module test](https://github.com/fastruby/skunk/pull/98)
 
