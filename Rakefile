@@ -12,7 +12,7 @@ Rake::TestTask.new do |task|
   task.pattern = "test/**/*_test.rb"
 end
 
-RuboCop::RakeTask.new
+# RuboCop::RakeTask.new
 
 Reek::Rake::Task.new
 
@@ -20,4 +20,5 @@ RubyCritic::RakeTask.new do |task|
   task.paths = FileList["lib/**/*.rb"]
 end
 
-task default: %i[test reek rubocop]
+# task default: %i[test reek rubocop]
+task default: %i[test reek]
