@@ -57,6 +57,6 @@ jobs:
           bundler-cache: true
       - name: Build and run tests
         run: |
-          gem install bundler
+          gem install bundler -v 2.4.6
           bundle install --jobs 4 --retry 3
           bundle exec rake
