@@ -24,7 +24,7 @@ jobs:
         env:
           BUNDLE_GEMFILE: "Gemfile-Ruby-2-4"
         run: |
-          gem install bundler
+          gem install bundler -v 2.3
           bundle install --jobs 4 --retry 3
           bundle exec rake
   test-ruby:
