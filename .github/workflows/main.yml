@@ -47,7 +47,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu]
-        ruby-version: [2.6, 2.7, 3.1]
+        ruby-version: [2.6, 2.7, "3.0", 3.1]
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby ${{ matrix.ruby-version }}
