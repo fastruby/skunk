@@ -12,7 +12,6 @@ on:
 jobs:
   test-ruby-2-4-x:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby 2.4
@@ -27,14 +26,28 @@ jobs:
           gem install bundler -v 2.3
           bundle install --jobs 4 --retry 3
           bundle exec rake
+
+  test-ruby-2-5-x:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby 2.5
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5
+          bundler-cache: true
+      - name: Build and run tests
+        run: |
+          gem install bundler -v 2.3.26
+          bundle install --jobs 4 --retry 3
+          bundle exec rake
+
   test-ruby:
     runs-on: ${{ matrix.os }}-latest
-
     strategy:
       matrix:
         os: [ubuntu]
-        ruby-version: [2.5, 2.6, 2.7, 3.0, 3.1]
-
+        ruby-version: [2.6, 2.7, 3.0, 3.1]
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby ${{ matrix.ruby-version }}
