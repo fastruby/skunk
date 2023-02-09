@@ -6,6 +6,8 @@ on:
     branches:
     - main
   pull_request:
+    branches:
+    - main
 
 jobs:
   test-ruby-2-4-x:
@@ -16,7 +18,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.4
-          bundler-cache: true
       - name: Build and run tests
         env:
           BUNDLE_GEMFILE: "Gemfile-Ruby-2-4"
@@ -33,8 +34,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.5
-          bundler-cache: true
       - name: Build and run tests
+        env:
+          BUNDLE_GEMFILE: "Gemfile-Ruby-2-5"
         run: |
           gem install bundler -v 2.3.26
           bundle install --jobs 4 --retry 3
