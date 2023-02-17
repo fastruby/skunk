@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.2...HEAD)
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
+
+* [BUGFIX: Better test coverage tracking for skunk](https://github.com/fastruby/skunk/pull/108)
 * [FEATURE: Add Ruby 3.2 Support](https://github.com/fastruby/skunk/pull/106)
 * [BUGFIX: Fix skunk workflow](https://github.com/fastruby/skunk/pull/104)
 * [BUGFIX: Fix documentation and refactor `skunk_score` method](https://github.com/fastruby/skunk/pull/102)
