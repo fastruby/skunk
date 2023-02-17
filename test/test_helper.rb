@@ -12,6 +12,9 @@ if ENV["COVERAGE"] == "true"
   ]
 
   SimpleCov.start do
+    add_filter "lib/skunk/version.rb"
+    add_filter "test/lib"
+
     track_files "lib/**/*.rb"
   end
 
