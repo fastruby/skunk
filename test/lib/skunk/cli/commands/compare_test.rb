@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "minitest/stub_const"
 
 require "skunk/rubycritic/analysed_module"
 require "skunk/cli/commands/compare"

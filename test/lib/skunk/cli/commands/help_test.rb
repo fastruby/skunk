@@ -16,14 +16,19 @@ describe Skunk::Cli::Command::Help do
             -h, --help                       Show this message
       HELP
     end
+    let(:options) { ["--help"] }
+    let(:opts) { Skunk::Cli::Options.new(options).parse }
+    let(:subject) { Skunk::Cli::Command::Help.new(opts.to_h) }
 
     it "outputs the right help message" do
-      options = ["--help"]
-      opts = Skunk::Cli::Options.new(options).parse
-      subject = Skunk::Cli::Command::Help.new(opts.to_h)
-
       assert_output(msg) do
         subject.execute
+      end
+    end
+
+    describe "#sharing?" do
+      it "returns false" do
+        _(subject.sharing?).must_equal false
       end
     end
   end
