@@ -11,7 +11,7 @@ on:
 
 jobs:
   test-ruby-2-4-x:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby 2.4
@@ -27,7 +27,7 @@ jobs:
           bundle exec rake
 
   test-ruby-2-5-x:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby 2.5
