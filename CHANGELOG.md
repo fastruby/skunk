@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
 
+* [BUGFIX: Update reek, rubocop, and terminal-table dependencies](https://github.com/fastruby/skunk/pull/111)
 * [BUGFIX: Better test coverage tracking for skunk](https://github.com/fastruby/skunk/pull/108)
 * [FEATURE: Add Ruby 3.2 Support](https://github.com/fastruby/skunk/pull/106)
 * [BUGFIX: Fix skunk workflow](https://github.com/fastruby/skunk/pull/104)
