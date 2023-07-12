@@ -1,13 +1,7 @@
 # .github/workflows/main.yml
 
 name: CI
-on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+on: [push, pull_request]
 
 jobs:
   test-ruby-2-4-x:
@@ -47,7 +41,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu]
-        ruby-version: [2.6, 2.7, "3.0", 3.1, 3.2]
+        ruby-version: ["2.6", "2.7", "3.0", "3.1", "3.2"]
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby ${{ matrix.ruby-version }}
