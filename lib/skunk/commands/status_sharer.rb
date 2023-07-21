@@ -4,7 +4,7 @@ require "net/http"
 require "net/https"
 require "json"
 
-require "skunk/cli/commands/status_reporter"
+require "skunk/commands/status_reporter"
 
 module Skunk
   module Command

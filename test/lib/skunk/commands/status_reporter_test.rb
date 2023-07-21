@@ -3,7 +3,7 @@
 require "test_helper"
 
 require "rubycritic/analysers_runner"
-require "skunk/cli/commands/status_reporter"
+require "skunk/commands/status_reporter"
 
 describe Skunk::Command::StatusReporter do
   let(:paths) { "samples/rubycritic" }
