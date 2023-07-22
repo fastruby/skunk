@@ -24,6 +24,7 @@ detectors:
     - Skunk::Cli::Options::Argv#parse
   UtilityFunction:
     exclude:
-    - Skunk::Cli::Command::Compare#analyse_modified_files
-    - Skunk::Cli::Command::Compare#build_details_path
-    - Skunk::Cli::Command::Shareable#sharing?
+    - capture_output_streams
+    - Skunk::Command::Compare#analyse_modified_files
+    - Skunk::Command::Compare#build_details_path
+    - Skunk::Command::Shareable#sharing?
