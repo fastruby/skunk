@@ -6,8 +6,8 @@ require "rubycritic/cli/application"
 require "skunk"
 require "skunk/rubycritic/analysed_module"
 require "skunk/cli/options"
-require "skunk/cli/command_factory"
-require "skunk/cli/commands/status_sharer"
+require "skunk/command_factory"
+require "skunk/commands/status_sharer"
 
 module Skunk
   module Cli
@@ -26,7 +26,7 @@ module Skunk
 
         # :reek:NilCheck
         @parsed_options = @options.parse.to_h
-        command = Skunk::Cli::CommandFactory.create(@parsed_options)
+        command = Skunk::CommandFactory.create(@parsed_options)
         reporter = command.execute
 
         print(reporter.status_message)

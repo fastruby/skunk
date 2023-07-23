@@ -2,10 +2,10 @@
 
 require "test_helper"
 
-require "skunk/cli/commands/help"
+require "skunk/commands/help"
 require "skunk/cli/options"
 
-describe Skunk::Cli::Command::Help do
+describe Skunk::Command::Help do
   describe "#execute" do
     let(:msg) do
       <<~HELP
@@ -18,7 +18,7 @@ describe Skunk::Cli::Command::Help do
     end
     let(:options) { ["--help"] }
     let(:opts) { Skunk::Cli::Options.new(options).parse }
-    let(:subject) { Skunk::Cli::Command::Help.new(opts.to_h) }
+    let(:subject) { Skunk::Command::Help.new(opts.to_h) }
 
     it "outputs the right help message" do
       assert_output(msg) do

@@ -3,11 +3,11 @@
 require "test_helper"
 require "minitest/stub_const"
 
-require "skunk/cli/commands/default"
+require "skunk/commands/default"
 
-describe Skunk::Cli::Command::Default do
+describe Skunk::Command::Default do
   describe "#sharing?" do
-    let(:subject) { Skunk::Cli::Command::Default.new({}) }
+    let(:subject) { Skunk::Command::Default.new({}) }
 
     it "returns true" do
       env = ENV.to_hash.merge("SHARE" => "true")

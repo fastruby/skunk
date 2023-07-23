@@ -4,9 +4,9 @@ require "test_helper"
 require "minitest/stub_const"
 
 require "skunk/rubycritic/analysed_module"
-require "skunk/cli/commands/compare"
+require "skunk/commands/compare"
 
-describe Skunk::Cli::Command::Compare do
+describe Skunk::Command::Compare do
   let(:paths) { "samples/rubycritic" }
   let(:compare_root_directory) { "test/support/tmp/rubycritic/compare/" }
 
@@ -18,7 +18,7 @@ describe Skunk::Cli::Command::Compare do
 
     it "sets the skunk_score_average as the branch score" do
       ::RubyCritic::SourceControlSystem::Git.stub :switch_branch, nil do
-        compare = Skunk::Cli::Command::Compare.new(paths: "samples/rubycritic")
+        compare = Skunk::Command::Compare.new(paths: "samples/rubycritic")
         compare.analyse_branch(:base_branch)
 
         _(RubyCritic::Config.base_branch_score).must_equal 58.88
@@ -28,7 +28,7 @@ describe Skunk::Cli::Command::Compare do
     it "creates the compare_root_directory if it doesn't exist" do
       ::RubyCritic::Config.configuration.stub(:compare_root_directory,
                                               compare_root_directory) do
-        Skunk::Cli::Command::Compare.new(paths: "samples/rubycritic").build_details
+        Skunk::Command::Compare.new(paths: "samples/rubycritic").build_details
         _(File.exist?(compare_root_directory)).must_equal true
       end
     end

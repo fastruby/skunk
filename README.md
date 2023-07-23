@@ -83,22 +83,22 @@ The result is a list of smelly files and the SkunkScore of the project/files:
 | file                                                | skunk_score    | churn_times_cost | churn        | cost         | coverage     |
 +-----------------------------------------------------+----------------+------------------+--------------+--------------+--------------+
 | samples/rubycritic/analysed_module.rb               | 258.88         | 12.94            | 5            | 2.59         | 0.0          |
-| lib/skunk/cli/commands/compare.rb                   | 85.41          | 32.32            | 14           | 2.31         | 63.64        |
+| lib/skunk/commands/compare.rb                       | 85.41          | 32.32            | 14           | 2.31         | 63.64        |
 | lib/skunk/rubycritic/analysed_modules_collection.rb | 31.76          | 3.18             | 5            | 0.64         | 50.0         |
-| lib/skunk/cli/commands/status_reporter.rb           | 11.33          | 68.0             | 18           | 3.78         | 97.5         |
-| lib/skunk/cli/command_factory.rb                    | 8.3            | 1.95             | 4            | 0.49         | 83.33        |
-| lib/skunk/cli/commands/status_sharer.rb             | 8.17           | 10.9             | 4            | 2.72         | 97.67        |
+| lib/skunk/commands/status_reporter.rb               | 11.33          | 68.0             | 18           | 3.78         | 97.5         |
+| lib/skunk/command_factory.rb                        | 8.3            | 1.95             | 4            | 0.49         | 83.33        |
+| lib/skunk/commands/status_sharer.rb                 | 8.17           | 10.9             | 4            | 2.72         | 97.67        |
 | lib/skunk/cli/application.rb                        | 7.06           | 21.19            | 18           | 1.18         | 94.12        |
 | lib/skunk/cli/options/argv.rb                       | 4.08           | 7.35             | 9            | 0.82         | 95.24        |
-| lib/skunk/cli/commands/compare_score.rb             | 3.77           | 2.51             | 4            | 0.63         | 94.74        |
+| lib/skunk/commands/compare_score.rb                 | 3.77           | 2.51             | 4            | 0.63         | 94.74        |
 | lib/skunk/rubycritic/analysed_module.rb             | 3.37           | 33.74            | 10           | 3.37         | 100.0        |
-| lib/skunk/cli/commands/version.rb                   | 2.64           | 0.7              | 8            | 0.09         | 70.0         |
-| lib/skunk/cli/commands/output.rb                    | 1.86           | 0.09             | 1            | 0.09         | 80.0         |
+| lib/skunk/commands/version.rb                       | 2.64           | 0.7              | 8            | 0.09         | 70.0         |
+| lib/skunk/commands/output.rb                        | 1.86           | 0.09             | 1            | 0.09         | 80.0         |
 | lib/skunk/cli/options.rb                            | 0.68           | 5.44             | 8            | 0.68         | 100.0        |
-| lib/skunk/cli/commands/default.rb                   | 0.4            | 3.23             | 8            | 0.4          | 100.0        |
-| lib/skunk/cli/commands/shareable.rb                 | 0.2            | 0.4              | 2            | 0.2          | 100.0        |
-| lib/skunk/cli/commands/help.rb                      | 0.2            | 1.2              | 6            | 0.2          | 100.0        |
-| lib/skunk/cli/commands/base.rb                      | 0.1            | 0.49             | 5            | 0.1          | 100.0        |
+| lib/skunk/commands/default.rb                       | 0.4            | 3.23             | 8            | 0.4          | 100.0        |
+| lib/skunk/commands/shareable.rb                     | 0.2            | 0.4              | 2            | 0.2          | 100.0        |
+| lib/skunk/commands/help.rb                          | 0.2            | 1.2              | 6            | 0.2          | 100.0        |
+| lib/skunk/commands/base.rb                          | 0.1            | 0.49             | 5            | 0.1          | 100.0        |
 | lib/skunk.rb                                        | 0.0            | 0.0              | 6            | 0.0          | 100.0        |
 | lib/skunk/version.rb                                | 0.0            | 0.0              | 12           | 0.0          | 0.0          |
 +-----------------------------------------------------+----------------+------------------+--------------+--------------+--------------+
@@ -158,7 +158,7 @@ If you want to share the results of your Skunk report with the Ruby community, r
 SkunkScore Total: 126.99
 Modules Analysed: 17
 SkunkScore Average: 7.47
-Worst SkunkScore: 41.92 (lib/skunk/cli/commands/status_sharer.rb)
+Worst SkunkScore: 41.92 (lib/skunk/commands/status_sharer.rb)
 
 Generated with Skunk v0.5.0
 Shared at: https://skunk.fastruby.io/
@@ -174,7 +174,7 @@ If you prefer to post results to your server, set your own `SHARE_URL`:
 SkunkScore Total: 126.99
 Modules Analysed: 17
 SkunkScore Average: 7.47
-Worst SkunkScore: 41.92 (lib/skunk/cli/commands/status_sharer.rb)
+Worst SkunkScore: 41.92 (lib/skunk/commands/status_sharer.rb)
 
 Generated with Skunk v0.5.0
 Shared at: https://path.to.your.skunk-fyi-server.example.com
