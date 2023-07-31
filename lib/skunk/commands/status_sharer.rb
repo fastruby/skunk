@@ -5,6 +5,7 @@ require "net/https"
 require "json"
 
 require "skunk/commands/status_reporter"
+require "skunk/core/scorer"
 
 module Skunk
   module Command
@@ -40,7 +41,7 @@ module Skunk
 
       def json_summary
         result = {
-          total_skunk_score: total_skunk_score,
+          total_skunk_score: total_score,
           analysed_modules_count: analysed_modules_count,
           skunk_score_average: skunk_score_average,
           skunk_version: Skunk::VERSION
@@ -48,16 +49,12 @@ module Skunk
 
         if worst
           result[:worst_skunk_score] = {
-            file: worst.pathname.to_s,
-            skunk_score: worst.skunk_score
+            file: worst_pathname.to_s,
+            skunk_score: worst_skunk_score
           }
         end
 
         result
-      end
-
-      def json_results
-        sorted_modules.map(&:to_hash)
       end
 
       # :reek:UtilityFunction
@@ -93,6 +90,38 @@ module Skunk
 
       def url
         URI(File.join(base_url, "reports"))
+      end
+
+      def skunk_score_average
+        skunk_scorer.average
+      end
+
+      def total_score
+        skunk_scorer.total_score
+      end
+
+      def worst
+        skunk_scorer.worst
+      end
+
+      def worst_pathname
+        skunk_scorer.worst_pathname
+      end
+
+      def worst_skunk_score
+        skunk_scorer.worst_skunk_score
+      end
+
+      def analysed_modules_count
+        skunk_scorer.analysed_modules_count
+      end
+
+      def json_results
+        skunk_scorer.sorted_modules.map(&:to_hash)
+      end
+
+      def skunk_scorer
+        @skunk_scorer ||= Skunk::Scorer.new(analysed_modules)
       end
     end
   end
