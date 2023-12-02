@@ -6,10 +6,11 @@ detectors:
     - Skunk::Command::StatusReporter#analysed_modules
   FeatureEnvy:
     exclude:
-    - Skunk::Command::StatusReporter#table
+    - Skunk::Generator::ConsoleReport#table
   InstanceVariableAssumption:
     exclude:
     - Skunk::Cli::Options::Argv
+    - Skunk::Scorer
     - RubyCritic::AnalysedModulesCollection
   IrresponsibleModule:
     exclude:
@@ -17,6 +18,9 @@ detectors:
   NestedIterators:
     exclude:
     - Skunk::Cli::Options::Argv#parse
+  TooManyMethods:
+    exclude:
+    - Skunk::Command::StatusSharer
   TooManyStatements:
     exclude:
     - initialize

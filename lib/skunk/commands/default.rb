@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 require "rubycritic/commands/default"
-require "rubycritic/analysers_runner"
-require "rubycritic/revision_comparator"
-require "rubycritic/reporter"
 
-require "skunk/commands/base"
-require "skunk/commands/shareable"
 require "skunk/commands/status_reporter"
+require "skunk/commands/shareable"
+require "skunk/generators/console_report"
+require "skunk/core/scorer"
 
 module Skunk
   module Command
@@ -39,6 +37,9 @@ module Skunk
       #
       # @param [RubyCritic::AnalysedModulesCollection] A collection of analysed modules
       def report(analysed_modules)
+        skunk_scorer = Skunk::Scorer.new(analysed_modules)
+        Skunk::Generator::ConsoleReport.new(skunk_scorer).generate_report
+
         status_reporter.analysed_modules = analysed_modules
         status_reporter.score = analysed_modules.score
       end
