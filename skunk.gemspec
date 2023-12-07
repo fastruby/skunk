@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "codecov", "~> 0.1.16"
   spec.add_development_dependency "debug"
-  spec.add_development_dependency "minitest", "~> 5.8.4"
+  spec.add_development_dependency "minitest", "~> 5.20.0"
   spec.add_development_dependency "minitest-around", "~> 0.5.0"
   spec.add_development_dependency "minitest-stub_any_instance", "~> 1.0.2"
   spec.add_development_dependency "minitest-stub-const", "~> 0.6"
