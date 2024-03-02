@@ -8,5 +8,3 @@ SkunkScore Total: 0.59
 Modules Analysed: 1
 SkunkScore Average: 0.59
 Worst SkunkScore: 0.59 (samples/rubycritic/analysed_module.rb)
-
-Generated with Skunk v0.5.2
