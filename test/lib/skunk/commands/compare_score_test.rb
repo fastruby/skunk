@@ -12,7 +12,7 @@ describe Skunk::Command::CompareScore do
         "Skunk score average is 80% better \n"
 
       compare_score = Skunk::Command::CompareScore.new("main", "feature", 10, 2)
-      compare_score.message.must_equal expected
+      _(compare_score.message).must_equal expected
     end
   end
   describe "#score_evolution_message" do
