@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
 
+* [ENHANCEMENT: Better test suite with more relaxed console output expectation](https://github.com/fastruby/skunk/pull/117)
+
 ## v0.5.3 / 2023-12-01 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.2...v0.5.3)
 
 * [BUGFIX: Update reek, rubocop, and terminal-table dependencies](https://github.com/fastruby/skunk/pull/111)
