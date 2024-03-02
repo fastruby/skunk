@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
 
 * [ENHANCEMENT: Better test suite with more relaxed console output expectation](https://github.com/fastruby/skunk/pull/117)
-* [ENHANCEMENT: Use minitest 5.20.x (also, stop testing with Ruby 2.4 and 2.5)](https://github.com/fastruby/skunk/pull/115)
+* [ENHANCEMENT: Use minitest 5.22.x (also, stop testing with Ruby 2.4 and 2.5)](https://github.com/fastruby/skunk/pull/115)
 
 ## v0.5.3 / 2023-12-01 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.2...v0.5.3)
 
