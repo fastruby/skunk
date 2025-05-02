@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
 
+* [FEATURE: Generate JSON report in background](https://github.com/fastruby/skunk/pull/119)
 * [ENHANCEMENT: Better test suite with more relaxed console output expectation](https://github.com/fastruby/skunk/pull/117)
 * [ENHANCEMENT: Use minitest 5.22.x (also, stop testing with Ruby 2.4 and 2.5)](https://github.com/fastruby/skunk/pull/115)
 
