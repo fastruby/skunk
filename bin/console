@@ -1,16 +1,14 @@
-# frozen_string_literal: true
-
 #!/usr/bin/env ruby
 
 require "bundler/setup"
 require "skunk"
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+# use `debugger` to set a breakpoint
+require "debug"
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+puts "Welcome to the Skunk console!"
+puts ARGV.inspect
 
-require "irb"
-IRB.start(__FILE__)
+# Run skunk CLI application with the provided arguments
+require "skunk/cli/application"
+Skunk::Cli::Application.new(ARGV).execute
