@@ -10,6 +10,7 @@ module Skunk
     # reporter object.
     class Base < RubyCritic::Command::Base
       def initialize(options)
+        super
         @options = options
         @status_reporter = Skunk::Command::StatusReporter.new(@options)
       end

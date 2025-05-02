@@ -3,11 +3,10 @@
 require "rubycritic/commands/default"
 require "rubycritic/analysers_runner"
 require "rubycritic/revision_comparator"
-require "rubycritic/reporter"
 
-require "skunk/commands/base"
 require "skunk/commands/shareable"
 require "skunk/commands/status_reporter"
+require "skunk/reporter"
 
 module Skunk
   module Command
@@ -27,7 +26,7 @@ module Skunk
       #
       # @return [Skunk::Command::StatusReporter]
       def execute
-        RubyCritic::Config.formats = []
+        RubyCritic::Config.formats = [:json]
 
         report(critique)
 
@@ -39,6 +38,8 @@ module Skunk
       #
       # @param [RubyCritic::AnalysedModulesCollection] A collection of analysed modules
       def report(analysed_modules)
+        Reporter.generate_report(analysed_modules)
+
         status_reporter.analysed_modules = analysed_modules
         status_reporter.score = analysed_modules.score
       end
