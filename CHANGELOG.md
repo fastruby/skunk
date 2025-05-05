@@ -5,9 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.3...HEAD)
+## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
 
 * <INSERT YOUR FEATURE OR BUGFIX HERE>
+
+## v0.5.4 / 2025-05-05 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.3...v0.5.4)
 
 * [FEATURE: Generate JSON report in background](https://github.com/fastruby/skunk/pull/119)
 * [ENHANCEMENT: Better test suite with more relaxed console output expectation](https://github.com/fastruby/skunk/pull/117)
