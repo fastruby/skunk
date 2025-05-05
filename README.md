@@ -123,6 +123,10 @@ To only run skunk on specific folders, pass a list of directories in the command
 
 `skunk app lib`
 
+### Generate JSON report in background
+
+When the Skunk command is run, it will generate a JSON report file in the `RubyCritic::Config.root` location.
+
 ### Comparing feature branches
 
 When working on new features, run skunk against your feature branch to check if the changes are improving or decreasing the code quality of the project.

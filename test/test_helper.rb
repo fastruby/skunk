@@ -8,7 +8,7 @@ if ENV["COVERAGE"] == "true"
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
     SimpleCov::Formatter::Console,
-    SimpleCov::Formatter::Codecov,
+    SimpleCov::Formatter::Codecov
   ]
 
   SimpleCov.start do
