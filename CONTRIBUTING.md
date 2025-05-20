@@ -14,6 +14,12 @@ Here's what you need to do:
 - [Make sure the test suite passes on GitHub Actions and make any necessary changes to your branch to bring it to green.](#continuous-integration).
 - Check out the [Help Wanted](#help-wanted) section for suggestions on how to support Skunk.
 
+## Requirements
+For Ruby ruby 3.0.2p107 on the Linux distro POP-OS install the following:
+```bash
+sudo apt install libyaml-dev
+```
+
 ## Setting up your environment
 To install the dependencies, run:
 
