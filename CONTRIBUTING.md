@@ -15,7 +15,7 @@ Here's what you need to do:
 - Check out the [Help Wanted](#help-wanted) section for suggestions on how to support Skunk.
 
 ## Requirements
-For Ruby ruby 3.0.2p107 on the Linux distro POP-OS install the following:
+For a Linux distro called Pop!_OS, running Ruby 3.0 and up might require installing the following packages:
 ```bash
 sudo apt install libyaml-dev
 ```
