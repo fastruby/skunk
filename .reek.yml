@@ -7,6 +7,7 @@ detectors:
   FeatureEnvy:
     exclude:
     - Skunk::Command::StatusReporter#table
+    - Skunk::Generator::HtmlReport#create_directories_and_files
   InstanceVariableAssumption:
     exclude:
     - Skunk::Cli::Options::Argv
@@ -22,6 +23,10 @@ detectors:
     - initialize
     - Skunk::Cli::Application#execute
     - Skunk::Cli::Options::Argv#parse
+  TooManyInstanceVariables:
+    exclude:
+    - Skunk::Generator::Html::FileData
+    - Skunk::Generator::Html::SkunkData
   UtilityFunction:
     exclude:
     - capture_output_streams

@@ -10,11 +10,11 @@ module Skunk
         def data
           {
             analysed_modules_count: analysed_modules_count,
-            skunk_score_average: skunk_score_average,
             skunk_score_total: skunk_score_total,
-            worst_pathname: worst&.pathname,
-            worst_score: worst&.skunk_score,
-            files: files
+            skunk_score_average: calculate_average,
+            worst_pathname: find_worst_module&.pathname,
+            worst_score: find_worst_module&.skunk_score,
+            files: build_files
           }
         end
 
@@ -24,7 +24,7 @@ module Skunk
           @analysed_modules_count ||= non_test_modules.count
         end
 
-        def skunk_score_average
+        def calculate_average
           return 0 if analysed_modules_count.zero?
 
           (skunk_score_total.to_d / analysed_modules_count).to_f.round(2)
@@ -41,16 +41,16 @@ module Skunk
           end
         end
 
-        def worst
-          @worst ||= sorted_modules.first
+        def find_worst_module
+          @find_worst_module ||= sorted_modules.first
         end
 
         def sorted_modules
           @sorted_modules ||= non_test_modules.sort_by(&:skunk_score).reverse!
         end
 
-        def files
-          @files ||= sorted_modules.map(&:to_hash)
+        def build_files
+          @build_files ||= sorted_modules.map(&:to_hash)
         end
       end
     end

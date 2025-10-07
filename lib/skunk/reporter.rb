@@ -4,7 +4,7 @@ module Skunk
   # Pick the right report generator based on the format specified in the
   # configuration. If the format is not supported, it will default to ConsoleReport.
   module Reporter
-    REPORT_GENERATOR_CLASS_FORMATS = %i[json].freeze
+    REPORT_GENERATOR_CLASS_FORMATS = %i[json html].freeze
 
     def self.generate_report(analysed_modules)
       RubyCritic::Config.formats.uniq.each do |format|

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skunk Report</title>
+  <style>
+    /* Modern CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    :root {
+      /* Color Palette */
+      --primary-gradient-start:rgb(0, 210, 66);
+      --primary-gradient-end: rgb(147, 234, 174);;
+      --background-color: #f5f5f5;
+      --text-color: #333;
+      --text-color-light: #666;
+      --white: #ffffff;
+      --border-color: #eee;
+      --card-shadow: rgba(0,0,0,0.1);
+      --container-shadow: rgba(0,0,0,0.1);
+
+      /* Header Colors */
+      --header-text: white;
+      --header-text-opacity: 0.9;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: clamp(10px, 2vw, 25px);
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+    .container {
+      max-width: min(1200px, 95vw);
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: clamp(4px, 1vw, 12px);
+      box-shadow: 0 2px 10px var(--container-shadow);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+      color: var(--header-text);
+      padding: clamp(20px, 4vw, 40px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: clamp(1.8em, 5vw, 3em);
+      font-weight: 300;
+    }
+    .header p {
+      margin: clamp(8px, 2vw, 15px) 0 0 0;
+      opacity: var(--header-text-opacity);
+      font-size: clamp(0.9em, 2vw, 1.1em);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: clamp(15px, 3vw, 25px);
+      padding: clamp(20px, 4vw, 40px);
+      background: #f8f9fa;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: clamp(15px, 3vw, 25px);
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 4px var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .stat-value {
+      font-size: clamp(1.5em, 4vw, 2.5em);
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      color: var(--text-color-light);
+      font-size: clamp(0.8em, 2vw, 1em);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .files-container {
+      padding: clamp(20px, 4vw, 40px);
+    }
+    .files-container h2 {
+      margin: 0 0 clamp(15px, 3vw, 25px) 0;
+      color: var(--text-color);
+      font-size: clamp(1.3em, 3vw, 1.8em);
+    }
+    .file-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px var(--card-shadow);
+      margin-bottom: clamp(10px, 2vw, 20px);
+      padding: clamp(15px, 3vw, 25px);
+      border-left: 4px solid var(--primary-gradient-start);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .file-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--card-shadow);
+    }
+    .file-header {
+      margin-bottom: clamp(10px, 2vw, 20px);
+    }
+    .file-name {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: clamp(1em, 2.5vw, 1.2em);
+      font-weight: 600;
+      color: var(--text-color);
+      flex: 1;
+      min-width: clamp(150px, 30vw, 250px);
+    }
+    .file-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 20vw, 150px), 1fr));
+      gap: clamp(10px, 2vw, 20px);
+    }
+    .metric {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .metric-label {
+      font-size: clamp(0.7em, 1.8vw, 0.9em);
+      color: var(--text-color-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: clamp(3px, 1vw, 8px);
+    }
+    .metric-value {
+      font-size: clamp(1em, 2.5vw, 1.4em);
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* Modern responsive design using CSS Grid and Flexbox */
+    /* All responsive behavior is now handled by clamp(), min(), and auto-fit */
+    .footer {
+      background: #f8f9fa;
+      padding: clamp(15px, 3vw, 25px) clamp(20px, 4vw, 35px);
+      text-align: center;
+      color: var(--text-color-light);
+      border-top: 1px solid var(--border-color);
+      font-size: clamp(0.8em, 2vw, 1em);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Skunk Report</h1>
+      <p>Code Quality vs. Code Coverage Analysis</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value"><%= data.skunk_score_total.round(2) %></div>
+        <div class="stat-label">SkunkScore Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value"><%= data.analysed_modules_count %></div>
+        <div class="stat-label">Modules Analysed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value"><%= data.skunk_score_average %></div>
+        <div class="stat-label">SkunkScore Average</div>
+      </div>
+    </div>
+
+    <% if data.worst_score && data.worst_pathname %>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-value"><%= data.worst_pathname %></div>
+          <div class="stat-label">Worst File</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><%= data.worst_score %></div>
+          <div class="stat-label">Worst SkunkScore</div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="files-container">
+      <h2>Skunk Analysis</h2>
+      <% data.files.each do |file| %>
+      <div class="file-card">
+        <div class="file-header">
+          <div class="file-name"><%= file.file %></div>
+        </div>
+        <div class="file-metrics">
+          <div class="metric">
+            <div class="metric-label">Skunk Score</div>
+            <div class="metric-value">
+              <%= file.skunk_score %>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Churn × Cost</div>
+            <div class="metric-value"><%= file.churn_times_cost %></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Churn</div>
+            <div class="metric-value"><%= file.churn %></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Cost</div>
+            <div class="metric-value"><%= file.cost %></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Coverage</div>
+            <div class="metric-value"><%= file.coverage %>%</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="footer">
+      <p>Generated with Skunk v<%= data.skunk_version %> on <%= data.generated_at %></p>
+    </div>
+  </div>
+</body>
+</html>
