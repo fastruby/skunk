@@ -62,7 +62,17 @@ module Skunk
 
       # :reek:UtilityFunction
       def not_sharing?
-        ENV["SHARE"] != "true" && ENV["SHARE_URL"].to_s == ""
+        !share_enabled? && share_url_empty?
+      end
+
+      # @return [Boolean] Check if sharing is enabled via environment variable
+      def share_enabled?
+        ENV["SHARE"] == "true"
+      end
+
+      # @return [Boolean] Check if share URL is empty
+      def share_url_empty?
+        ENV["SHARE_URL"].to_s == ""
       end
 
       def payload

@@ -18,6 +18,13 @@ module Skunk
       # @return [Boolean] If the environment is set to share to an external
       # service
       def sharing?
+        share_enabled?
+      end
+
+      private
+
+      # @return [Boolean] Check if sharing is enabled via environment variable
+      def share_enabled?
         ENV["SHARE"] == "true"
       end
     end

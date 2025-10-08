@@ -33,6 +33,9 @@ detectors:
     - Skunk::Command::Compare#analyse_modified_files
     - Skunk::Command::Compare#build_details_path
     - Skunk::Command::Shareable#sharing?
+    - Skunk::Command::Shareable#share_enabled?
+    - Skunk::Command::StatusSharer#share_enabled?
+    - Skunk::Command::StatusSharer#share_url_empty?
     - Skunk::Configuration#supported_format?
     - Skunk::Configuration#supported_formats
   ManualDispatch:
