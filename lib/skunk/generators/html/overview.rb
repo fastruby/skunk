@@ -27,7 +27,6 @@ module Skunk
         end
 
         def render
-          data = @data
           TEMPLATE.result(binding)
         end
       end

@@ -23,7 +23,7 @@ module Skunk
         response = post_payload
 
         @status_message =
-          if Net::HTTPOK === response
+          if response.is_a?(Net::HTTPOK)
             data = JSON.parse response.body
             "Shared at: #{File.join(base_url, data['id'])}"
           else
