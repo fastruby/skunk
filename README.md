@@ -14,6 +14,8 @@ Skunk is a RubyCritic extension to calculate a SkunkScore for a file or project.
     * [Help commands](#help-commands)
     * [Generate the SkunkCore for your project](#generate-the-skunkcore-for-your-project)
     * [Comparing Feature Branches](#comparing-feature-branches)
+* [Configuration](#configuration)
+    * [Setting Output Formats](#setting-output-formats)
 * [Sharing your SkunkScore](#sharing-your-skunkscore)
 * [Contributing](#contributing)
 * [Sponsorship](#sponsorship)
@@ -151,6 +153,36 @@ Score: 340.3
 ```
 
 This should give you an idea if you're moving in the direction of maintaining the code quality or not. In this case, the feature branch is decreasing the code quality because it has a higher SkunkScore than the main branch.
+
+## Configuration
+
+### Setting Output Formats
+
+Skunk provides a simple configuration class to control output formats programmatically. You can use `Skunk::Config` to set which formats should be generated when running Skunk.
+
+**Supported formats:**
+- `:json` - JSON report (default)
+- `:html` - HTML report with visual charts and tables
+
+```ruby
+require 'skunk/config'
+
+# Set multiple formats
+Skunk::Config.formats = [:json, :html]
+
+# Add a format to the existing list
+Skunk::Config.add_format(:html)
+
+# Remove a format
+Skunk::Config.remove_format(:json)
+
+# Check supported formats
+Skunk::Config.supported_formats # => [:json, :html]
+Skunk::Config.supported_format?(:json) # => true
+
+# Reset to defaults
+Skunk::Config.reset
+```
 
 ## Sharing your SkunkScore
 

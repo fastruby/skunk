@@ -33,3 +33,12 @@ detectors:
     - Skunk::Command::Compare#analyse_modified_files
     - Skunk::Command::Compare#build_details_path
     - Skunk::Command::Shareable#sharing?
+    - Skunk::Configuration#supported_format?
+    - Skunk::Configuration#supported_formats
+  ManualDispatch:
+    exclude:
+    - Skunk::Config#self.method_missing
+    - Skunk::Config#self.respond_to_missing?
+  BooleanParameter:
+    exclude:
+    - Skunk::Config#self.respond_to_missing?
