@@ -11,4 +11,7 @@ puts ARGV.inspect
 
 # Run skunk CLI application with the provided arguments
 require "skunk/cli/application"
+require "skunk/config"
+
+Skunk::Config.formats = %i[json html]
 Skunk::Cli::Application.new(ARGV).execute

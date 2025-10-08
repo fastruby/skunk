@@ -1,12 +1,24 @@
 # frozen_string_literal: true
 
-require "rubycritic/generators/json/simple"
+require "pathname"
+
+require "rubycritic/configuration"
 
 module Skunk
   module Generator
     module Json
       # Generates a JSON report for the analysed modules.
-      class Simple < RubyCritic::Generator::Json::Simple
+      class Simple
+        def initialize(analysed_modules)
+          @analysed_modules = analysed_modules
+        end
+
+        FILE_NAME = "skunk_report.json"
+
+        def render
+          JSON.dump(data)
+        end
+
         def data
           {
             analysed_modules_count: analysed_modules_count,
@@ -16,6 +28,14 @@ module Skunk
             worst_score: find_worst_module&.skunk_score,
             files: build_files
           }
+        end
+
+        def file_directory
+          @file_directory ||= Pathname.new(RubyCritic::Config.root)
+        end
+
+        def file_pathname
+          Pathname.new(file_directory).join(FILE_NAME)
         end
 
         private
