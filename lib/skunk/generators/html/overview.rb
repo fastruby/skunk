@@ -18,7 +18,6 @@ module Skunk
         TEMPLATE = erb_template("skunk_overview.html.erb")
 
         def initialize(analysed_modules)
-          super
           @analysed_modules = analysed_modules
           @data = SkunkData.new(analysed_modules)
         end

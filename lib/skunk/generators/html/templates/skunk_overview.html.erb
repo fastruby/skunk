@@ -104,7 +104,7 @@
     }
 
     .value {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1rem, 2vw, 1.5rem);
       font-weight: bold;
       color: var(--text-color);
       margin-bottom: 0.5rem;
@@ -112,7 +112,7 @@
 
     .label {
       color: var(--text-color-light);
-      font-size: clamp(1rem, 2vw, 2rem);
+      font-size: clamp(1rem, 2vw, 1.5rem);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -126,13 +126,109 @@
       font-size: 1rem;
     }
 
-    /* Modern responsive design using CSS Grid and Flexbox */
-    /* All responsive behavior is now handled by clamp(), min(), and auto-fit */
+    .table-section {
+      padding: 2rem;
+      background: var(--white);
+    }
 
-    /* Mobile-first responsive table */
-    @media (max-width: 768px) {
-      body {
-        background-color: red;
+    .table-section h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    /* Responsive Table Styles */
+    .skunk-results {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px var(--shadow-color);
+    }
+
+    .skunk-results thead {
+      background: var(--primary-gradient-end);
+      color: var(--white);
+    }
+
+    .skunk-results th {
+      padding: 1rem;
+      text-align: right;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .skunk-results th:first-child {
+      text-align: left;
+    }
+
+    .table-row {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.2s ease;
+    }
+
+    .table-row:hover {
+      background-color: var(--cards-background-color);
+    }
+
+    .table-row td {
+      padding: 1rem;
+      border: none;
+      text-align: right;
+    }
+
+    .table-row .filename {
+      text-align: left;
+    }
+
+    .table-row td label {
+      display: none;
+    }
+
+    .filename {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      word-break: break-all;
+    }
+
+    .score {
+      font-weight: bold;
+    }
+
+    /* Mobile Card Layout */
+    @media screen and (max-width: 800px) {
+      .skunk-results thead {
+        display: none;
+      }
+
+      .skunk-results {
+        box-shadow: none;
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: auto;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        background: var(--card-background-color);
+        box-shadow: 0 2px 4px var(--shadow-color);
+      }
+
+      .table-row .filename {
+        background: var(--cards-background-color);
+      }
+
+      .table-row td {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+      }
+
+      .table-row td label {
+        display: inline-block;
       }
     }
   </style>
@@ -146,22 +242,61 @@
 
     <section class="cards">
       <div class="card">
-        <div class="value">1</div>
+        <div class="value"><%= data.analysed_modules_count %></div>
         <div class="label">Modules Analysed</div>
       </div>
       <div class="card">
-        <div class="value">833.04</div>
+        <div class="value"><%= data.skunk_score_total %></div>
         <div class="label">Total Skunk Score</div>
       </div>
       <div class="card">
-        <div class="value">833.04</div>
+        <div class="value"><%= data.skunk_score_average %></div>
         <div class="label">Average Skunk Score</div>
       </div>
     </section>
 
-    <section>
+    <section class="table-section">
       <h2>Skunk Analysis</h2>
-      <table>
+      <table class="skunk-results">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Skunk Score</th>
+            <th>Churn × Cost</th>
+            <th>Churn</th>
+            <th>Cost</th>
+            <th>Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.files.each do |item| %>
+            <tr class="table-row">
+              <td class="filename">
+                <span><%= item.file %></span>
+              </td>
+              <td class="score">
+                <label>Skunk Score</label>
+                <span><%= item.skunk_score %></span>
+              </td>
+              <td>
+                <label>Churn × Cost</label>
+                <span><%= item.churn_times_cost %></span>
+              </td>
+              <td>
+                <label>Churn</label>
+                <span><%= item.churn %></span>
+              </td>
+              <td>
+                <label>Cost</label>
+                <span><%= item.cost %></span>
+              </td>
+              <td>
+                <label>Coverage</label>
+                <span><%= item.coverage %></span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </section>
 
