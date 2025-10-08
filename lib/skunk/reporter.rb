@@ -13,13 +13,10 @@ module Skunk
     end
 
     def self.report_generator_class(config_format)
-      if REPORT_GENERATOR_CLASS_FORMATS.include? config_format
-        require "skunk/generators/#{config_format}_report"
-        Generator.const_get("#{config_format.capitalize}Report")
-      else
-        require "skunk/generators/console_report"
-        Generator::ConsoleReport
-      end
+      return if REPORT_GENERATOR_CLASS_FORMATS.none? { |format| format == config_format }
+
+      require "skunk/generators/#{config_format}_report"
+      Generator.const_get("#{config_format.capitalize}Report")
     end
   end
 end

@@ -26,8 +26,6 @@ module Skunk
       #
       # @return [Skunk::Command::StatusReporter]
       def execute
-        RubyCritic::Config.formats = [:json]
-
         report(critique)
 
         status_reporter

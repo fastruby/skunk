@@ -37,7 +37,7 @@ module Skunk
         def calculate_average
           return 0 if @analysed_modules_count.zero?
 
-          (@skunk_score_total.to_f / @analysed_modules_count).round(2)
+          (@skunk_score_total.to_d / @analysed_modules_count).round(2)
         end
 
         def find_worst_module
