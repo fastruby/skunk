@@ -7,6 +7,7 @@ detectors:
   FeatureEnvy:
     exclude:
     - Skunk::Command::StatusReporter#table
+    - Skunk::Generator::HtmlReport#create_directories_and_files
   InstanceVariableAssumption:
     exclude:
     - Skunk::Cli::Options::Argv
@@ -22,9 +23,25 @@ detectors:
     - initialize
     - Skunk::Cli::Application#execute
     - Skunk::Cli::Options::Argv#parse
+  TooManyInstanceVariables:
+    exclude:
+    - Skunk::Generator::Html::FileData
+    - Skunk::Generator::Html::SkunkData
   UtilityFunction:
     exclude:
     - capture_output_streams
     - Skunk::Command::Compare#analyse_modified_files
     - Skunk::Command::Compare#build_details_path
     - Skunk::Command::Shareable#sharing?
+    - Skunk::Command::Shareable#share_enabled?
+    - Skunk::Command::StatusSharer#share_enabled?
+    - Skunk::Command::StatusSharer#share_url_empty?
+    - Skunk::Configuration#supported_format?
+    - Skunk::Configuration#supported_formats
+  ManualDispatch:
+    exclude:
+    - Skunk::Config#self.method_missing
+    - Skunk::Config#self.respond_to_missing?
+  BooleanParameter:
+    exclude:
+    - Skunk::Config#self.respond_to_missing?

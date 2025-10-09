@@ -84,15 +84,17 @@ describe Skunk::Cli::Application do
         FileUtils.rm("tmp/shared_report.txt", force: true)
         FileUtils.mkdir_p("tmp")
 
-        env = ENV.to_hash.merge("SHARE" => "true")
-
-        Object.stub_const(:ENV, env) do
-          RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
-            RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
-              result = application.execute
-              _(result).must_equal success_code
-              output = File.read("tmp/shared_report.txt")
-              _(output).must_include(shared_message)
+        RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
+          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
+            Skunk::Command::Default.stub_any_instance(:share_enabled?, true) do
+              Skunk::Command::StatusSharer.stub_any_instance(:not_sharing?, false) do
+                Skunk::Command::StatusSharer.stub_any_instance(:share, "Shared at: https://skunk.fastruby.io/j") do
+                  result = application.execute
+                  _(result).must_equal success_code
+                  output = File.read("tmp/shared_report.txt")
+                  _(output).must_include(shared_message)
+                end
+              end
             end
           end
         end

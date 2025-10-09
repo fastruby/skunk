@@ -23,7 +23,7 @@ module Skunk
         response = post_payload
 
         @status_message =
-          if Net::HTTPOK === response
+          if response.is_a?(Net::HTTPOK)
             data = JSON.parse response.body
             "Shared at: #{File.join(base_url, data['id'])}"
           else
@@ -62,7 +62,17 @@ module Skunk
 
       # :reek:UtilityFunction
       def not_sharing?
-        ENV["SHARE"] != "true" && ENV["SHARE_URL"].to_s == ""
+        !share_enabled? && share_url_empty?
+      end
+
+      # @return [Boolean] Check if sharing is enabled via environment variable
+      def share_enabled?
+        ENV["SHARE"] == "true"
+      end
+
+      # @return [Boolean] Check if share URL is empty
+      def share_url_empty?
+        ENV["SHARE_URL"].to_s == ""
       end
 
       def payload

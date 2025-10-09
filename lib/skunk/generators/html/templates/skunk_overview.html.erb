@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skunk Report</title>
+  <style>
+    /* Modern CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+    /* End Modern CSS Reset */
+
+    :root {
+      /* Color Palette */
+      --primary-gradient-start:rgb(8, 58, 19);
+      --primary-gradient-end: rgb(8, 98, 44);;
+      --background-color: #f5f5f5;
+      --text-color: #333;
+      --text-color-light: #666;
+      --white: #ffffff;
+      --border-color: #eee;
+      --shadow-color: rgba(0,0,0,0.1);
+
+      --cards-background-color: #f8f9fa;
+      --card-background-color: #ffffff;
+
+      /* Skunk Score Colors */
+      --score-high: #e74c3c;
+      --score-medium: #f39c12;
+      --score-low: #27ae60;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+    .container {
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 2rem;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 300;
+    }
+    .header p {
+      font-size: 1.5rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      background: var(--cards-background-color);
+    }
+
+    .card {
+      background: var(--card-background-color);
+      padding: 2rem;
+      border-radius: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .value {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .label {
+      color: var(--text-color-light);
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer {
+      background: var(--cards-background-color);
+      padding: 1rem 2rem;
+      text-align: center;
+      color: var(--text-color-light);
+      border-top: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+
+    .table-section {
+      padding: 2rem;
+      background: var(--white);
+    }
+
+    .table-section h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    /* Responsive Table Styles */
+    .skunk-results {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px var(--shadow-color);
+    }
+
+    .skunk-results thead {
+      background: var(--primary-gradient-end);
+      color: var(--white);
+    }
+
+    .skunk-results th {
+      padding: 1rem;
+      text-align: right;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .skunk-results th:first-child {
+      text-align: left;
+    }
+
+    .table-row {
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.2s ease;
+    }
+
+    .table-row:hover {
+      background-color: var(--cards-background-color);
+    }
+
+    .table-row td {
+      padding: 1rem;
+      border: none;
+      text-align: right;
+    }
+
+    .table-row .filename {
+      text-align: left;
+    }
+
+    .table-row td label {
+      display: none;
+    }
+
+    .filename {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      word-break: break-all;
+    }
+
+    .score {
+      font-weight: bold;
+    }
+
+    /* Mobile Card Layout */
+    @media screen and (max-width: 800px) {
+      .skunk-results thead {
+        display: none;
+      }
+
+      .skunk-results {
+        box-shadow: none;
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: auto;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        background: var(--card-background-color);
+        box-shadow: 0 2px 4px var(--shadow-color);
+      }
+
+      .table-row .filename {
+        background: var(--cards-background-color);
+      }
+
+      .table-row td {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem;
+      }
+
+      .table-row td label {
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Skunk Report</h1>
+      <p>Code Quality vs. Code Coverage Analysis</p>
+    </div>
+
+    <section class="cards">
+      <div class="card">
+        <div class="value"><%= @data.analysed_modules_count %></div>
+        <div class="label">Modules Analysed</div>
+      </div>
+      <div class="card">
+        <div class="value"><%= @data.skunk_score_total %></div>
+        <div class="label">Total Skunk Score</div>
+      </div>
+      <div class="card">
+        <div class="value"><%= @data.skunk_score_average %></div>
+        <div class="label">Average Skunk Score</div>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h2>Skunk Analysis</h2>
+      <table class="skunk-results">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Skunk Score</th>
+            <th>Churn × Cost</th>
+            <th>Churn</th>
+            <th>Cost</th>
+            <th>Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @data.files.each do |item| %>
+            <tr class="table-row">
+              <td class="filename">
+                <span><%= item.file %></span>
+              </td>
+              <td class="score">
+                <label>Skunk Score</label>
+                <span><%= item.skunk_score %></span>
+              </td>
+              <td>
+                <label>Churn × Cost</label>
+                <span><%= item.churn_times_cost %></span>
+              </td>
+              <td>
+                <label>Churn</label>
+                <span><%= item.churn %></span>
+              </td>
+              <td>
+                <label>Cost</label>
+                <span><%= item.cost %></span>
+              </td>
+              <td>
+                <label>Coverage</label>
+                <span><%= item.coverage %></span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="footer">
+      <p>Generated with Skunk v<%= @data.skunk_version %> on <%= @data.generated_at %></p>
+    </footer>
+  </div>
+</body>
+</html>
