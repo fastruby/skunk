@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
 
-* <INSERT YOUR FEATURE OR BUGFIX HERE>
+* [FEATURE: Add Skunk HTML Report](https://github.com/fastruby/skunk/pull/123)
+* [FEATURE: Add Skunk::Config class](https://github.com/fastruby/skunk/pull/123)
 
 ## v0.5.4 / 2025-05-05 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.3...v0.5.4)
 
