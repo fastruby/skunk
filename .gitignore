@@ -12,3 +12,5 @@
 
 .ruby-version
 .tool-versions
+
+Gemfile.lock
