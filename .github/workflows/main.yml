@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu]
-        ruby-version: ["2.6", "2.7", "3.0", "3.1", "3.2", "3.3"]
+        ruby-version: ["2.6", "2.7", "3.0", "3.1", "3.2", "3.3", "3.4"]
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby ${{ matrix.ruby-version }}
@@ -19,6 +19,18 @@ jobs:
           bundler-cache: true
       - name: Build and run tests
         run: |
-          gem install bundler -v 2.4.6
+          RUBY_VERSION_STR="${{ matrix.ruby-version }}"
+          case "$RUBY_VERSION_STR" in
+            2.6*) BUNDLER_CONSTRAINT=">= 2.2.0, < 2.4.22" ;;
+            2.7*) BUNDLER_CONSTRAINT="2.4.22" ;;
+            3.0)  BUNDLER_CONSTRAINT=">= 2.4.0, < 2.7.2" ;;
+            3.1)  BUNDLER_CONSTRAINT=">= 2.4.0, < 2.7.2" ;;
+            3.2)  BUNDLER_CONSTRAINT=">= 2.7.2, < 4" ;;
+            3.3)  BUNDLER_CONSTRAINT=">= 2.7.2, < 4" ;;
+            3.4)  BUNDLER_CONSTRAINT=">= 2.7.2, < 4" ;;
+          esac
+
+          gem install bundler -v "$BUNDLER_CONSTRAINT"
+          echo "Bundler installed: $(bundle -v)"
           bundle install --jobs 4 --retry 3
           bundle exec rake
