@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * [FEATURE: Add Skunk HTML Report](https://github.com/fastruby/skunk/pull/123)
 * [FEATURE: Add Skunk::Config class](https://github.com/fastruby/skunk/pull/123)
+* [FEATURE: Add Ruby 3.4 compatibility](https://github.com/fastruby/skunk/pull/124)
 
 ## v0.5.4 / 2025-05-05 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.3...v0.5.4)
 
