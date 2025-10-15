@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "base64"
+  spec.add_dependency "base64", "~> 0.3.0"
   spec.add_dependency "rubycritic", ">= 4.5.2", "< 5.0"
   spec.add_dependency "terminal-table", "~> 3.0"
 
