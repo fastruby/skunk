@@ -3,7 +3,6 @@
 require "erb"
 require "rubycritic/commands/status_reporter"
 require "terminal-table"
-require "skunk/analysis"
 
 module Skunk
   module Command
@@ -13,7 +12,6 @@ module Skunk
 
       def initialize(options = {})
         super(options)
-        @analysis = nil
       end
 
       HEADINGS = %w[file skunk_score churn_times_cost churn cost coverage].freeze
@@ -34,7 +32,6 @@ TEMPL
       # Returns a status message with a table of all analysed_modules and
       # a skunk score average
       def update_status_message
-        @analysis = Skunk::Analysis.new(analysed_modules)
         opts = table_options.merge(headings: HEADINGS, rows: table)
 
         _ttable = Terminal::Table.new(opts)
@@ -45,27 +42,27 @@ TEMPL
       private
 
       def analysed_modules_count
-        @analysis.analysed_modules_count
+        analysed_modules.analysed_modules_count
       end
 
       def worst
-        @analysis.worst_module
+        analysed_modules.worst_module
       end
 
       def sorted_modules
-        @analysis.sorted_modules
+        analysed_modules.sorted_modules
       end
 
       def total_skunk_score
-        @analysis.skunk_score_total
+        analysed_modules.skunk_score_total
       end
 
       def total_churn_times_cost
-        @analysis.total_churn_times_cost
+        analysed_modules.total_churn_times_cost
       end
 
       def skunk_score_average
-        @analysis.skunk_score_average
+        analysed_modules.skunk_score_average
       end
 
       def table_options

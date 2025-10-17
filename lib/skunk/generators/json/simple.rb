@@ -3,7 +3,7 @@
 require "pathname"
 
 require "rubycritic/configuration"
-require "skunk/analysis"
+require "skunk/rubycritic/analysed_modules_collection"
 
 module Skunk
   module Generator
@@ -12,7 +12,6 @@ module Skunk
       class Simple
         def initialize(analysed_modules)
           @analysed_modules = analysed_modules
-          @analysis = Skunk::Analysis.new(analysed_modules)
         end
 
         FILE_NAME = "skunk_report.json"
@@ -22,7 +21,7 @@ module Skunk
         end
 
         def data
-          @analysis.to_hash
+          @analysed_modules.to_hash
         end
 
         def file_directory
