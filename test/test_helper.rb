@@ -51,5 +51,3 @@ ensure
   $stdout = STDOUT
   $stderr = STDERR
 end
-
-WebMock.disable_net_connect!(allow_localhost: true)
