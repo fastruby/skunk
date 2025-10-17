@@ -5,11 +5,15 @@ if ENV["COVERAGE"] == "true"
   require "simplecov-console"
   require "codecov"
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  formatters = [
     SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console,
-    SimpleCov::Formatter::Codecov
+    SimpleCov::Formatter::Console
   ]
+
+  # Only add Codecov formatter if CODECOV_TOKEN is set
+  formatters << SimpleCov::Formatter::Codecov if ENV["CODECOV_TOKEN"]
+
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(formatters)
 
   SimpleCov.start do
     add_filter "lib/skunk/version.rb"
@@ -29,6 +33,27 @@ require "webmock/minitest"
 
 require "skunk"
 require "skunk/rubycritic/analysed_module"
+
+# Helper modules for testing
+module MockHelpers
+  # Helper methods for mocking in tests
+
+  # Captures stdout output for testing
+  # @return [String] The captured output
+  def capture_stdout
+    old_stdout = $stdout
+    $stdout = StringIO.new
+    yield
+    $stdout.string
+  ensure
+    $stdout = old_stdout
+  end
+end
+
+# Include helper modules in Minitest::Test
+class Minitest::Test
+  include MockHelpers
+end
 
 def context(*args, &block)
   describe(*args, &block)

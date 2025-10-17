@@ -32,16 +32,14 @@ describe Skunk::Command::StatusReporter do
       example.call
     end
 
-    it "reports the SkunkScore" do
-      _(reporter.update_status_message).must_include output
-      _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
+    it "reports a simple status message" do
+      _(reporter.update_status_message).must_equal "Skunk analysis complete. Use --format console to see detailed output."
     end
 
     context "When there's nested spec files" do
       let(:paths) { "samples" }
-      it "reports the SkunkScore" do
-        _(reporter.update_status_message).must_include output
-        _(reporter.update_status_message).must_include "Generated with Skunk v#{Skunk::VERSION}"
+      it "reports a simple status message" do
+        _(reporter.update_status_message).must_equal "Skunk analysis complete. Use --format console to see detailed output."
       end
     end
   end

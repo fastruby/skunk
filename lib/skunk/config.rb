@@ -4,7 +4,7 @@ module Skunk
   # Utility module for format validation
   module FormatValidator
     # Supported output formats
-    SUPPORTED_FORMATS = %i[json html].freeze
+    SUPPORTED_FORMATS = %i[json html console].freeze
 
     # Check if a format is supported
     # @param format [Symbol] Format to check

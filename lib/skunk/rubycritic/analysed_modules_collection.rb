@@ -65,13 +65,13 @@ module RubyCritic
       }
     end
 
-    private
-
     # Returns files as an array of hashes (for JSON serialization)
     # @return [Array<Hash>]
     def files_as_hash
       @files_as_hash ||= sorted_modules.map(&:to_hash)
     end
+
+    private
 
     # Determines if a module is a test module based on its path
     # @param a_module [RubyCritic::AnalysedModule] The module to check

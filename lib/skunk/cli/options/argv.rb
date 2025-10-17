@@ -12,7 +12,7 @@ module Skunk
         # :reek:Attribute
         attr_accessor :output_filename
 
-        def parse # rubocop:disable Metrics/MethodLength
+        def parse
           parser.new do |opts|
             opts.banner = "Usage: skunk [options] [paths]\n"
 

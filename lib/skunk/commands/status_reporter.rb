@@ -12,6 +12,7 @@ module Skunk
         super(options)
       end
 
+      # Returns a simple status message indicating the analysis is complete
       def update_status_message
         @status_message = "Skunk Report Completed"
       end
