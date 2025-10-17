@@ -7,7 +7,6 @@ module Skunk
   # Test class for Skunk::Config functionality
   class ConfigTest < Minitest::Test
     # Reset configuration before each test to ensure clean state
-    # This method doesn't depend on instance state as it's a class-level operation
     def setup
       Config.reset
     end
