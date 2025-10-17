@@ -70,7 +70,7 @@ module Skunk
     end
 
     def test_supported_formats
-      expected = %i[json html]
+      expected = %i[json html console]
       assert_equal expected, Config.supported_formats
     end
 
