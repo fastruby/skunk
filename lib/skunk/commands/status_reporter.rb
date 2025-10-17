@@ -3,12 +3,18 @@
 require "erb"
 require "rubycritic/commands/status_reporter"
 require "terminal-table"
+require "skunk/analysis"
 
 module Skunk
   module Command
     # Knows how to report status for stinky files
     class StatusReporter < RubyCritic::Command::StatusReporter
       attr_accessor :analysed_modules
+
+      def initialize(options = {})
+        super(options)
+        @analysis = nil
+      end
 
       HEADINGS = %w[file skunk_score churn_times_cost churn cost coverage].freeze
       HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
@@ -28,6 +34,7 @@ TEMPL
       # Returns a status message with a table of all analysed_modules and
       # a skunk score average
       def update_status_message
+        @analysis = Skunk::Analysis.new(analysed_modules)
         opts = table_options.merge(headings: HEADINGS, rows: table)
 
         _ttable = Terminal::Table.new(opts)
@@ -38,36 +45,27 @@ TEMPL
       private
 
       def analysed_modules_count
-        @analysed_modules_count ||= non_test_modules.count
-      end
-
-      def non_test_modules
-        @non_test_modules ||= analysed_modules.reject do |a_module|
-          module_path = a_module.pathname.dirname.to_s
-          module_path.start_with?("test", "spec") || module_path.end_with?("test", "spec")
-        end
+        @analysis.analysed_modules_count
       end
 
       def worst
-        @worst ||= sorted_modules.first
+        @analysis.worst_module
       end
 
       def sorted_modules
-        @sorted_modules ||= non_test_modules.sort_by(&:skunk_score).reverse!
+        @analysis.sorted_modules
       end
 
       def total_skunk_score
-        @total_skunk_score ||= non_test_modules.sum(&:skunk_score)
+        @analysis.skunk_score_total
       end
 
       def total_churn_times_cost
-        non_test_modules.sum(&:churn_times_cost)
+        @analysis.total_churn_times_cost
       end
 
       def skunk_score_average
-        return 0 if analysed_modules_count.zero?
-
-        (total_skunk_score.to_d / analysed_modules_count).to_f.round(2)
+        @analysis.skunk_score_average
       end
 
       def table_options

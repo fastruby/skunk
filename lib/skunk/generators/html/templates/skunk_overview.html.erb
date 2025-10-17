@@ -242,15 +242,15 @@
 
     <section class="cards">
       <div class="card">
-        <div class="value"><%= @data.analysed_modules_count %></div>
+        <div class="value"><%= analysed_modules_count %></div>
         <div class="label">Modules Analysed</div>
       </div>
       <div class="card">
-        <div class="value"><%= @data.skunk_score_total %></div>
+        <div class="value"><%= skunk_score_total %></div>
         <div class="label">Total Skunk Score</div>
       </div>
       <div class="card">
-        <div class="value"><%= @data.skunk_score_average %></div>
+        <div class="value"><%= skunk_score_average %></div>
         <div class="label">Average Skunk Score</div>
       </div>
     </section>
@@ -269,7 +269,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @data.files.each do |item| %>
+          <% files.each do |item| %>
             <tr class="table-row">
               <td class="filename">
                 <span><%= item.file %></span>
@@ -301,7 +301,7 @@
     </section>
 
     <footer class="footer">
-      <p>Generated with Skunk v<%= @data.skunk_version %> on <%= @data.generated_at %></p>
+      <p>Generated with Skunk v<%= @skunk_version %> on <%= @generated_at %></p>
     </footer>
   </div>
 </body>
