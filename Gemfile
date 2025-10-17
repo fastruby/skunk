@@ -9,4 +9,3 @@ gemspec
 
 gem "reek", "~> 6.1"
 gem "rubocop", "~> 1.48"
-gem "vcr", "~> 6.1.0"

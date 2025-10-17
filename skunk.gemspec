@@ -38,7 +38,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "base64", "~> 0.3.0"
   spec.add_dependency "rubycritic", ">= 4.5.2", "< 5.0"
   spec.add_dependency "terminal-table", "~> 3.0"
 
@@ -53,5 +52,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "simplecov", "~> 0.18"
   spec.add_development_dependency "simplecov-console", "0.5.0"
-  spec.add_development_dependency "webmock", "~> 3.10.0"
+  spec.add_development_dependency "webmock", "~> 3.20.0"
 end
