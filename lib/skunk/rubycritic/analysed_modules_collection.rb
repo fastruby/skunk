@@ -3,7 +3,7 @@
 require "rubycritic/core/analysed_modules_collection"
 
 module RubyCritic
-  # Monkey-patches RubyCritic::AnalysedModulesCollection to add Skunk analysis methods
+  # Extends RubyCritic::AnalysedModulesCollection to add Skunk analysis methods
   class AnalysedModulesCollection
     # Returns the count of non-test modules
     # @return [Integer]
