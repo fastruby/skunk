@@ -75,9 +75,12 @@ describe Skunk::Cli::Application do
       end
 
       around do |example|
-        VCR.use_cassette "skunk-fyi" do
-          example.call
-        end
+        stub_request(:post, "https://skunk.fastruby.io/reports").to_return(
+          status: 200,
+          body: '{"id":"j"}',
+          headers: { "Content-Type" => "application/json" }
+        )
+        example.call
       end
 
       it "share report to default server" do
