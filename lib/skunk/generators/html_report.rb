@@ -18,7 +18,7 @@ module Skunk
 
       def generate_report
         create_directories_and_files
-        puts "Skunk report generated at #{report_location}"
+        puts "#{report_name} generated at #{report_location}"
         browser.open unless RubyCritic::Config.no_browser
       end
 
@@ -39,6 +39,13 @@ module Skunk
 
       def overview_generator
         @overview_generator ||= Skunk::Generator::Html::Overview.new(@analysed_modules)
+      end
+
+      def report_name
+        self.class.name.split("::").last
+            .gsub(/([a-z])([A-Z])/, '\1 \2')
+            .downcase
+            .capitalize
       end
     end
   end

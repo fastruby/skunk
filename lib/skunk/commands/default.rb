@@ -37,9 +37,6 @@ module Skunk
       # @param [RubyCritic::AnalysedModulesCollection] A collection of analysed modules
       def report(analysed_modules)
         Reporter.generate_report(analysed_modules)
-
-        status_reporter.analysed_modules = analysed_modules
-        status_reporter.score = analysed_modules.score
       end
     end
   end
