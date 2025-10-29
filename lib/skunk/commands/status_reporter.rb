@@ -10,6 +10,10 @@ module Skunk
     class StatusReporter < RubyCritic::Command::StatusReporter
       attr_accessor :analysed_modules
 
+      def initialize(options = {})
+        super(options)
+      end
+
       HEADINGS = %w[file skunk_score churn_times_cost churn cost coverage].freeze
       HEADINGS_WITHOUT_FILE = HEADINGS - %w[file]
       HEADINGS_WITHOUT_FILE_WIDTH = HEADINGS_WITHOUT_FILE.size * 17 # padding
@@ -38,36 +42,27 @@ TEMPL
       private
 
       def analysed_modules_count
-        @analysed_modules_count ||= non_test_modules.count
-      end
-
-      def non_test_modules
-        @non_test_modules ||= analysed_modules.reject do |a_module|
-          module_path = a_module.pathname.dirname.to_s
-          module_path.start_with?("test", "spec") || module_path.end_with?("test", "spec")
-        end
+        analysed_modules.analysed_modules_count
       end
 
       def worst
-        @worst ||= sorted_modules.first
+        analysed_modules.worst_module
       end
 
       def sorted_modules
-        @sorted_modules ||= non_test_modules.sort_by(&:skunk_score).reverse!
+        analysed_modules.sorted_modules
       end
 
       def total_skunk_score
-        @total_skunk_score ||= non_test_modules.sum(&:skunk_score)
+        analysed_modules.skunk_score_total
       end
 
       def total_churn_times_cost
-        non_test_modules.sum(&:churn_times_cost)
+        analysed_modules.total_churn_times_cost
       end
 
       def skunk_score_average
-        return 0 if analysed_modules_count.zero?
-
-        (total_skunk_score.to_d / analysed_modules_count).to_f.round(2)
+        analysed_modules.skunk_score_average
       end
 
       def table_options

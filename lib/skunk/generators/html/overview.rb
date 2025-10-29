@@ -3,7 +3,8 @@
 require "rubycritic/generators/html/base"
 
 require "skunk/generators/html/path_truncator"
-require "skunk/generators/html/skunk_data"
+require "skunk/generators/html/file_data"
+require "skunk/rubycritic/analysed_modules_collection"
 
 module Skunk
   module Generator
@@ -19,7 +20,8 @@ module Skunk
 
         def initialize(analysed_modules)
           @analysed_modules = analysed_modules
-          @data = SkunkData.new(analysed_modules)
+          @generated_at = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+          @skunk_version = Skunk::VERSION
         end
 
         def file_name
@@ -28,6 +30,24 @@ module Skunk
 
         def render
           TEMPLATE.result(binding)
+        end
+
+        def analysed_modules_count
+          @analysed_modules.analysed_modules_count
+        end
+
+        def skunk_score_total
+          @analysed_modules.skunk_score_total
+        end
+
+        def skunk_score_average
+          @analysed_modules.skunk_score_average
+        end
+
+        def files
+          @files ||= @analysed_modules.sorted_modules.map do |module_data|
+            FileData.new(module_data)
+          end
         end
       end
     end

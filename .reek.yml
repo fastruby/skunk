@@ -23,6 +23,8 @@ detectors:
     - initialize
     - Skunk::Cli::Application#execute
     - Skunk::Cli::Options::Argv#parse
+    - Skunk::Analysis#test_module?
+    - add_mock_methods_to_module
   TooManyInstanceVariables:
     exclude:
     - Skunk::Generator::Html::FileData
@@ -38,6 +40,8 @@ detectors:
     - Skunk::Command::StatusSharer#share_url_empty?
     - Skunk::Configuration#supported_format?
     - Skunk::Configuration#supported_formats
+    - Skunk::Analysis#test_module?
+    - Skunk::ConfigTest#setup
   ManualDispatch:
     exclude:
     - Skunk::Config#self.method_missing
@@ -45,3 +49,11 @@ detectors:
   BooleanParameter:
     exclude:
     - Skunk::Config#self.respond_to_missing?
+  DuplicateMethodCall:
+    exclude:
+    - Skunk::ConfigTest#test_add_format_ignores_duplicates
+  FeatureEnvy:
+    exclude:
+    - Skunk::Command::StatusReporter#table
+    - Skunk::Generator::HtmlReport#create_directories_and_files
+    - add_mock_methods_to_module

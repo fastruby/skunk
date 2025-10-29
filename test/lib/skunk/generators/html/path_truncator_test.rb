@@ -4,7 +4,6 @@ require "test_helper"
 
 require "skunk/generators/html/path_truncator"
 
-# rubocop:disable Metrics/BlockLength
 describe Skunk::Generator::Html::PathTruncator do
   describe ".truncate" do
     context "when path contains app folder" do
@@ -176,4 +175,3 @@ describe Skunk::Generator::Html::PathTruncator do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

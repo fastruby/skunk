@@ -3,6 +3,7 @@
 require "test_helper"
 
 require "rubycritic/analysers_runner"
+require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/commands/status_reporter"
 
 describe Skunk::Command::StatusReporter do

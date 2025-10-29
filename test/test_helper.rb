@@ -27,6 +27,7 @@ require "minitest/around/spec"
 require "minitest/stub_any_instance"
 require "webmock/minitest"
 
+require "skunk"
 require "skunk/rubycritic/analysed_module"
 
 def context(*args, &block)

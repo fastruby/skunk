@@ -4,7 +4,9 @@ require "minitest/autorun"
 require_relative "../../../lib/skunk/config"
 
 module Skunk
+  # Test class for Skunk::Config functionality
   class ConfigTest < Minitest::Test
+    # Reset configuration before each test to ensure clean state
     def setup
       Config.reset
     end
@@ -40,7 +42,7 @@ module Skunk
 
     def test_add_format_ignores_duplicates
       Config.add_format(:html)
-      Config.add_format(:html)
+      Config.add_format(:html) # This should be ignored as duplicate
       assert_equal %i[json html], Config.formats
     end
 
