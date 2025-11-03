@@ -12,8 +12,8 @@ module Skunk
 
       def generate_report
         FileUtils.mkdir_p(generator.file_directory)
-        puts "#{report_name} generated at #{generator.file_pathname}"
-        File.write(generator.file_pathname, generator.render)
+        puts "#{report_name} generated at #{file_path}"
+        File.write(file_path, generator.render)
       end
 
       private
@@ -27,6 +27,10 @@ module Skunk
             .gsub(/([a-z])([A-Z])/, '\1 \2')
             .downcase
             .capitalize
+      end
+
+      def file_path
+        generator.file_pathname
       end
     end
   end

@@ -6,6 +6,8 @@ module Skunk
   module Command
     # Extends RubyCritic::Command::StatusReporter to silence the status message
     class StatusReporter < RubyCritic::Command::StatusReporter
+      attr_accessor :analysed_modules
+
       def initialize(options = {})
         super(options)
       end
