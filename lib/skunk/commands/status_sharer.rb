@@ -89,6 +89,7 @@ module Skunk
       def post_payload
         req = Net::HTTP::Post.new(url)
         req.body = payload
+        req.content_type = "application/json"
 
         http = Net::HTTP.new(url.hostname, url.port)
         if url.scheme == "https"

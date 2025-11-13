@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
 
+* [BUGFIX: Set the right content type in the share HTTP request](https://github.com/fastruby/skunk/pull/129)
 * [REFACTOR: Centralize Skunk analysis into RubyCritic module](https://github.com/fastruby/skunk/pull/127)
 * [FEATURE: Add Skunk HTML Report](https://github.com/fastruby/skunk/pull/123)
 * [FEATURE: Add Skunk::Config class](https://github.com/fastruby/skunk/pull/123)
