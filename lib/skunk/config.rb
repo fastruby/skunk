@@ -24,7 +24,7 @@ module Skunk
   # Similar to RubyCritic::Configuration but focused only on Skunk's needs
   class Configuration
     # Default format
-    DEFAULT_FORMAT = :json
+    DEFAULT_FORMAT = :console
 
     def initialize
       @formats = [DEFAULT_FORMAT]
