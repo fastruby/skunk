@@ -12,7 +12,7 @@ module Skunk
     end
 
     def test_default_format
-      assert_equal [:json], Config.formats
+      assert_equal [:console], Config.formats
     end
 
     def test_set_formats_with_array
@@ -32,23 +32,23 @@ module Skunk
 
     def test_set_formats_with_empty_array_defaults_to_json
       Config.formats = []
-      assert_equal [:json], Config.formats
+      assert_equal [:console], Config.formats
     end
 
     def test_add_format
       Config.add_format(:html)
-      assert_equal %i[json html], Config.formats
+      assert_equal %i[console html], Config.formats
     end
 
     def test_add_format_ignores_duplicates
       Config.add_format(:html)
       Config.add_format(:html) # This should be ignored as duplicate
-      assert_equal %i[json html], Config.formats
+      assert_equal %i[console html], Config.formats
     end
 
     def test_add_format_ignores_unsupported_formats
       Config.add_format(:unsupported)
-      assert_equal [:json], Config.formats
+      assert_equal [:console], Config.formats
     end
 
     def test_remove_format
@@ -59,7 +59,7 @@ module Skunk
 
     def test_remove_format_defaults_to_json_when_empty
       Config.remove_format(:json)
-      assert_equal [:json], Config.formats
+      assert_equal [:console], Config.formats
     end
 
     def test_supported_format
@@ -70,14 +70,14 @@ module Skunk
     end
 
     def test_supported_formats
-      expected = %i[json html]
+      expected = %i[json html console]
       assert_equal expected, Config.supported_formats
     end
 
     def test_reset
       Config.formats = [:html]
       Config.reset
-      assert_equal [:json], Config.formats
+      assert_equal [:console], Config.formats
     end
   end
 end

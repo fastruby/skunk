@@ -40,15 +40,16 @@ module Skunk
 
       def json_summary
         result = {
-          total_skunk_score: total_skunk_score,
-          analysed_modules_count: analysed_modules_count,
-          skunk_score_average: skunk_score_average,
+          total_skunk_score: analysed_modules.skunk_score_total,
+          analysed_modules_count: analysed_modules.analysed_modules_count,
+          skunk_score_average: analysed_modules.skunk_score_average,
           skunk_version: Skunk::VERSION
         }
 
-        if worst
+        if analysed_modules&.worst_module
+          worst = analysed_modules.worst_module
           result[:worst_skunk_score] = {
-            file: worst.pathname.to_s,
+            file: worst.pathname,
             skunk_score: worst.skunk_score
           }
         end
@@ -57,7 +58,7 @@ module Skunk
       end
 
       def json_results
-        sorted_modules.map(&:to_hash)
+        analysed_modules.sorted_modules.map(&:to_hash)
       end
 
       # :reek:UtilityFunction

@@ -5,6 +5,7 @@ require "rubycritic/cli/application"
 
 require "skunk"
 require "skunk/rubycritic/analysed_module"
+require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/cli/options"
 require "skunk/command_factory"
 require "skunk/commands/status_sharer"

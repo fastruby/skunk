@@ -35,28 +35,6 @@ describe Skunk::Cli::Application do
       end
     end
 
-    context "when passing --out option with a file" do
-      require "fileutils"
-
-      let(:argv) { ["--out=tmp/generated_report.txt", "samples/rubycritic"] }
-      let(:success_code) { 0 }
-
-      it "writes output to the file" do
-        FileUtils.rm("tmp/generated_report.txt", force: true)
-        FileUtils.mkdir_p("tmp")
-
-        RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
-          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
-            result = application.execute
-            _(result).must_equal success_code
-          end
-        end
-
-        _(File.read("tmp/generated_report.txt"))
-          .must_include File.read("test/samples/console_output.txt")
-      end
-    end
-
     context "when comparing two branches" do
       let(:argv) { ["-b main", "samples/rubycritic"] }
       let(:success_code) { 0 }

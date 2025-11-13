@@ -13,5 +13,5 @@ puts ARGV.inspect
 require "skunk/cli/application"
 require "skunk/config"
 
-Skunk::Config.formats = %i[json html]
+Skunk::Config.formats = %i[json console html]
 Skunk::Cli::Application.new(ARGV).execute
