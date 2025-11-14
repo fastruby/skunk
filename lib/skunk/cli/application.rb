@@ -49,14 +49,8 @@ module Skunk
         warn "warning: Having no coverage metrics will make your SkunkScore worse."
       end
 
-      # :reek:NilCheck
       def print(message)
-        filename = @parsed_options[:output_filename]
-        if filename.nil?
-          $stdout.puts(message)
-        else
-          File.open(filename, "a") { |file| file << message }
-        end
+        $stdout.puts(message)
       end
     end
   end

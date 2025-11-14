@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rubycritic/configuration"
+
 module Skunk
   # Utility module for format validation
   module FormatValidator
@@ -28,10 +30,12 @@ module Skunk
 
     def initialize
       @formats = [DEFAULT_FORMAT]
+      @root = RubyCritic::Config.root
     end
 
     def set(options = {})
       self.formats = options[:formats] if options.key?(:formats)
+      self.root = options[:root] if options.key?(:root)
     end
 
     # Get the configured formats
@@ -44,6 +48,14 @@ module Skunk
       format_array = Array(format_list)
       @formats = format_array.select { |format| FormatValidator.supported_format?(format) }
       @formats = [DEFAULT_FORMAT] if @formats.empty?
+    end
+
+    def root
+      @root || File.expand_path("tmp/rubycritic", Dir.pwd)
+    end
+
+    def root=(path)
+      @root = path.nil? || path.to_s.empty? ? nil : File.expand_path(path.to_s)
     end
 
     # Add a format to the existing list
@@ -77,6 +89,7 @@ module Skunk
     # Reset to default configuration
     def reset
       @formats = [DEFAULT_FORMAT]
+      @root = RubyCritic::Config.root
     end
   end
 

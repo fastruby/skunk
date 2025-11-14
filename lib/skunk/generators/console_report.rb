@@ -2,8 +2,11 @@
 
 require "erb"
 require "terminal-table"
+require "pathname"
+require "fileutils"
 
 require "skunk/generators/console/simple"
+require "skunk/config"
 
 module Skunk
   module Generator
@@ -14,13 +17,24 @@ module Skunk
       end
 
       def generate_report
-        puts generator.render
+        content = generator.render
+        puts content
+        FileUtils.mkdir_p(file_directory)
+        File.write(file_pathname, content)
       end
 
       private
 
       def generator
         @generator ||= Skunk::Generator::Console::Simple.new(@analysed_modules)
+      end
+
+      def file_directory
+        @file_directory ||= Pathname.new(Skunk::Config.root)
+      end
+
+      def file_pathname
+        Pathname.new(file_directory).join("skunk_console.txt")
       end
     end
   end

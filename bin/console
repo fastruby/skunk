@@ -13,5 +13,6 @@ puts ARGV.inspect
 require "skunk/cli/application"
 require "skunk/config"
 
-Skunk::Config.formats = %i[json console html]
+Skunk::Config.formats = %i[json console html] # supported output formats
+Skunk::Config.root = "tmp/rubycritic"         # default path to store generated JSON and HTML reports.
 Skunk::Cli::Application.new(ARGV).execute
