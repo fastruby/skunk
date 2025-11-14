@@ -187,6 +187,21 @@ module Skunk
         assert_equal "test output\n", output
         mock_generator.verify
       end
+
+      def test_generate_report_writes_console_file
+        Skunk::Config.root = "tmp/console_report"
+        begin
+          path = File.join(Skunk::Config.root, "skunk_console.txt")
+          File.delete(path) if File.exist?(path)
+
+          @console_report.generate_report
+
+          assert File.exist?(path)
+          assert_includes File.read(path), "SkunkScore Total"
+        ensure
+          FileUtils.rm_rf(Skunk::Config.root)
+        end
+      end
     end
   end
 end

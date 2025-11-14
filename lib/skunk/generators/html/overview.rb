@@ -49,6 +49,10 @@ module Skunk
             FileData.new(module_data)
           end
         end
+
+        def root_directory
+          @root_directory ||= Pathname.new(Skunk::Config.root)
+        end
       end
     end
   end
