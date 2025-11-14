@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rubycritic/cli/options/argv"
+require "skunk/config"
 
 module Skunk
   module Cli
@@ -24,6 +25,10 @@ module Skunk
 
             opts.on("-o", "--out FILE", "Output report to file") do |filename|
               self.output_filename = filename
+            end
+
+            opts.on("-f", "--formats json,html,console", Array, "Output formats: json,html,console") do |list|
+              Skunk::Config.formats = Array(list).map(&:to_sym)
             end
 
             opts.on_tail("-v", "--version", "Show gem's version") do

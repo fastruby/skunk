@@ -158,16 +158,33 @@ This should give you an idea if you're moving in the direction of maintaining th
 
 ### Setting Output Formats
 
-Skunk provides a simple configuration class to control output formats programmatically. You can use `Skunk::Config` to set which formats should be generated when running Skunk.
+Skunk supports multiple output formats and you can select them via CLI or programmatically.
 
 **Supported formats:**
-- `:json` - JSON report (default)
+- `:json` - JSON report
 - `:html` - HTML report with visual charts and tables
+- `:console` - Console output (default)
+
+#### CLI flag
+
+You can choose one or more formats from the command line:
+
+```
+skunk --formats=json
+skunk --f json,html
+skunk --formats console,json
+```
+
+If omitted, Skunk defaults to `console`.
+
+#### Programmatic configuration
+
+You can also configure formats in code using `Skunk::Config`:
 
 ```ruby
 require 'skunk/config'
 
-# Set multiple formats
+# Set multiple formats (equivalent to `--formats=json,html`)
 Skunk::Config.formats = [:json, :html]
 
 # Add a format to the existing list
@@ -177,7 +194,7 @@ Skunk::Config.add_format(:html)
 Skunk::Config.remove_format(:json)
 
 # Check supported formats
-Skunk::Config.supported_formats # => [:json, :html]
+Skunk::Config.supported_formats # => [:json, :html, :console]
 Skunk::Config.supported_format?(:json) # => true
 
 # Reset to defaults
