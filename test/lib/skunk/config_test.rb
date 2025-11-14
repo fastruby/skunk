@@ -79,5 +79,14 @@ module Skunk
       Config.reset
       assert_equal [:console], Config.formats
     end
+
+    def test_default_root
+      assert_match(/tmp\/rubycritic$/, Config.root)
+    end
+
+    def test_set_root_expands_path
+      Config.root = "tmp/custom"
+      assert_equal File.expand_path("tmp/custom", Dir.pwd), Config.root
+    end
   end
 end

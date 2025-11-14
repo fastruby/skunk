@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
 
+* [FEATURE: Indicate `--out PATH` location](https://github.com/fastruby/skunk/pull/131)
 * [FEATURE: Add `--formats` CLI flag to select report formats (json, html, console)](https://github.com/fastruby/skunk/pull/130)
 * [REFACTOR: Move Console Report](https://github.com/fastruby/skunk/pull/128)
 * [BUGFIX: Set the right content type in the share HTTP request](https://github.com/fastruby/skunk/pull/129)
