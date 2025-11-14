@@ -33,7 +33,6 @@ describe Skunk::Cli::Options::Argv do
     after do
       Skunk::Config.reset
     end
-
     context "passing --formats option" do
       let(:argv) { ["--formats=json,html"] }
 
