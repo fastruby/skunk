@@ -191,7 +191,7 @@ module Skunk
       def test_generate_report_writes_console_file
         Skunk::Config.root = "tmp/console_report"
         begin
-          path = File.join(Skunk::Config.root, "skunk_console.txt")
+          path = File.join(Skunk::Config.root, "skunk_report.txt")
           File.delete(path) if File.exist?(path)
 
           @console_report.generate_report

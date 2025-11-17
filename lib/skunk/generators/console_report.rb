@@ -34,7 +34,7 @@ module Skunk
       end
 
       def file_pathname
-        Pathname.new(file_directory).join("skunk_console.txt")
+        Pathname.new(file_directory).join("skunk_report.txt")
       end
     end
   end

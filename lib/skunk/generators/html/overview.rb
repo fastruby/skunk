@@ -25,7 +25,7 @@ module Skunk
         end
 
         def file_name
-          "skunk_overview.html"
+          "skunk_report.html"
         end
 
         def render
