@@ -73,7 +73,11 @@ module Skunk
 
       # @return [Boolean] Check if share URL is empty
       def share_url_empty?
-        ENV["SHARE_URL"].to_s == ""
+        share_url == ""
+      end
+
+      def share_url
+        ENV["SHARE_URL"].to_s
       end
 
       def payload
