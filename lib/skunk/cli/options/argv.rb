@@ -27,7 +27,7 @@ module Skunk
               self.output_filename = filename
             end
 
-            opts.on("-f", "--formats json,html,console", Array, "Output formats: json,html,console") do |list|
+            opts.on("-f", "--formats json,html,console", Array, "Output formats: json,html,console (default: console)") do |list|
               Skunk::Config.formats = Array(list).map(&:to_sym)
             end
 

@@ -29,6 +29,7 @@ describe Skunk::Cli::Options::Argv do
     after do
       Skunk::Config.reset
     end
+
     context "passing --formats option" do
       let(:argv) { ["--formats=json,html"] }
 
@@ -36,6 +37,14 @@ describe Skunk::Cli::Options::Argv do
         parser = Skunk::Cli::Options::Argv.new(argv)
         parser.parse
         _(Skunk::Config.formats).must_equal %i[json html]
+      end
+    end
+
+    context "not passing --formats option" do
+      it "defaults to console format" do
+        parser = Skunk::Cli::Options::Argv.new([])
+        parser.parse
+        _(Skunk::Config.formats).must_equal [:console]
       end
     end
   end
