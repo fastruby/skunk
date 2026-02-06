@@ -55,7 +55,8 @@ module Skunk
     end
 
     def root=(path)
-      @root = path.nil? || path.to_s.empty? ? nil : File.expand_path(path.to_s)
+      path_str = path.to_s
+      @root = path_str.empty? ? nil : File.expand_path(path_str)
     end
 
     # Add a format to the existing list

@@ -13,13 +13,22 @@ describe Skunk::Cli::Options::Argv do
     it "sets Skunk::Config.root to the provided path" do
       parser = Skunk::Cli::Options::Argv.new(["--out=tmp/custom"])
       parser.parse
-      _(Skunk::Config.root).must_match(/tmp\/custom$/)
+      _(Skunk::Config.root).must_match(%r{tmp/custom$})
     end
 
     it "defaults to tmp/rubycritic when not provided" do
-      parser = Skunk::Cli::Options::Argv.new([])
-      parser.parse
-      _(Skunk::Config.root).must_match(/tmp\/rubycritic$/)
+      begin
+        prior_root = RubyCritic::Config.root
+        default_root = File.expand_path("tmp/rubycritic_default", Dir.pwd)
+        RubyCritic::Config.root = default_root
+        Skunk::Config.reset
+        parser = Skunk::Cli::Options::Argv.new([])
+        parser.parse
+        _(Skunk::Config.root).must_equal default_root
+      ensure
+        RubyCritic::Config.root = prior_root || default_root
+        Skunk::Config.reset
+      end
     end
   end
 

@@ -87,7 +87,14 @@ module Skunk
     end
 
     def test_default_root
-      assert_match(/tmp\/rubycritic$/, Config.root)
+      prior_root = RubyCritic::Config.root
+      default_root = File.expand_path("tmp/rubycritic_default", Dir.pwd)
+      RubyCritic::Config.root = default_root
+      Config.reset
+      assert_equal default_root, Config.root
+    ensure
+      RubyCritic::Config.root = prior_root || default_root
+      Config.reset
     end
 
     def test_set_root_expands_path

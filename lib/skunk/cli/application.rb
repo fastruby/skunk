@@ -31,10 +31,10 @@ module Skunk
         command = Skunk::CommandFactory.create(@parsed_options)
         reporter = command.execute
 
-        print(reporter.status_message)
+        $stdout.puts(reporter.status_message)
         if command.sharing?
           share_status_message = command.share(reporter)
-          print(share_status_message)
+          $stdout.puts(share_status_message)
         end
 
         reporter.status
@@ -48,10 +48,6 @@ module Skunk
       def warn_coverage_info
         warn "warning: Couldn't find coverage info at #{COVERAGE_FILE}."
         warn "warning: Having no coverage metrics will make your SkunkScore worse."
-      end
-
-      def print(message)
-        $stdout.puts(message)
       end
     end
   end
