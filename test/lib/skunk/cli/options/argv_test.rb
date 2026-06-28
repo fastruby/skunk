@@ -26,6 +26,10 @@ describe Skunk::Cli::Options::Argv do
   end
 
   describe "#formats" do
+    before do
+      Skunk::Config.reset
+    end
+
     after do
       Skunk::Config.reset
     end

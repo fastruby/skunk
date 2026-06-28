@@ -11,6 +11,12 @@ module Skunk
       Config.reset
     end
 
+    # Reset again after each test so the global singleton does not leak
+    # mutated formats into tests in other files (minitest randomizes order)
+    def teardown
+      Config.reset
+    end
+
     def test_default_format
       assert_equal [:console], Config.formats
     end
