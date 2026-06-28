@@ -38,12 +38,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "ostruct", "~> 0.6"
   spec.add_dependency "path_expander", "< 2.0"
   spec.add_dependency "rubycritic", ">= 4.5.2", "< 5.0"
-  spec.add_dependency "terminal-table", "~> 3.0"
+  spec.add_dependency "terminal-table", "~> 4.0"
 
   spec.add_development_dependency "codecov", "~> 0.1.16"
-  spec.add_development_dependency "debug"
   spec.add_development_dependency "minitest", "< 6"
   spec.add_development_dependency "minitest-around", "~> 0.5.0"
   spec.add_development_dependency "minitest-stub_any_instance", "~> 1.0.2"
