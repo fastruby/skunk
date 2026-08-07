@@ -7,7 +7,7 @@
 Skunk is a RubyCritic extension to calculate a SkunkScore for a file or project. The SkunkScore is a value that assesses the technical debt of a module.
 
 ## Table of contents
-* [What is the SkunkScore?](#what-is-the-skunkscore)
+* [What is the SkunkScore?] (#what-is-the-skunkscore)
 * [Getting started](#getting-started)
     * [Running SimpleCov](#running-simplecov)
 * [Usage](#usage)
@@ -242,4 +242,6 @@ Take a look at the [Contributing document](CONTRIBUTING.md) for instructions to 
 
 ![FastRuby.io | Rails Upgrade Services](fastruby-logo.png)
 
-`skunk` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.
+
+`skunk` is maintained and funded by [FastRuby.io](https://fastruby.io). The names and logo for FastRuby.io are trademark of The Lean Software Boutique LLC.
+thanks to the maintainers for making this project open source
