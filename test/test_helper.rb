@@ -16,10 +16,10 @@ if ENV["COVERAGE"] == "true"
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(formatters)
 
   SimpleCov.start do
-    add_filter "lib/skunk/version.rb"
-    add_filter "test/lib"
+    skip "lib/skunk/version.rb"
+    skip "test/lib"
 
-    track_files "lib/**/*.rb"
+    cover "lib/**/*.rb"
   end
 
   puts "Using SimpleCov v#{SimpleCov::VERSION}"
