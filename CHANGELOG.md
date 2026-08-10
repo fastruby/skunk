@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
 
-* [FEATURE: Support SimpleCov 1.0](https://github.com/fastruby/skunk/pull/140)
+* [ENHANCEMENT: Support SimpleCov 1.0](https://github.com/fastruby/skunk/pull/140)
 * BUGFIX: Pin path_expander < 2.0 for Ruby 2.7 compatibility
 * [FEATURE: Add `--formats` CLI flag to select report formats (json, html, console)](https://github.com/fastruby/skunk/pull/130)
 * [REFACTOR: Move Console Report](https://github.com/fastruby/skunk/pull/128)
