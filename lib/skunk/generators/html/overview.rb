@@ -25,7 +25,7 @@ module Skunk
         end
 
         def file_name
-          "skunk_overview.html"
+          "skunk_report.html"
         end
 
         def render
@@ -48,6 +48,10 @@ module Skunk
           @files ||= @analysed_modules.sorted_modules.map do |module_data|
             FileData.new(module_data)
           end
+        end
+
+        def root_directory
+          @root_directory ||= Pathname.new(Skunk::Config.root)
         end
       end
     end
