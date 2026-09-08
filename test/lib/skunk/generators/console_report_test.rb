@@ -170,6 +170,10 @@ module Skunk
       end
 
       def test_generate_report_calls_generator_render
+        # Write the report file under tmp so the run does not leave one behind
+        # in samples/
+        Skunk::Config.root = "tmp/console_report_render"
+
         # Test that generate_report calls the generator's render method
         @console_report.send(:generator)
 
@@ -186,6 +190,9 @@ module Skunk
 
         assert_equal "test output\n", output
         mock_generator.verify
+      ensure
+        FileUtils.rm_rf(Skunk::Config.root)
+        Skunk::Config.reset
       end
 
       def test_generate_report_writes_console_file
