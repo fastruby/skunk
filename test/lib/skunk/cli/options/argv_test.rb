@@ -6,7 +6,12 @@ require "skunk/cli/options/argv"
 
 describe Skunk::Cli::Options::Argv do
   describe "--out path" do
+    before do
+      @prior_root = RubyCritic::Config.root
+    end
+
     after do
+      RubyCritic::Config.root = @prior_root if @prior_root
       Skunk::Config.reset
     end
 
@@ -17,18 +22,12 @@ describe Skunk::Cli::Options::Argv do
     end
 
     it "defaults to tmp/rubycritic when not provided" do
-      begin
-        prior_root = RubyCritic::Config.root
-        default_root = File.expand_path("tmp/rubycritic_default", Dir.pwd)
-        RubyCritic::Config.root = default_root
-        Skunk::Config.reset
-        parser = Skunk::Cli::Options::Argv.new([])
-        parser.parse
-        _(Skunk::Config.root).must_equal default_root
-      ensure
-        RubyCritic::Config.root = prior_root || default_root
-        Skunk::Config.reset
-      end
+      default_root = File.expand_path("tmp/rubycritic_default", Dir.pwd)
+      RubyCritic::Config.root = default_root
+      Skunk::Config.reset
+      parser = Skunk::Cli::Options::Argv.new([])
+      parser.parse
+      _(Skunk::Config.root).must_equal default_root
     end
   end
 
