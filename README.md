@@ -173,7 +173,7 @@ You can choose one or more formats from the command line:
 
 ```
 skunk --formats=json
-skunk --f json,html
+skunk -f json,html
 skunk --formats console,json
 ```
 
