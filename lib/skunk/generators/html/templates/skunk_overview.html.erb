@@ -195,6 +195,29 @@
       font-weight: bold;
     }
 
+    /* Sortable Table Headers */
+    .table-header {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .table-header:hover {
+      text-decoration: underline;
+    }
+
+    .sort-type {
+      display: inline-block;
+      margin-left: 0.4rem;
+    }
+
+    .table-header-asc::after {
+      content: " ▲";
+    }
+
+    .table-header-desc::after {
+      content: " ▼";
+    }
+
     /* Mobile Card Layout */
     @media screen and (max-width: 800px) {
       .skunk-results thead {
@@ -257,15 +280,15 @@
 
     <section class="table-section">
       <h2>Skunk Analysis</h2>
-      <table class="skunk-results">
+      <table id="skunkTable" class="skunk-results">
         <thead>
           <tr>
-            <th>File</th>
-            <th>Skunk Score</th>
-            <th>Churn × Cost</th>
-            <th>Churn</th>
-            <th>Cost</th>
-            <th>Coverage</th>
+            <th class="table-header">File<span class="sort-type"></span></th>
+            <th class="table-header">Skunk Score<span class="sort-type"></span></th>
+            <th class="table-header">Churn &times; Cost<span class="sort-type"></span></th>
+            <th class="table-header">Churn<span class="sort-type"></span></th>
+            <th class="table-header">Cost<span class="sort-type"></span></th>
+            <th class="table-header">Coverage<span class="sort-type"></span></th>
           </tr>
         </thead>
         <tbody>
@@ -279,7 +302,7 @@
                 <span><%= item.skunk_score %></span>
               </td>
               <td>
-                <label>Churn × Cost</label>
+                <label>Churn &times; Cost</label>
                 <span><%= item.churn_times_cost %></span>
               </td>
               <td>
@@ -304,5 +327,45 @@
       <p>Generated with Skunk v<%= @skunk_version %> on <%= @generated_at %></p>
     </footer>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const table = document.getElementById("skunkTable");
+      const headers = table.querySelectorAll(".table-header");
+      const tbody = table.querySelector("tbody");
+      const numericColumns = [1, 2, 3, 4, 5];
+
+      const cellValue = (row, columnIndex) =>
+        row.cells[columnIndex].querySelector("span:last-child").textContent.trim();
+
+      const compareRows = (rowA, rowB, columnIndex, ascending) => {
+        const valueA = cellValue(rowA, columnIndex);
+        const valueB = cellValue(rowB, columnIndex);
+
+        if (numericColumns.includes(columnIndex)) {
+          return ascending ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA);
+        }
+
+        return ascending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+      };
+
+      headers.forEach((header, columnIndex) => {
+        header.addEventListener("click", () => {
+          const ascending = !header.classList.contains("table-header-asc");
+          const rows = Array.from(tbody.querySelectorAll(".table-row"));
+
+          headers.forEach((otherHeader) => {
+            otherHeader.classList.remove("active", "table-header-asc", "table-header-desc");
+          });
+
+          header.classList.add("active", ascending ? "table-header-asc" : "table-header-desc");
+
+          rows
+            .sort((rowA, rowB) => compareRows(rowA, rowB, columnIndex, ascending))
+            .forEach((row) => tbody.appendChild(row));
+        });
+      });
+    });
+  </script>
 </body>
 </html>
