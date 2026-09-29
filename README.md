@@ -65,7 +65,7 @@ Run `skunk -h` to check out the help options:
 ```
 Usage: skunk [options] [paths]
     -b, --branch BRANCH              Set branch to compare
-    -o, --out FILE                   Output report to file
+    -o, --out PATH                   Output report path
     -v, --version                    Show gem's version
     -h, --help                       Show this message
 ```
@@ -127,7 +127,9 @@ To only run skunk on specific folders, pass a list of directories in the command
 
 ### Generate JSON report in background
 
-When the Skunk command is run, it will generate a JSON report file in the `RubyCritic::Config.root` location.
+When the Skunk command is run, it will generate a JSON report file in the configured output path.
+
+Skunk also writes the console report to `skunk_report.txt` under the same output path.
 
 ### Comparing feature branches
 
@@ -171,7 +173,7 @@ You can choose one or more formats from the command line:
 
 ```
 skunk --formats=json
-skunk --f json,html
+skunk -f json,html
 skunk --formats console,json
 ```
 

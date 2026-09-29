@@ -2,7 +2,7 @@
 
 require "pathname"
 
-require "rubycritic/configuration"
+require "skunk/config"
 require "skunk/rubycritic/analysed_modules_collection"
 
 module Skunk
@@ -25,7 +25,7 @@ module Skunk
         end
 
         def file_directory
-          @file_directory ||= Pathname.new(RubyCritic::Config.root)
+          @file_directory ||= Pathname.new(Skunk::Config.root)
         end
 
         def file_pathname

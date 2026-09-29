@@ -10,58 +10,31 @@ module Skunk
       # Extends RubyCritic::Cli::Options::Argv to parse a subset of the
       # parameters accepted by RubyCritic
       class Argv < RubyCritic::Cli::Options::Argv
-        # :reek:Attribute
-        attr_accessor :output_filename
-
         def parse
           parser.new do |opts|
             opts.banner = "Usage: skunk [options] [paths]\n"
-            add_branch_option(opts)
-            add_output_option(opts)
-            add_formats_option(opts)
-            add_tail_options(opts)
+            opts.on("-b", "--branch BRANCH", "Set branch to compare") do |branch|
+              self.base_branch = String(branch)
+              set_current_branch
+              self.mode = :compare_branches
+            end
+
+            opts.on("-o", "--out PATH", "Output report path") do |path|
+              Skunk::Config.root = path
+            end
+
+            opts.on("-f", "--formats json,html,console", Array, "Output formats: json,html,console") do |list|
+              Skunk::Config.formats = Array(list).map(&:to_sym)
+            end
+
+            opts.on_tail("-v", "--version", "Show gem's version") do
+              self.mode = :version
+            end
+
+            opts.on_tail("-h", "--help", "Show this message") do
+              self.mode = :help
+            end
           end.parse!(@argv)
-        end
-
-        def to_h
-          super.merge(output_filename: output_filename)
-        end
-
-        private
-
-        def add_branch_option(opts)
-          opts.on("-b", "--branch BRANCH", "Set branch to compare") do |branch|
-            self.base_branch = String(branch)
-            set_current_branch
-            self.mode = :compare_branches
-          end
-        end
-
-        def add_output_option(opts)
-          opts.on("-o", "--out FILE", "Output report to file") do |filename|
-            self.output_filename = filename
-          end
-        end
-
-        def add_formats_option(opts)
-          opts.on(
-            "-f",
-            "--formats json,html,console",
-            Array,
-            "Output formats: json,html,console (default: console)"
-          ) do |list|
-            Skunk::Config.formats = Array(list).map(&:to_sym)
-          end
-        end
-
-        def add_tail_options(opts)
-          opts.on_tail("-v", "--version", "Show gem's version") do
-            self.mode = :version
-          end
-
-          opts.on_tail("-h", "--help", "Show this message") do
-            self.mode = :help
-          end
         end
       end
     end

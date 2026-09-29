@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "skunk/cli/application"
+require "skunk/commands/default"
 require "rubycritic/core/analysed_module"
 require "minitest/stub_const"
 
@@ -46,14 +47,15 @@ describe Skunk::Cli::Application do
     end
 
     context "when passing an environment variable SHARE=true" do
-      let(:argv) { ["--out=tmp/shared_report.txt", "samples/rubycritic"] }
+      let(:argv) { ["--out=tmp", "samples/rubycritic"] }
       let(:success_code) { 0 }
-      let(:shared_message) do
-        "Shared at: https://skunk.fastruby.io/j"
-      end
+      let(:generated_message) { "Generated with Skunk" }
+      let(:shared_message) { "Shared at: https://skunk.fastruby.io/j" }
+      let(:share_url) { "https://skunk.fastruby.io" }
+      let(:report_path) { "tmp/skunk_report.txt" }
 
       around do |example|
-        stub_request(:post, "https://skunk.fastruby.io/reports").to_return(
+        stub_request(:post, "#{share_url}/reports").to_return(
           status: 200,
           body: '{"id":"j"}',
           headers: { "Content-Type" => "application/json" }
@@ -62,20 +64,21 @@ describe Skunk::Cli::Application do
       end
 
       it "share report to default server" do
-        FileUtils.rm("tmp/shared_report.txt", force: true)
+        FileUtils.rm(report_path, force: true)
         FileUtils.mkdir_p("tmp")
 
-        RubyCritic::AnalysedModule.stub_any_instance(:churn, 1) do
-          RubyCritic::AnalysedModule.stub_any_instance(:coverage, 100.0) do
-            Skunk::Command::Default.stub_any_instance(:share_enabled?, true) do
-              Skunk::Command::StatusSharer.stub_any_instance(:not_sharing?, false) do
-                Skunk::Command::StatusSharer.stub_any_instance(:share, "Shared at: https://skunk.fastruby.io/j") do
-                  result = application.execute
-                  _(result).must_equal success_code
-                  output = File.read("tmp/shared_report.txt")
-                  _(output).must_include(shared_message)
-                end
+        Skunk::Command::Default.stub_any_instance(:share_enabled?, true) do
+          Skunk::Command::StatusSharer.stub_any_instance(:share_url, share_url) do
+            Skunk::Command::StatusSharer.stub_any_instance(:share, "Shared at: #{share_url}/j") do
+              stdout = capture_stdout do
+                result = application.execute
+                _(result).must_equal success_code
               end
+              _(File.exist?(report_path)).must_equal true
+              file_output = File.read(report_path)
+
+              _(file_output).must_include(generated_message)
+              _(stdout).must_include(shared_message)
             end
           end
         end
