@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.5.4...HEAD)
+## main [(unreleased)](https://github.com/fastruby/skunk/compare/v0.6.0...HEAD)
+
+* <INSERT YOUR FEATURE OR BUGFIX HERE>
+
+## v0.6.0 / 2026-10-12 [(commits)](https://github.com/fastruby/skunk/compare/v0.5.4...v0.6.0)
 
 * [BREAKING: `-o/--out` now takes an output directory instead of a file. Reports, and `skunk_report.txt` with the console output, are written there. The HTML report is renamed from `skunk_overview.html` to `skunk_report.html`](https://github.com/fastruby/skunk/pull/131)
 * [FEATURE: Add sortable columns to the Skunk HTML report](https://github.com/fastruby/skunk/pull/142)
