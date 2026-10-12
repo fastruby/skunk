@@ -13,6 +13,7 @@ describe Skunk::Command::Compare do
   describe "#analyse_branch" do
     before do
       RubyCritic::Config.root = paths
+      Skunk::Config.reset
       FileUtils.rm_rf("test/support/")
     end
 

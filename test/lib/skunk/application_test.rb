@@ -11,6 +11,10 @@ describe Skunk::Cli::Application do
     let(:argv) { ["--help"] }
     let(:application) { Skunk::Cli::Application.new(argv) }
 
+    after do
+      Skunk::Config.reset
+    end
+
     context "when passing an invalid option" do
       let(:argv) { ["--foo"] }
       let(:error_code) { 1 }
