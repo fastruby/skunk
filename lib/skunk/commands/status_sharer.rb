@@ -33,9 +33,8 @@ module Skunk
 
       private
 
-      # :reek:UtilityFunction
       def base_url
-        @base_url ||= ENV["SHARE_URL"] || DEFAULT_URL
+        share_url_empty? ? DEFAULT_URL : share_url
       end
 
       def json_summary

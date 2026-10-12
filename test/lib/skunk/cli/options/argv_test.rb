@@ -21,6 +21,22 @@ describe Skunk::Cli::Options::Argv do
       _(Skunk::Config.root).must_match(%r{tmp/custom$})
     end
 
+    it "leaves the RubyCritic root option untouched" do
+      parser = Skunk::Cli::Options::Argv.new(["--out=tmp/custom"])
+      parser.parse
+      _(parser.to_h[:root]).must_be_nil
+    end
+
+    it "rejects an empty path" do
+      parser = Skunk::Cli::Options::Argv.new(["--out="])
+      _ { parser.parse }.must_raise OptionParser::InvalidArgument
+    end
+
+    it "rejects a path that is an existing file" do
+      parser = Skunk::Cli::Options::Argv.new(["--out=Gemfile"])
+      _ { parser.parse }.must_raise OptionParser::InvalidArgument
+    end
+
     it "defaults to tmp/rubycritic when not provided" do
       default_root = File.expand_path("tmp/rubycritic_default", Dir.pwd)
       RubyCritic::Config.root = default_root

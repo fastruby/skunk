@@ -207,7 +207,18 @@ module Skunk
           assert_includes File.read(path), "SkunkScore Total"
         ensure
           FileUtils.rm_rf(Skunk::Config.root)
+          Skunk::Config.reset
         end
+      end
+
+      def test_generate_report_skips_file_without_out
+        Skunk::Config.reset
+        path = File.join(Skunk::Config.root, "skunk_report.txt")
+        File.delete(path) if File.exist?(path)
+
+        capture_stdout { @console_report.generate_report }
+
+        refute File.exist?(path)
       end
     end
   end

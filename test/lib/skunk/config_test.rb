@@ -97,6 +97,17 @@ module Skunk
       Config.reset
     end
 
+    def test_reset_does_not_snapshot_rubycritic_root
+      prior_root = RubyCritic::Config.root
+      Config.reset
+      RubyCritic::Config.root = "tmp/rubycritic_later"
+      assert_equal File.expand_path("tmp/rubycritic_later", Dir.pwd), Config.root
+      refute Config.root_set?
+    ensure
+      RubyCritic::Config.root = prior_root if prior_root
+      Config.reset
+    end
+
     def test_set_root_expands_path
       Config.root = "tmp/custom"
       assert_equal File.expand_path("tmp/custom", Dir.pwd), Config.root

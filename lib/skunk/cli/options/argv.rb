@@ -19,8 +19,8 @@ module Skunk
               self.mode = :compare_branches
             end
 
-            opts.on("-o", "--out PATH", "Output report path") do |path|
-              Skunk::Config.root = path
+            opts.on("-o", "--out PATH", "Output directory for reports") do |path|
+              self.output_path = path
             end
 
             opts.on("-f", "--formats json,html,console", Array, "Output formats: json,html,console") do |list|
@@ -35,6 +35,17 @@ module Skunk
               self.mode = :help
             end
           end.parse!(@argv)
+        end
+
+        private
+
+        # Moves only Skunk's reports. RubyCritic::Config.root stays under
+        # RubyCritic's control, and Skunk::Config.root falls back to it
+        def output_path=(path)
+          raise OptionParser::InvalidArgument, "expects a directory" if path.to_s.strip.empty?
+          raise OptionParser::InvalidArgument, "expects a directory, but #{path} is a file" if File.file?(path)
+
+          Skunk::Config.root = path
         end
       end
     end

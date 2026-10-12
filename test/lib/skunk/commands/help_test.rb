@@ -11,7 +11,7 @@ describe Skunk::Command::Help do
       <<~HELP
         Usage: skunk [options] [paths]
             -b, --branch BRANCH              Set branch to compare
-            -o, --out PATH                   Output report path
+            -o, --out PATH                   Output directory for reports
             -f, --formats json,html,console  Output formats: json,html,console
             -v, --version                    Show gem's version
             -h, --help                       Show this message

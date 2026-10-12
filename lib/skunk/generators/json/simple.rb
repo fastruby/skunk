@@ -29,7 +29,7 @@ module Skunk
         end
 
         def file_pathname
-          Pathname.new(file_directory).join(FILE_NAME)
+          file_directory.join(FILE_NAME)
         end
       end
     end

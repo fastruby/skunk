@@ -5,6 +5,7 @@ require "skunk/rubycritic/analysed_modules_collection"
 require "skunk/commands/output"
 require "skunk/commands/shareable"
 require "skunk/commands/compare_score"
+require "skunk/config"
 
 # nodoc #
 module Skunk
@@ -51,13 +52,22 @@ module Skunk
           ::RubyCritic::Config.feature_branch_score.to_f.round(2)
         ).message
 
-        Skunk::Command::Output.create_directory(::RubyCritic::Config.compare_root_directory)
+        Skunk::Command::Output.create_directory(compare_directory)
         File.open(build_details_path, "w") { |file| file.write(details) }
         puts details
       end
 
       def build_details_path
-        "#{::RubyCritic::Config.compare_root_directory}/build_details.txt"
+        "#{compare_directory}/build_details.txt"
+      end
+
+      # Uses --out (Skunk::Config.root) when given, otherwise RubyCritic's
+      # compare directory
+      # :reek:UtilityFunction
+      def compare_directory
+        return ::RubyCritic::Config.compare_root_directory unless Skunk::Config.root_set?
+
+        File.join(Skunk::Config.root, "compare")
       end
     end
   end

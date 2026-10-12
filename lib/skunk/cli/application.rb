@@ -38,7 +38,7 @@ module Skunk
         end
 
         reporter.status
-      rescue OptionParser::InvalidOption => e
+      rescue OptionParser::ParseError => e
         warn "Error: #{e}"
         STATUS_ERROR
       end

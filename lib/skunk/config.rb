@@ -30,7 +30,7 @@ module Skunk
 
     def initialize
       @formats = [DEFAULT_FORMAT]
-      @root = RubyCritic::Config.root
+      @root = nil
     end
 
     def set(options = {})
@@ -50,8 +50,16 @@ module Skunk
       @formats = [DEFAULT_FORMAT] if @formats.empty?
     end
 
+    # Path where reports are written. An explicit value (from --out) wins;
+    # otherwise it follows RubyCritic::Config.root, which RubyCritic sets on
+    # every run, so a stale value from an earlier run is never reused.
     def root
-      @root || File.expand_path("tmp/rubycritic", Dir.pwd)
+      @root || RubyCritic::Config.root || File.expand_path("tmp/rubycritic", Dir.pwd)
+    end
+
+    # @return [Boolean] True when the output path was set explicitly
+    def root_set?
+      !!@root
     end
 
     def root=(path)
@@ -90,7 +98,7 @@ module Skunk
     # Reset to default configuration
     def reset
       @formats = [DEFAULT_FORMAT]
-      @root = RubyCritic::Config.root
+      @root = nil
     end
   end
 

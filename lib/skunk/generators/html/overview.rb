@@ -50,6 +50,8 @@ module Skunk
           end
         end
 
+        private
+
         def root_directory
           @root_directory ||= Pathname.new(Skunk::Config.root)
         end

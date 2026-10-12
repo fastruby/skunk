@@ -65,7 +65,7 @@ Run `skunk -h` to check out the help options:
 ```
 Usage: skunk [options] [paths]
     -b, --branch BRANCH              Set branch to compare
-    -o, --out PATH                   Output report path
+    -o, --out PATH                   Output directory for reports
     -v, --version                    Show gem's version
     -h, --help                       Show this message
 ```
@@ -129,7 +129,7 @@ To only run skunk on specific folders, pass a list of directories in the command
 
 When the Skunk command is run, it will generate a JSON report file in the configured output path.
 
-Skunk also writes the console report to `skunk_report.txt` under the same output path.
+When `--out PATH` is given, Skunk also writes the console report to `skunk_report.txt` in that directory.
 
 ### Comparing feature branches
 
