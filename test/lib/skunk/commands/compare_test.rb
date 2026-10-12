@@ -13,6 +13,7 @@ describe Skunk::Command::Compare do
   describe "#analyse_branch" do
     before do
       RubyCritic::Config.root = paths
+      Skunk::Config.reset
       FileUtils.rm_rf("test/support/")
     end
 
@@ -30,6 +31,17 @@ describe Skunk::Command::Compare do
                                               compare_root_directory) do
         Skunk::Command::Compare.new(paths: "samples/rubycritic").build_details
         _(File.exist?(compare_root_directory)).must_equal true
+      end
+    end
+
+    it "writes build_details.txt under --out when given" do
+      Skunk::Config.root = "test/support/out"
+      begin
+        Skunk::Command::Compare.new(paths: "samples/rubycritic").build_details
+        _(File.exist?("test/support/out/compare/build_details.txt")).must_equal true
+      ensure
+        FileUtils.rm_rf("test/support/out")
+        Skunk::Config.reset
       end
     end
   end

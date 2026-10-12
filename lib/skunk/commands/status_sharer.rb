@@ -33,9 +33,8 @@ module Skunk
 
       private
 
-      # :reek:UtilityFunction
       def base_url
-        ENV["SHARE_URL"] || DEFAULT_URL
+        share_url_empty? ? DEFAULT_URL : share_url
       end
 
       def json_summary
@@ -73,7 +72,11 @@ module Skunk
 
       # @return [Boolean] Check if share URL is empty
       def share_url_empty?
-        ENV["SHARE_URL"].to_s == ""
+        share_url.empty?
+      end
+
+      def share_url
+        @share_url ||= ENV["SHARE_URL"].to_s
       end
 
       def payload

@@ -13,5 +13,5 @@ puts ARGV.inspect
 require "skunk/cli/application"
 require "skunk/config"
 
-Skunk::Config.formats = %i[json console html]
-Skunk::Cli::Application.new(ARGV).execute
+argv = ARGV.any? { |arg| arg.start_with?("-f", "--formats") } ? ARGV : ["--formats=json,console,html", *ARGV]
+Skunk::Cli::Application.new(argv).execute
