@@ -33,6 +33,10 @@ To install this gem onto your local machine, run:
 
 `bundle exec rake install`.
 
+### Using the dev container locally
+
+To open locally in VS Code using a dev container, follow the [Visual Studio Code Dev Containers installation instructions](https://code.visualstudio.com/docs/remote/containers#_installation) to configure dev container support. If you close the repository and open it again in VS Code. VS Code will automatically offer to run this project in a dev container when the project is opened.
+
 ## Architecture
 
 This project follows the typical structure for a gem: code is located in `lib` and tests are in `test`.
